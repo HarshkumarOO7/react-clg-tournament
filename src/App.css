@@ -1,0 +1,21 @@
+:root {
+  --bg: #ffffff;
+  --text: #0f172a;
+  --nav: #2f354b;
+  --accent: #ff1744;
+}
+
+[data-theme="dark"] {
+  --bg: #020617;
+  --text: #f8fafc;
+  --nav: #1e293b;
+  --accent: #ff1744;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", sans-serif;
+  transition: background 0.3s, color 0.3s;
+}
