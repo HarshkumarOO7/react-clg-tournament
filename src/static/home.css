@@ -1,0 +1,10 @@
+table{
+    color:red;
+    border:1px solid gray;
+    border-radius: 10%;
+}
+
+td{
+    border:1px solid gray;
+    border-radius: 10%;
+}
