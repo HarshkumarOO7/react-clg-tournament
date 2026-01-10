@@ -1,44 +1,83 @@
 import { useState } from "react";
+import "./Registration.css";
+import { Link } from "react-router-dom";
 
 export default function Registration() {
   const [form, setForm] = useState({
     name: "",
     email: "",
-    role: "player"
+    password: "",
+    role: "player",
   });
 
-  const handleRegister = () => {
-    alert("Registered Successfully");
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert("Registration Successful 🎉 (API later)");
   };
 
   return (
-    <div style={styles.box}>
-      <h2>Register</h2>
+    <div className="register-page">
+      <div className="register-card">
+        <h2>Create Account</h2>
+        <p>Join tournaments & manage events easily</p>
 
-      <input placeholder="Name"
-        onChange={e => setForm({ ...form, name: e.target.value })} />
+        <form onSubmit={handleSubmit}>
+          <div className="input-group">
+            <input
+              type="text"
+              name="name"
+              placeholder="Full Name"
+              required
+              onChange={handleChange}
+            />
+          </div>
 
-      <input placeholder="Email"
-        onChange={e => setForm({ ...form, email: e.target.value })} />
+          <div className="input-group">
+            <input
+              type="email"
+              name="email"
+              placeholder="Email Address"
+              required
+              onChange={handleChange}
+            />
+          </div>
 
-      <select
-        onChange={e => setForm({ ...form, role: e.target.value })}>
-        <option>player</option>
-        <option>coach</option>
-        <option>organizer</option>
-      </select>
+          <div className="input-group">
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              required
+              onChange={handleChange}
+            />
+          </div>
 
-      <button onClick={handleRegister}>Register</button>
+          <div className="input-group">
+            <select name="role" onChange={handleChange}>
+              <option value="player">Player</option>
+              <option value="coach">Coach</option>
+              <option value="organizer">Organizer</option>
+            </select>
+          </div>
+
+          <button type="submit" className="register-btn">
+            Register
+          </button>
+        </form>
+
+        <span className="divider">OR</span>
+
+        <button className="google-btn">Continue with Google</button>
+
+        <p className="login-text">
+          Already have an account? <Link to="/Login">Login</Link>
+        </p>
+        
+      </div>
     </div>
   );
 }
-
-const styles = {
-  box: {
-    maxWidth: "300px",
-    margin: "40px auto",
-    padding: "30px",
-    background: "var(--card)",
-    borderRadius: "12px"
-  }
-};

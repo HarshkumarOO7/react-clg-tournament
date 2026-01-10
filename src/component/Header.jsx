@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import "./Header.css";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Header() {
   const [theme, setTheme] = useState("light");
   const [scrolled, setScrolled] = useState(false);
 
-  // Toggle light / dark theme
+  const location = useLocation(); // 👈 current route
+
+  // Toggle theme
   const toggleTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
@@ -17,7 +20,6 @@ export default function Header() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -32,9 +34,25 @@ export default function Header() {
         <a href="#">Home</a>
         <a href="#">Speakers</a>
         <a href="#">Schedule</a>
-        <a href="#">Venue</a>
+        <a href="/venue">Venue</a>
         <a className="active">Gallery</a>
+        <a href="/sponsors">Sponsors</a>
         <a href="#">Contact</a>
+
+        {/* 🔥 CONDITIONAL BUTTON */}
+        {location.pathname === "/login" ? (
+          <Link to="/register" className="hero-btn">
+            Register
+          </Link>
+        ) : location.pathname === "/register" ? (
+          <Link to="/login" className="hero-btn">
+            Login
+          </Link>
+        ) : (
+          <Link to="/login" className="hero-btn">
+            Login
+          </Link>
+        )}
       </nav>
 
       <div className="nav-actions">

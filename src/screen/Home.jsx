@@ -4,17 +4,6 @@ export default function Home() {
   return (
     <div className="landing">
       {/* Navbar */}
-      {/* <header className="navbar">
-        <div className="logo">📍 TheEvent</div>
-        <nav>
-          <a>Home</a>
-          <a>Speakers</a>
-          <a>Schedule</a>
-          <a>Venue</a>
-          <a>Contact</a>
-          <button className="ticket-btn">Buy Tickets</button>
-        </nav>
-      </header> */}
 
       {/* Hero */}
       <section className="hero">
@@ -29,20 +18,6 @@ export default function Home() {
           <div className="play-btn">▶</div>
         </div>
       </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
 
       {/* Info Section */}
       <section className="info">

@@ -1,27 +1,35 @@
 /* NAVBAR */
+/* NAVBAR – DEFAULT (NO SCROLL, FULL WHITE) */
 .navbar {
   position: sticky;
   top: 0;
   z-index: 1000;
 
-  /* transparent at top */
-  background: transparent;
+  background-color: #ffffff;   /* ✅ force solid white */
+  background-image: none;      /* ✅ prevents image bleed */
 
-  color: white;
+  color: #0f172a;
   padding: 16px 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  transition: background 0.3s ease, backdrop-filter 0.3s ease;
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
 }
 
-/* BLUR + TRANSPARENT ON SCROLL */
+/* NAVBAR – ON SCROLL (BLUR EFFECT) */
 .navbar.scrolled {
-  background: rgba(47, 53, 75, 0.7);
+  background-color: rgba(255, 255, 255, 0.85); /* translucent white */
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
+
+body {
+  background: #ffffff;
+}
+
 
 /* LOGO */
 .logo {
@@ -39,7 +47,7 @@
 }
 
 .navbar nav a {
-  color: #cfd2da;
+  color: black;
   font-size: 15px;
   cursor: pointer;
   position: relative;
@@ -49,7 +57,7 @@
 
 .navbar nav a:hover,
 .navbar nav a.active {
-  color: white;
+  color: black;
 }
 
 .navbar nav a.active::after {

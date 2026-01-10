@@ -1,20 +1,24 @@
-import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import Header from "./component/Header.jsx";
 import Home from "./screen/Home.jsx";
 import Login from "./screen/Login.jsx";
 import Registration from "./screen/Registration.jsx";
-import Venue from "./screen/Venue.jsx";
+import Sponsors from "./screen/Sponsors.jsx";
+import venue from "./screen/Venue.jsx";
 
 function App() {
-  const [name] = useState("Harsh Kumar 😎");
-
   return (
     <>
+      {/* Header visible on all pages */}
       <Header />
-      <Home name={name} />
-      {/* <Login />
-      <Registration /> */}
-      <Venue/>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Registration />} />
+        <Route path="/sponsors" element={<Sponsors />} />
+        <Route path="/venue" element={<venue/>} />
+      </Routes>
     </>
   );
 }
