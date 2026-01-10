@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useEffect, useState } from "react";
 
 export default function ThemeToggle() {
@@ -25,3 +26,16 @@ const btnStyle = {
   borderRadius: "6px",
   cursor: "pointer"
 };
+=======
+export default function ThemeToggle() {
+  const toggleTheme = () => {
+    const theme = document.documentElement.getAttribute("data-theme");
+    document.documentElement.setAttribute(
+      "data-theme",
+      theme === "dark" ? "light" : "dark"
+    );
+  };
+
+  return <button onClick={toggleTheme}>🌗</button>;
+}
+>>>>>>> 15442af9baad8a860fe014023741827372057927
