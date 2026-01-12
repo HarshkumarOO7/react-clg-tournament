@@ -1,8 +1,11 @@
 import { useState } from "react";
 import "./Registration.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function Registration() {
+  const navigate = useNavigate();
+
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -10,13 +13,34 @@ export default function Registration() {
     role: "player",
   });
 
+  
+
+  const [loading, setLoading] = useState(false);
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Registration Successful 🎉 (API later)");
+
+    try {
+      setLoading(true);
+
+      const res = await axios.post(
+        "http://localhost:5000/api/register",
+        form
+      );
+
+      alert(res.data.message || "Registration Successful 🎉");
+      navigate("/login"); // redirect to login page
+    } catch (error) {
+      alert(
+        error.response?.data?.message || "Something went wrong ❌"
+      );
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -64,8 +88,8 @@ export default function Registration() {
             </select>
           </div>
 
-          <button type="submit" className="register-btn">
-            Register
+          <button type="submit" className="register-btn" disabled={loading}>
+            {loading ? "Registering..." : "Register"}
           </button>
         </form>
 
@@ -74,9 +98,8 @@ export default function Registration() {
         <button className="google-btn">Continue with Google</button>
 
         <p className="login-text">
-          Already have an account? <Link to="/Login">Login</Link>
+          Already have an account? <Link to="/login">Login</Link>
         </p>
-        
       </div>
     </div>
   );

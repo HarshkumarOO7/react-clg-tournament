@@ -1,8 +1,13 @@
 import { useState } from "react";
 import "./Login.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useAuth } from "../context/AuthContext";
 
 export default function Login() {
+  const navigate = useNavigate();
+  const { login } = useAuth();
+
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -12,9 +17,20 @@ export default function Login() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Login Successful ✅ (API later)");
+
+    try {
+      const res = await axios.post(
+        "http://localhost:5000/api/login",
+        form
+      );
+
+      login(res.data.user); // create session
+      navigate("/");
+    } catch (err) {
+      alert(err.response?.data?.message || "Login failed ❌");
+    }
   };
 
   return (
@@ -51,10 +67,12 @@ export default function Login() {
 
         <span className="divider">OR</span>
 
-        <button className="google-btn">Continue with Google</button>
+        <button className="google-btn">
+          Continue with Google
+        </button>
 
         <p className="register-text">
-            Don’t have an account? <Link to="/register">Register</Link>
+          Don’t have an account? <Link to="/register">Register</Link>
         </p>
       </div>
     </div>

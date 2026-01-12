@@ -80,11 +80,27 @@ body {
 .theme-btn {
   background: transparent;
   border: 1px solid #cfd2da;
-  color: white;
+  color: #0f172a;          /* ✅ FIXED */
   font-size: 18px;
   padding: 6px 10px;
   border-radius: 6px;
   cursor: pointer;
+}
+
+.hero-btn {
+  background: #ff1744;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.hero-btn:hover {
+  opacity: 0.9;
 }
 
 /* RESPONSIVE */
@@ -92,4 +108,35 @@ body {
   .navbar nav {
     display: none;
   }
+}
+
+
+/* PREVENT LOGO FROM DISAPPEARING */
+.logo {
+  white-space: nowrap;
+  flex-shrink: 0;
+  color:black;
+}
+
+/* PREVENT USER SECTION FROM DISAPPEARING */
+.nav-actions {
+  flex-shrink: 0;
+}
+
+/* HANDLE MANY NAV LINKS SAFELY */
+.navbar nav {
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+}
+
+.navbar nav::-webkit-scrollbar {
+  display: none; /* Chrome */
+}
+
+/* USER TEXT STYLE */
+.welcome-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: #0f172a;
+  white-space: nowrap;
 }

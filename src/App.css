@@ -1,52 +1,38 @@
-<<<<<<< HEAD
-:root {
-  --bg: #ffffff;
-  --text: #0f172a;
-  --nav: #2f354b;
-  --accent: #ff1744;
-=======
 /* =========================
    GLOBAL THEME VARIABLES
 ========================= */
-:root {
-  --bg: #f8fafc;
-  --text: #020617;
-  --card: #e2e8f0;
-  --primary: #2563eb;
-  --secondary: #22c55e;
-  --border: #cbd5f5;
->>>>>>> 15442af9baad8a860fe014023741827372057927
+/* LIGHT THEME */
+:root[data-theme="light"] {
+  --bg: #ffffff;
+  --text: #0f172a;
+  --nav-bg: #ffffff;
+  --nav-bg-scroll: rgba(255, 255, 255, 0.85);
+  --accent: #2563eb;
 }
 
-[data-theme="dark"] {
-  --bg: #020617;
+/* DARK THEME */
+:root[data-theme="dark"] {
+  --bg: #0f172a;
   --text: #f8fafc;
-<<<<<<< HEAD
-  --nav: #1e293b;
-  --accent: #ff1744;
-=======
-  --card: #1e293b;
-  --primary: #38bdf8;
-  --secondary: #22c55e;
-  --border: #334155;
+  --nav-bg: #020617;
+  --nav-bg-scroll: rgba(2, 6, 23, 0.85);
+  --accent: #38bdf8;
 }
+
 
 /* =========================
    BASE STYLES
 ========================= */
 * {
   box-sizing: border-box;
->>>>>>> 15442af9baad8a860fe014023741827372057927
 }
 
 body {
   margin: 0;
-<<<<<<< HEAD
   background: var(--bg);
   color: var(--text);
   font-family: "Segoe UI", sans-serif;
   transition: background 0.3s, color 0.3s;
-=======
   font-family: "Segoe UI", Arial, sans-serif;
   background: var(--bg);
   color: var(--text);
@@ -226,5 +212,14 @@ footer {
     flex-direction: column;
     align-items: center;
   }
->>>>>>> 15442af9baad8a860fe014023741827372057927
+}
+
+
+.page {
+  padding: 100px;
+}
+
+.page h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
 }

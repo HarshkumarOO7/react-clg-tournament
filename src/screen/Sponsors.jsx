@@ -1,37 +1,113 @@
-import "./Sponsors.css";
+import "../static/sponsors.css";
 
-export default function Sponsors() {
-  const sponsors = [
-    { name: "Myob", img: "/sponsors/myob.png" },
-    { name: "Belimo", img: "/sponsors/belimo.png" },
-    { name: "LifeGroups", img: "/sponsors/lifegroups.png" },
-    { name: "Grabyo", img: "/sponsors/grabyo.png" },
-    { name: "Citrus", img: "/sponsors/citrus.png" },
-    { name: "Trustly", img: "/sponsors/trustly.png" },
-    { name: "Oldendorff", img: "/sponsors/oldendorff.png" },
-    { name: "Lilly", img: "/sponsors/lilly.png" },
-  ];
+const sponsors = [
+  {
+    name: "TechCorp",
+    logo: "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=400&q=80",
+  },
+  {
+    name: "Sportify",
+    logo: "https://images.unsplash.com/photo-1557683316-973673baf926?w=400&q=80",
+  },
+  {
+    name: "EventPro",
+    logo: "https://images.unsplash.com/photo-1545235617-9465d2a55698?w=400&q=80",
+  },
+  {
+    name: "PlayZone",
+    logo: "https://images.unsplash.com/photo-1526948531399-320e7e40f0ca?w=400&q=80",
+  },
+  {
+    name: "ArenaX",
+    logo: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=400&q=80",
+  },
+  {
+    name: "LiveScore",
+    logo: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&q=80",
+  },
+  {
+    name: "Athletica",
+    logo: "https://images.unsplash.com/photo-1521412644187-c49fa049e84d?w=400&q=80",
+  },
+  {
+    name: "ChampionHub",
+    logo: "https://images.unsplash.com/photo-1517649763962-0c623066013b?w=400&q=80",
+  },
+];
 
+
+const Sponsors = () => {
   return (
     <section className="sponsors-section">
       {/* HEADER */}
-      <div className="sponsors-header">
-        <h2>Our Sponsors</h2>
+      <div className="sponsors-header fade-up">
+        <h2>Our Trusted Sponsors</h2>
         <div className="underline"></div>
         <p>
-          We are proud to be supported by industry‑leading brands and
-          organizations.
+          We collaborate with industry-leading brands that power world-class
+          sports tournaments, athlete development, and innovative event
+          experiences.
         </p>
       </div>
 
       {/* GRID */}
       <div className="sponsors-grid">
-        {sponsors.map((sponsor, index) => (
-          <div className="sponsor-box" key={index}>
-            <img src={sponsor.img} alt={sponsor.name} />
+        {sponsors.map((sp, index) => (
+          <div
+            className="sponsor-card fade-stagger"
+            style={{ animationDelay: `${index * 0.12}s` }}
+            key={index}
+          >
+            <img src={sp.logo} alt={sp.name} />
           </div>
         ))}
       </div>
+
+      {/* WHY SPONSORS */}
+      <div className="sponsor-info fade-up">
+        <h3>Why Our Sponsors Matter</h3>
+        <p>
+          Our sponsors enable high-quality venues, professional refereeing,
+          athlete safety, live broadcasting, digital score systems, and fair
+          prize distribution. Their partnership elevates every tournament to
+          international standards.
+        </p>
+      </div>
+
+      {/* BENEFITS */}
+      <div className="sponsor-benefits">
+        <h3>Benefits for Sponsors</h3>
+
+        <div className="benefits-grid">
+          <div className="benefit-card">
+            🌍 <h4>Global Visibility</h4>
+            <p>Your brand reaches athletes, teams, and audiences worldwide.</p>
+          </div>
+
+          <div className="benefit-card">
+            🤝 <h4>Community Impact</h4>
+            <p>Support youth sports, talent growth, and healthy competition.</p>
+          </div>
+
+          <div className="benefit-card">
+            📈 <h4>Brand Growth</h4>
+            <p>Associate your brand with excellence and performance.</p>
+          </div>
+        </div>
+      </div>
+
+      {/* CTA */}
+      <div className="sponsor-cta">
+        <h2>Become a Sponsor</h2>
+        <p>
+          Partner with us and be part of unforgettable sporting moments.
+        </p>
+        <a href="/contact" className="hero-btn">
+          Partner With Us
+        </a>
+      </div>
     </section>
   );
-}
+};
+
+export default Sponsors;

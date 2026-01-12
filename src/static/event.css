@@ -1,0 +1,196 @@
+.events {
+  padding: 90px 70px;
+  background: #f7f8fc;
+}
+
+/* HEADER */
+.events-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.events-header h1 {
+  font-size: 38px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.events-header p {
+  color: #64748b;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+/* STATS */
+.event-stats {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin-bottom: 70px;
+}
+
+.event-stats h2 {
+  font-size: 32px;
+  color: #2563eb;
+}
+
+.event-stats p {
+  color: #475569;
+  font-size: 14px;
+}
+
+/* GRID */
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+/* CARD */
+.event-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 28px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: 0.35s ease;
+  transform: translateY(40px);
+  opacity: 0;
+}
+
+.event-card.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.event-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.15);
+}
+
+/* TOP */
+.event-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.sport {
+  font-size: 13px;
+  font-weight: 600;
+  color: #2563eb;
+}
+
+/* STATUS */
+.status {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.status.upcoming {
+  background: #fff7ed;
+  color: #ea580c;
+}
+
+.status.ongoing {
+  background: #ecfdf5;
+  color: #16a34a;
+}
+
+.status.completed {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+/* CONTENT */
+.event-card h3 {
+  font-size: 20px;
+  margin-bottom: 14px;
+  color: #0f172a;
+}
+
+.event-info p {
+  font-size: 14px;
+  color: #475569;
+  margin-bottom: 6px;
+}
+
+/* BUTTON */
+.event-btn {
+  margin-top: 20px;
+  width: 100%;
+  padding: 10px;
+  background: #2563eb;
+  color: white;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.event-btn:hover {
+  background: #1e40af;
+}
+
+/* CTA */
+.event-cta {
+  margin-top: 90px;
+  background: linear-gradient(90deg, #2563eb, #1e40af);
+  color: white;
+  padding: 60px;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.event-cta h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.event-cta p {
+  max-width: 650px;
+  margin: auto;
+  opacity: 0.9;
+}
+
+.cta-btn {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 12px 26px;
+  background: white;
+  color: #2563eb;
+  border-radius: 30px;
+  font-weight: 600;
+}
+
+/* SIMPLE ANIMATIONS */
+.fade-up {
+  animation: fadeUp 1s ease forwards;
+}
+
+.fade-down {
+  animation: fadeDown 1s ease forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .events {
+    padding: 70px 20px;
+  }
+
+  .event-stats {
+    flex-direction: column;
+    gap: 25px;
+  }
+}

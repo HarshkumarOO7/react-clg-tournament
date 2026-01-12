@@ -1,10 +1,106 @@
-table{
-    color:red;
-    border:1px solid gray;
-    border-radius: 10%;
+
+/* ======================
+   ANIMATIONS
+====================== */
+.fade-up {
+  animation: fadeUp 1.2s ease forwards;
 }
 
-td{
-    border:1px solid gray;
-    border-radius: 10%;
+.slide-left {
+  animation: slideLeft 1.2s ease forwards;
+}
+
+.slide-right {
+  animation: slideRight 1.2s ease forwards;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ======================
+   STATS
+====================== */
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  padding: 80px 20px;
+  background: #020617;
+  color: white;
+}
+
+.stat-box {
+  text-align: center;
+}
+
+.stat-box h2 {
+  font-size: 40px;
+  color: #f82249;
+}
+
+.stat-box p {
+  margin-top: 8px;
+  font-size: 15px;
+}
+
+/* ======================
+   TIMELINE
+====================== */
+.timeline {
+  padding: 80px 20px;
+  background: #f8fafc;
+  text-align: center;
+}
+
+.timeline h1 {
+  margin-bottom: 40px;
+}
+
+.timeline-item {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border-left: 4px solid #f82249;
+  text-align: left;
+  animation: fadeUp 1s ease forwards;
+}
+
+.timeline-item span {
+  font-weight: bold;
+  color: #f82249;
+}
+
+/* CENTER SECTION */
+.center {
+  text-align: center;
 }
