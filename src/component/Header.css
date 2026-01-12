@@ -1,12 +1,13 @@
-/* NAVBAR */
+/* ================= NAVBAR ================= */
+
 /* NAVBAR – DEFAULT (NO SCROLL, FULL WHITE) */
 .navbar {
   position: sticky;
   top: 0;
   z-index: 1000;
 
-  background-color: #ffffff;   /* ✅ force solid white */
-  background-image: none;      /* ✅ prevents image bleed */
+  background-color: #ffffff;   /* force solid white */
+  background-image: none;
 
   color: #0f172a;
   padding: 16px 60px;
@@ -18,32 +19,56 @@
 }
 
 /* NAVBAR – ON SCROLL (BLUR EFFECT) */
+/* NAVBAR – ON SCROLL (STRONG GLASS BLUR) */
 .navbar.scrolled {
-  background-color: rgba(255, 255, 255, 0.85); /* translucent white */
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background-color: rgba(255, 255, 255, 0.65); /* more transparent */
+  backdrop-filter: blur(22px) saturate(280%);
+  -webkit-backdrop-filter: blur(22px) saturate(280%);
 
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
 }
 
 body {
   background: #ffffff;
 }
 
+.profile_button{
+  color : rgb(255, 255, 255);
+  background: linear-gradient(135deg, #f4003d, #6366f1);
+}
 
-/* LOGO */
+.profile_button:hover{
+  color : rgb(255, 0, 0);
+  background: linear-gradient(135deg, #6366f1, #f4003d);
+}
+
+
+/* ================= LOGO ================= */
 .logo {
   font-size: 22px;
   font-weight: 700;
   display: flex;
   align-items: center;
   gap: 6px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  color: black;
 }
 
-/* NAV LINKS */
+/* ================= NAV LINKS ================= */
 .navbar nav {
   display: flex;
   gap: 22px;
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+}
+
+.navbar nav::-webkit-scrollbar {
+  display: none; /* Chrome */
 }
 
 .navbar nav a {
@@ -70,17 +95,18 @@ body {
   background: var(--accent);
 }
 
-/* ACTIONS */
+/* ================= ACTIONS ================= */
 .nav-actions {
   display: flex;
   align-items: center;
   gap: 15px;
+  flex-shrink: 0;
 }
 
 .theme-btn {
   background: transparent;
   border: 1px solid #cfd2da;
-  color: #0f172a;          /* ✅ FIXED */
+  color: #0f172a;
   font-size: 18px;
   padding: 6px 10px;
   border-radius: 6px;
@@ -103,40 +129,85 @@ body {
   opacity: 0.9;
 }
 
-/* RESPONSIVE */
-@media (max-width: 900px) {
-  .navbar nav {
-    display: none;
-  }
-}
-
-
-/* PREVENT LOGO FROM DISAPPEARING */
-.logo {
-  white-space: nowrap;
-  flex-shrink: 0;
-  color:black;
-}
-
-/* PREVENT USER SECTION FROM DISAPPEARING */
-.nav-actions {
-  flex-shrink: 0;
-}
-
-/* HANDLE MANY NAV LINKS SAFELY */
-.navbar nav {
-  overflow-x: auto;
-  scrollbar-width: none; /* Firefox */
-}
-
-.navbar nav::-webkit-scrollbar {
-  display: none; /* Chrome */
-}
-
-/* USER TEXT STYLE */
+/* USER TEXT */
 .welcome-text {
   font-size: 14px;
   font-weight: 500;
   color: #0f172a;
   white-space: nowrap;
+}
+
+/* ================= PROFILE ICON ================= */
+
+.profile-wrapper {
+  position: relative;
+}
+
+/* Circle Avatar */
+.profile-icon {
+  width: 60px;
+  height: 60px;
+  background: #ff1111;
+  color: white;
+  border-radius: 50%;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Dropdown */
+.profile-dropdown {
+  position: absolute;
+  top: 52px;
+  right: 0;
+  background: white;
+  width: 220px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  padding: 14px;
+  z-index: 1100;
+}
+
+.profile-name {
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.profile-email {
+  font-size: 13px;
+  color: gray;
+  margin-bottom: 12px;
+}
+
+.profile-dropdown button {
+  width: 100%;
+  padding: 8px;
+  margin-top: 6px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.profile-dropdown button:hover {
+  background: #f3f4f6;
+}
+
+.logout-btn {
+  background: #ef4444;
+  color: white;
+}
+
+.logout-btn:hover {
+  background: #dc2626;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+  .navbar nav {
+    display: none;
+  }
 }

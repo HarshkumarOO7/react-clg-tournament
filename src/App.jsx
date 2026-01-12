@@ -13,6 +13,7 @@ import Gallery from "./screen/Gallery";
 import Venue from "./screen/Venue";
 import Sponsors from "./screen/Sponsors";
 import Contact from "./screen/Contact";
+import Profile from "./screen/Profile";
 
 import "./index.css";
 import "./App.css";
@@ -26,7 +27,6 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Registration />} />
-
         <Route path="/events" element={<Events />} />
         <Route path="/schedule" element={<Schedule />} />
         <Route path="/speakers" element={<Speakers />} />
@@ -34,6 +34,7 @@ function App() {
         <Route path="/venue" element={<Venue />} />
         <Route path="/sponsors" element={<Sponsors />} />
         <Route path="/contact" element={<Contact />} />
+         <Route path="/profile" element={<Profile />} />
       </Routes>
 
       <Footer />

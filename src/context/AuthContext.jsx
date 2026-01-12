@@ -1,28 +1,53 @@
 import { createContext, useContext, useState } from "react";
 
-const AuthContext = createContext();
+const AuthContext = createContext(null);
 
-export function AuthProvider({ children }) {
+export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(() => {
-    const storedUser = localStorage.getItem("user");
-    return storedUser ? JSON.parse(storedUser) : null;
+    try {
+      return JSON.parse(localStorage.getItem("user"));
+    } catch {
+      return null;
+    }
   });
 
-  const login = (userData) => {
+  const [token, setToken] = useState(
+    localStorage.getItem("token")
+  );
+
+  const login = (userData, jwtToken) => {
+    if (!jwtToken) {
+      console.error("JWT token missing during login");
+      return;
+    }
+
+    setUser(userData);
+    setToken(jwtToken);
+
     localStorage.setItem("user", JSON.stringify(userData));
-    setUser(userData); // 🔥 IMMEDIATE UPDATE
+    localStorage.setItem("token", jwtToken);
   };
 
   const logout = () => {
-    localStorage.removeItem("user");
     setUser(null);
+    setToken(null);
+
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        token,
+        login,
+        logout,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
-}
+};
 
 export const useAuth = () => useContext(AuthContext);

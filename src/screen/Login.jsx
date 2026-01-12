@@ -26,7 +26,9 @@ export default function Login() {
         form
       );
 
-      login(res.data.user); // create session
+      // ✅ SAVE USER + JWT TOKEN
+      login(res.data.user, res.data.token);
+
       navigate("/");
     } catch (err) {
       alert(err.response?.data?.message || "Login failed ❌");

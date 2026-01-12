@@ -13,8 +13,6 @@ export default function Registration() {
     role: "player",
   });
 
-  
-
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
@@ -33,7 +31,7 @@ export default function Registration() {
       );
 
       alert(res.data.message || "Registration Successful 🎉");
-      navigate("/login"); // redirect to login page
+      navigate("/login");
     } catch (error) {
       alert(
         error.response?.data?.message || "Something went wrong ❌"
@@ -95,7 +93,9 @@ export default function Registration() {
 
         <span className="divider">OR</span>
 
-        <button className="google-btn">Continue with Google</button>
+        <button className="google-btn">
+          Continue with Google
+        </button>
 
         <p className="login-text">
           Already have an account? <Link to="/login">Login</Link>
