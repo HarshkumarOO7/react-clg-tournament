@@ -18,7 +18,7 @@ export default function MyRegistrations() {
 
   const fetchRegistrations = async () => {
     try {
-      const res = await api.get("/registrations/my-registrations");
+      const res = await api.get("/api/registrations/my-registrations");
       setRegistrations(res.data);
     } catch (err) {
       console.error("Failed to fetch registrations", err);

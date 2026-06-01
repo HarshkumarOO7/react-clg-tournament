@@ -25,7 +25,7 @@ export default function ApprovePlayers() {
       setLoading(true);
       setError(null);
 
-      const res = await api.get("/teams/captain-teams");
+      const res = await api.get("/api/teams/captain-teams");
 
       if (!res.data || res.data.length === 0) {
         setTeams([]);

@@ -14,7 +14,7 @@ export default function Schedule() {
 
   const fetchMatches = async () => {
     try {
-      const res = await api.get("/matches/public/upcoming");
+      const res = await api.get("/api/matches/public/upcoming");
       setMatches(res.data);
     } catch (err) {
       console.error("Failed to load matches", err);

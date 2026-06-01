@@ -41,7 +41,7 @@ export default function EditTournamentPage() {
       setLoading(true);
       
       // Fetch tournament details
-      const tournamentRes = await api.get(`/tournaments/${id}`);
+      const tournamentRes = await api.get(`/api/api/tournaments/${id}`);
       const tournament = tournamentRes.data;
       
       // Fetch sports and venues

@@ -31,8 +31,8 @@ export default function CreateTeam() {
     try {
       // ✅ FIXED: Use public endpoint for tournaments
       const [tournamentsRes, sportsRes] = await Promise.all([
-        api.get("/tournaments/public?status=upcoming"),
-        api.get("/sports")
+        api.get("/api/tournaments/public?status=upcoming"),
+        api.get("/api/sports")
       ]);
       setTournaments(tournamentsRes.data);
       setSports(sportsRes.data);

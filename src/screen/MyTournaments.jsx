@@ -15,7 +15,7 @@ export default function MyTournaments() {
 
   const fetchMyTournaments = async () => {
     try {
-      const res = await api.get("/tournaments/my-tournaments");
+      const res = await api.get("/api/tournaments/my-tournaments");
       setTournaments(res.data);
     } catch (err) {
       console.error("Failed to fetch tournaments:", err);

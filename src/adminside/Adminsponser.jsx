@@ -26,7 +26,7 @@ export default function AdminSponsor() {
   const fetchSponsors = async () => {
     try {
       setLoading(true);
-      const response = await api.get("/sponsors");
+      const response = await api.get("/api/sponsors");
       
       if (response.data && Array.isArray(response.data)) {
         setSponsors(response.data);
@@ -48,7 +48,7 @@ export default function AdminSponsor() {
   const fetchTournaments = async () => {
     try {
       setLoadingTournaments(true);
-      const response = await api.get("/tournaments");
+      const response = await api.get("/api/tournaments");
       
       let tournamentsData = [];
       if (response.data && Array.isArray(response.data)) {

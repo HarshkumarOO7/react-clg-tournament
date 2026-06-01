@@ -29,33 +29,33 @@ export default function TournamentDetails() {
       // Fetch tournament details - using public endpoint for better access
       let tournamentRes;
       try {
-        tournamentRes = await api.get(`/tournaments/public/${id}`);
+        tournamentRes = await api.get(`/api/tournaments/public/${id}`);
       } catch {
-        tournamentRes = await api.get(`/tournaments/${id}`);
+        tournamentRes = await api.get(`/api/tournaments/${id}`);
       }
       setTournament(tournamentRes.data);
 
       // Fetch teams in this tournament
-      const teamsRes = await api.get(`/teams/tournament/${id}`);
+      const teamsRes = await api.get(`/api/teams/tournament/${id}`);
       setTeams(teamsRes.data);
 
       // Fetch matches - try public endpoint first
       let matchesRes;
       try {
-        matchesRes = await api.get(`/matches/public/tournament/${id}`);
+        matchesRes = await api.get(`/api/matches/public/tournament/${id}`);
       } catch {
-        matchesRes = await api.get(`/matches/tournament/${id}`);
+        matchesRes = await api.get(`/api/matches/tournament/${id}`);
       }
       setMatches(matchesRes.data);
 
       // Fetch sponsors
-      const sponsorsRes = await api.get(`/sponsors/public/tournament/${id}`);
+      const sponsorsRes = await api.get(`/api/sponsors/public/tournament/${id}`);
       setSponsors(sponsorsRes.data || []);
 
       // If user is logged in, check their team and registration
       if (user) {
         // Check if user has a team in this tournament
-        const userTeamsRes = await api.get("/teams/my-teams");
+        const userTeamsRes = await api.get("/api/teams/my-teams");
         const userTeamInTournament = userTeamsRes.data.find(
           t => t.tournamentId?._id === id || t.tournamentId === id
         );
@@ -64,7 +64,7 @@ export default function TournamentDetails() {
         // Check registration status
         if (userTeamInTournament) {
           try {
-            const regRes = await api.get(`/registrations/check/${id}/${userTeamInTournament._id}`);
+            const regRes = await api.get(`/api/registrations/check/${id}/${userTeamInTournament._id}`);
             setRegistration(regRes.data);
           } catch (err) {
             console.log("No registration found");

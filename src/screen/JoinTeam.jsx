@@ -24,7 +24,7 @@ export default function JoinTeam() {
   const fetchTeamDetails = async () => {
     try {
       setLoading(true);
-      const res = await api.get(`/teams/${id}`);
+      const res = await api.get(`/api/teams/${id}`);
       setTeam(res.data);
       
       // Check if user is already a member or has applied

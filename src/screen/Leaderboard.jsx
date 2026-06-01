@@ -12,7 +12,7 @@ export default function Leaderboard() {
 
   const fetchLeaderboard = async () => {
     try {
-      const res = await api.get("/teams/public");
+      const res = await api.get("/api/teams/public");
       // Sort by team name or any criteria (you can customize this)
       const sortedTeams = res.data.sort((a, b) => {
         return (a.wins || 0) - (b.wins || 0);

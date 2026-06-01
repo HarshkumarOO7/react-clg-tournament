@@ -14,7 +14,7 @@ export default function SponsorshipChart() {
   const fetchSponsorshipData = async () => {
     try {
       setLoading(true);
-      const response = await api.get("/sponsorships/stats");
+      const response = await api.get("/api/sponsorships/stats");
       
       // ✅ Check if response data exists
       if (!response.data) {

@@ -32,7 +32,7 @@ export default function SponsorManagement() {
 
   const fetchMyTournaments = async () => {
     try {
-      const res = await api.get("/tournaments/my-tournaments");
+      const res = await api.get("/api/tournaments/my-tournaments");
       setMyTournaments(res.data);
     } catch (err) {
       console.error("Failed to fetch tournaments:", err);
@@ -43,7 +43,7 @@ export default function SponsorManagement() {
 
   const fetchSponsors = async (tournamentId) => {
     try {
-      const res = await api.get(`/sponsors/tournament/${tournamentId}`);
+      const res = await api.get(`/api/sponsors/tournament/${tournamentId}`);
       setSponsors(res.data);
     } catch (err) {
       console.error("Failed to fetch sponsors:", err);

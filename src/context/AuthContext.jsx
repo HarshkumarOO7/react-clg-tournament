@@ -33,7 +33,7 @@ export const AuthProvider = ({ children }) => {
 
       try {
         // Verify token is still valid
-        const res = await api.get("/profile/me");
+        const res = await api.get("/api/profile/me");
         setUser(res.data);
         localStorage.setItem("user", JSON.stringify(res.data));
         // Register socket after user is loaded

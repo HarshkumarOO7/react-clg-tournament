@@ -23,7 +23,7 @@ export default function TeamDetails() {
 
   const fetchTeamDetails = async () => {
     try {
-      const res = await api.get(`/teams/${id}`);
+      const res = await api.get(`/api/teams/${id}`);
       setTeam(res.data);
       setPlayers(res.data.players || []);
       

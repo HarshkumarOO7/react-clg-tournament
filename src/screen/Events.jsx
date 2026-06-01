@@ -15,9 +15,9 @@ export default function Events() {
       try {
         let res;
         try {
-          res = await api.get("/tournaments/public");
+          res = await api.get("/api/tournaments/public");
         } catch {
-          res = await api.get("/tournaments");
+          res = await api.get("/api/tournaments");
         }
 
         setTournaments(res.data);

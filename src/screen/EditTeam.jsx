@@ -16,7 +16,7 @@ export default function EditTeam() {
 
   const fetchTeam = async () => {
     try {
-      const res = await api.get(`/teams/${id}`);
+      const res = await api.get(`/api/teams/${id}`);
       setTeamName(res.data.teamName);
     } catch (err) {
       console.error("Failed to fetch team:", err);

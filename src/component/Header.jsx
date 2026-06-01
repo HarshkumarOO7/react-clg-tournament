@@ -198,7 +198,7 @@ export default function Header() {
   // Effects
   useEffect(() => {
     if (user) {
-      api.get("/teams/captain-teams")
+      api.get("/api/teams/captain-teams")
         .then(res => setIsCaptain(res.data.length > 0))
         .catch(() => setIsCaptain(false));
     }
@@ -216,7 +216,7 @@ export default function Header() {
 
   useEffect(() => {
     if (user) {
-      api.get("/notifications")
+      api.get("/api/notifications")
         .then(res => setNotifications(res.data))
         .catch(err => console.error("Notification fetch error", err));
     }

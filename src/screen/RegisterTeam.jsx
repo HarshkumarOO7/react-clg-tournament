@@ -35,7 +35,7 @@ export default function RegisterTeam() {
     try {
       // Fetch tournament details
       if (tournamentId) {
-        const tournamentRes = await api.get(`/tournaments/public/${tournamentId}`);
+        const tournamentRes = await api.get(`/api/tournaments/public/${tournamentId}`);
         setTournament(tournamentRes.data);
         setFormData(prev => ({ 
           ...prev, 
@@ -44,13 +44,13 @@ export default function RegisterTeam() {
       }
 
       // Fetch user's existing teams
-      const teamsRes = await api.get("/teams/my-teams");
+      const teamsRes = await api.get("/api/teams/my-teams");
       setUserTeams(teamsRes.data);
 
       // Check if user already has a team registered for this tournament
       for (const team of teamsRes.data) {
         try {
-          const checkRes = await api.get(`/registrations/check/${tournamentId}/${team._id}`);
+          const checkRes = await api.get(`/api/registrations/check/${tournamentId}/${team._id}`);
           if (checkRes.data) {
             setExistingRegistration(checkRes.data);
             break;
@@ -117,7 +117,7 @@ export default function RegisterTeam() {
     setSubmitting(true);
     try {
       // Check if already registered
-      const checkRes = await api.get(`/registrations/check/${formData.tournamentId}/${teamId}`);
+      const checkRes = await api.get(`/api/registrations/check/${formData.tournamentId}/${teamId}`);
       if (checkRes.data) {
         alert("⚠️ This team is already registered for this tournament!");
         setSubmitting(false);

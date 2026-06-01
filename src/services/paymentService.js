@@ -11,7 +11,7 @@ export const loadRazorpayScript = () => {
 };
 
 export const createOrder = async (amount, registrationId, tournamentId) => {
-  const response = await api.post("/payments/create-order", {
+  const response = await api.post("/api/payments/create-order", {
     amount,
     registrationId,
     tournamentId,
@@ -20,11 +20,11 @@ export const createOrder = async (amount, registrationId, tournamentId) => {
 };
 
 export const verifyPayment = async (paymentData) => {
-  const response = await api.post("/payments/verify-payment", paymentData);
+  const response = await api.post("/api/payments/verify-payment", paymentData);
   return response.data;
 };
 
 export const getRazorpayKey = async () => {
-  const response = await api.get("/payments/get-key");
+  const response = await api.get("/api/payments/get-key");
   return response.data;
 };

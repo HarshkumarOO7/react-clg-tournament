@@ -33,7 +33,7 @@ export default function OrganizerMatches() {
 
   const fetchMyTournaments = async () => {
     try {
-      const res = await api.get("/tournaments/my-tournaments");
+      const res = await api.get("/api/tournaments/my-tournaments");
       setMyTournaments(res.data);
     } catch (err) {
       console.error("Failed to fetch tournaments:", err);
@@ -44,7 +44,7 @@ export default function OrganizerMatches() {
 
   const fetchVenues = async () => {
     try {
-      const res = await api.get("/venues");
+      const res = await api.get("/api/venues");
       setVenues(res.data);
     } catch (err) {
       console.error("Failed to fetch venues:", err);
@@ -53,7 +53,7 @@ export default function OrganizerMatches() {
 
   const fetchTournamentTeams = async (tournamentId) => {
     try {
-      const res = await api.get(`/teams/tournament/${tournamentId}`);
+      const res = await api.get(`/api/teams/tournament/${tournamentId}`);
       setTeams(res.data);
     } catch (err) {
       console.error("Failed to fetch teams:", err);
@@ -62,7 +62,7 @@ export default function OrganizerMatches() {
 
   const fetchMatches = async (tournamentId) => {
     try {
-      const res = await api.get(`/matches/tournament/${tournamentId}`);
+      const res = await api.get(`/api/matches/tournament/${tournamentId}`);
       setMatches(res.data);
     } catch (err) {
       console.error("Failed to fetch matches:", err);

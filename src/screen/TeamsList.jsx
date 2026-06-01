@@ -25,7 +25,7 @@ export default function TeamsList() {
 
   const fetchTeams = async () => {
     try {
-      const res = await api.get("/teams/public");
+      const res = await api.get("/api/teams/public");
       setTeams(res.data);
     } catch (err) {
       console.error("Failed to fetch teams", err);
@@ -36,7 +36,7 @@ export default function TeamsList() {
 
   const fetchTournaments = async () => {
     try {
-      const res = await api.get("/tournaments/public");
+      const res = await api.get("/api/tournaments/public");
       setTournaments(res.data);
     } catch (err) {
       console.error("Failed to fetch tournaments", err);
@@ -45,7 +45,7 @@ export default function TeamsList() {
 
   const fetchSports = async () => {
     try {
-      const res = await api.get("/sports");
+      const res = await api.get("/api/sports");
       setSports(res.data);
     } catch (err) {
       console.error("Failed to fetch sports", err);

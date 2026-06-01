@@ -28,7 +28,7 @@ export default function Profile() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await api.get("/profile/me");
+        const res = await api.get("/api/profile/me");
 
         setForm({
           name: res.data.name || "",
@@ -322,7 +322,7 @@ function TeamsList({ navigate }) {
   useEffect(() => {
     const fetchTeams = async () => {
       try {
-        const res = await api.get("/teams/my-teams");
+        const res = await api.get("/api/teams/my-teams");
         setTeams(res.data || []);
       } catch (error) {
         console.error("Failed to fetch teams", error);
@@ -378,7 +378,7 @@ function RegistrationsList({ navigate }) {
   useEffect(() => {
     const fetchRegistrations = async () => {
       try {
-        const res = await api.get("/registrations/my-registrations");
+        const res = await api.get("/api/registrations/my-registrations");
         setRegistrations(res.data || []);
       } catch (error) {
         console.error("Failed to fetch registrations", error);

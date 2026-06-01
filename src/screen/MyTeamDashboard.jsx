@@ -27,7 +27,7 @@ export default function MyTeamDashboard() {
     try {
       setError(null);
       setLoading(true);
-      const res = await api.get("/teams/my-teams");
+      const res = await api.get("/api/teams/my-teams");
       setMyTeams(res.data || []);
     } catch (err) {
       console.error("Failed to fetch teams", err);

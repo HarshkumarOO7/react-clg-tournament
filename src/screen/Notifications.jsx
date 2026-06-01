@@ -20,7 +20,7 @@ export default function Notifications() {
 
   const fetchNotifications = async () => {
     try {
-      const res = await api.get("/notifications");
+      const res = await api.get("/api/notifications");
       setNotifications(res.data);
     } catch (err) {
       console.error("Failed to fetch notifications", err);

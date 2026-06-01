@@ -28,8 +28,8 @@ export default function CreateTournamentUser() {
   const fetchSportsAndVenues = async () => {
     try {
       const [sportsRes, venuesRes] = await Promise.all([
-        api.get("/sports"),
-        api.get("/venues"),
+        api.get("/api/sports"),
+        api.get("/api/venues"),
       ]);
       setSports(sportsRes.data);
       setVenues(venuesRes.data);

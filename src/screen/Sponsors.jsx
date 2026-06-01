@@ -119,7 +119,7 @@ export default function Sponsors() {
   const [sponsors, setSponsors] = useState([]);
 
   useEffect(() => {
-    api.get("/sponsors/public").then((res) => {
+    api.get("/api/sponsors/public").then((res) => {
       setSponsors(res.data);
     });
   }, []);

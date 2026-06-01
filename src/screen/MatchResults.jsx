@@ -17,10 +17,10 @@ export default function MatchResults() {
       // Try public endpoint first
       let res;
       try {
-        res = await api.get("/matches");
+        res = await api.get("/api/matches");
       } catch (err) {
         // Fallback to public endpoint if needed
-        res = await api.get("/matches/public");
+        res = await api.get("/api/matches/public");
       }
       const completed = res.data.filter(m => m.status === "completed");
       setCompletedMatches(completed);

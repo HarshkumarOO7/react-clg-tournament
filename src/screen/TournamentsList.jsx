@@ -20,7 +20,7 @@ export default function TournamentsList() {
 
   const fetchTournaments = async () => {
     try {
-      const res = await api.get("/tournaments/public");
+      const res = await api.get("/api/tournaments/public");
       setTournaments(res.data);
     } catch (err) {
       console.error("Failed to fetch tournaments", err);
@@ -32,7 +32,7 @@ export default function TournamentsList() {
 
   const fetchSports = async () => {
     try {
-      const res = await api.get("/sports");
+      const res = await api.get("/api/sports");
       setSports(res.data);
     } catch (err) {
       console.error("Failed to fetch sports", err);

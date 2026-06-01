@@ -21,7 +21,7 @@ export default function Home() {
     const fetchHomeData = async () => {
       try {
         // ✅ FIXED: Use PUBLIC endpoints for home page
-        const tournamentsRes = await api.get("/tournaments/public");
+        const tournamentsRes = await api.get("/api/tournaments/public");
         const tournaments = tournamentsRes.data;
 
         setStats((prev) => ({
@@ -36,7 +36,7 @@ export default function Home() {
 
         // ✅ FIXED: Use PUBLIC endpoint for upcoming matches
         try {
-          const matchesRes = await api.get("/matches/public/upcoming");
+          const matchesRes = await api.get("/api/matches/public/upcoming");
           setUpcomingMatches(matchesRes.data.slice(0, 5));
           setStats((prev) => ({
             ...prev,
@@ -48,7 +48,7 @@ export default function Home() {
 
         // ✅ FIXED: For team counts, either use a public endpoint or fallback
         try {
-          const teamsRes = await api.get("/teams/public");
+          const teamsRes = await api.get("/api/teams/public");
           setStats((prev) => ({
             ...prev,
             teams: teamsRes.data.length,
@@ -59,7 +59,7 @@ export default function Home() {
 
         // ✅ FIXED: For player counts, either use a public endpoint or fallback
         try {
-          const usersRes = await api.get("/users/public");
+          const usersRes = await api.get("/api/users/public");
           const players = usersRes.data.filter((u) => u.role === "player");
           setStats((prev) => ({
             ...prev,
