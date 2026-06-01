@@ -65,7 +65,7 @@ export default function Registration() {
       setLoading(true);
 
       const res = await axios.post(
-        "http://localhost:5000/api/register",
+        "https://react-clg-tournament.onrender.com/api/register",
         form
       );
 

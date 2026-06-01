@@ -24,8 +24,8 @@ export default function CreateTournament() {
 
   /* LOAD SPORTS & VENUES */
   useEffect(() => {
-    axios.get("http://localhost:5000/api/sports").then(res => setSports(res.data));
-    axios.get("http://localhost:5000/api/venues").then(res => setVenues(res.data));
+    axios.get("https://react-clg-tournament.onrender.com/api/sports").then(res => setSports(res.data));
+    axios.get("https://react-clg-tournament.onrender.com/api/venues").then(res => setVenues(res.data));
   }, []);
 
   const handleChange = (e) => {
@@ -44,7 +44,7 @@ export default function CreateTournament() {
       if (logoFile) data.append("logo", logoFile);
 
       await axios.post(
-        "http://localhost:5000/api/tournaments",
+        "https://react-clg-tournament.onrender.com/api/tournaments",
         data,
         { headers: { Authorization: `Bearer ${token}` } }
       );

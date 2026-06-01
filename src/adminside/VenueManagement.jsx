@@ -25,7 +25,7 @@ export default function VenueManagement() {
   const fetchVenues = async () => {
     try {
       setLoading(true);
-      const res = await axios.get("http://localhost:5000/api/venues");
+      const res = await axios.get("https://react-clg-tournament.onrender.com/api/venues");
       setVenues(res.data);
     } catch (err) {
       console.error("Failed to fetch venues:", err);
@@ -72,14 +72,14 @@ export default function VenueManagement() {
       if (editingVenue) {
         // Update
         await axios.put(
-          `http://localhost:5000/api/venues/${editingVenue._id}`,
+          `https://react-clg-tournament.onrender.com/api/venues/${editingVenue._id}`,
           form,
           auth
         );
         alert("✅ Venue updated successfully!");
       } else {
         // Create
-        await axios.post("http://localhost:5000/api/venues", form, auth);
+        await axios.post("https://react-clg-tournament.onrender.com/api/venues", form, auth);
         alert("✅ Venue created successfully!");
       }
       
@@ -96,7 +96,7 @@ export default function VenueManagement() {
     if (!window.confirm(`Are you sure you want to delete "${name}"?`)) return;
     
     try {
-      await axios.delete(`http://localhost:5000/api/venues/${id}`, auth);
+      await axios.delete(`https://react-clg-tournament.onrender.com/api/venues/${id}`, auth);
       alert("✅ Venue deleted successfully!");
       fetchVenues();
     } catch (err) {

@@ -76,7 +76,7 @@ export default function RegisterWithVerification() {
     
     setIsEmailChecking(true);
     try {
-      const res = await axios.post("http://localhost:5000/api/check-email", { email });
+      const res = await axios.post("https://react-clg-tournament.onrender.com/api/check-email", { email });
       if (!res.data.available) {
         setErrors(prev => ({ ...prev, email: "Email already registered. Please use a different email." }));
         setEmailAvailable(false);
@@ -125,7 +125,7 @@ export default function RegisterWithVerification() {
     setErrors({});
     
     try {
-      const res = await axios.post("http://localhost:5000/api/register", formData);
+      const res = await axios.post("https://react-clg-tournament.onrender.com/api/register", formData);
       setMessage(res.data.message);
       setRegisteredEmail(formData.email);
       setStep(2);
@@ -151,7 +151,7 @@ export default function RegisterWithVerification() {
     setErrors({});
     
     try {
-      await axios.post("http://localhost:5000/api/verify-email", {
+      await axios.post("https://react-clg-tournament.onrender.com/api/verify-email", {
         email: registeredEmail,
         code: verificationCode
       });
@@ -167,7 +167,7 @@ export default function RegisterWithVerification() {
   const handleResendCode = async () => {
     setLoading(true);
     try {
-      await axios.post("http://localhost:5000/api/resend-verification", {
+      await axios.post("https://react-clg-tournament.onrender.com/api/resend-verification", {
         email: registeredEmail
       });
       setMessage("New verification code sent to your email!");

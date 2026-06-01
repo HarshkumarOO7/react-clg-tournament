@@ -28,7 +28,7 @@ export default function AdminUsers() {
   const loadUsers = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/users",
+        "https://react-clg-tournament.onrender.com/api/users",
         authHeader
       );
       // ✅ Filter out any null/undefined users and ensure we have an array
@@ -44,7 +44,7 @@ export default function AdminUsers() {
   const toggleStatus = async (id, current) => {
     try {
       await axios.put(
-        `http://localhost:5000/api/users/${id}`,
+        `https://react-clg-tournament.onrender.com/api/users/${id}`,
         { status: current === "active" ? "blocked" : "active" },
         authHeader
       );
@@ -75,7 +75,7 @@ export default function AdminUsers() {
   const saveEdit = async () => {
     try {
       await axios.put(
-        `http://localhost:5000/api/users/${editUser._id}`,
+        `https://react-clg-tournament.onrender.com/api/users/${editUser._id}`,
         editForm,
         authHeader
       );

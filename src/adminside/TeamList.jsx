@@ -19,7 +19,7 @@ export default function TeamList() {
   const loadTeams = async () => {
     try {
       setLoading(true);
-      const res = await axios.get("http://localhost:5000/api/teams", auth);
+      const res = await axios.get("https://react-clg-tournament.onrender.com/api/teams", auth);
       setTeams(res.data);
     } catch (err) {
       setMessage({ type: "error", text: "Failed to load teams" });
@@ -37,7 +37,7 @@ export default function TeamList() {
     if (!window.confirm("Are you sure you want to delete this team?")) return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/teams/${id}`, auth);
+      await axios.delete(`https://react-clg-tournament.onrender.com/api/teams/${id}`, auth);
       setMessage({ type: "success", text: "Team deleted successfully" });
       setTeams(prev => prev.filter(t => t._id !== id));
     } catch {
@@ -60,7 +60,7 @@ export default function TeamList() {
 
     try {
       await axios.put(
-        `http://localhost:5000/api/teams/${editTeam._id}`,
+        `https://react-clg-tournament.onrender.com/api/teams/${editTeam._id}`,
         { teamName: editTeam.teamName },
         auth
       );

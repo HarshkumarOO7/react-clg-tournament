@@ -23,8 +23,8 @@ export default function Matches() {
   /* LOAD INITIAL DATA */
   useEffect(() => {
     // ✅ FIXED: Use public endpoint for tournaments
-    axios.get("http://localhost:5000/api/tournaments/public").then(res => setTournaments(res.data));
-    axios.get("http://localhost:5000/api/venues").then(res => setVenues(res.data));
+    axios.get("https://react-clg-tournament.onrender.com/api/tournaments/public").then(res => setTournaments(res.data));
+    axios.get("https://react-clg-tournament.onrender.com/api/venues").then(res => setVenues(res.data));
   }, []);
 
   /* LOAD TEAMS + MATCHES WHEN TOURNAMENT SELECTED */
@@ -32,7 +32,7 @@ export default function Matches() {
     if (!form.tournamentId) return;
 
     axios
-      .get(`http://localhost:5000/api/teams/tournament/${form.tournamentId}`, auth)
+      .get(`https://react-clg-tournament.onrender.com/api/teams/tournament/${form.tournamentId}`, auth)
       .then(res => setTeams(res.data));
 
     loadMatches(form.tournamentId);
@@ -40,7 +40,7 @@ export default function Matches() {
 
   const loadMatches = async (tournamentId) => {
     const res = await axios.get(
-      `http://localhost:5000/api/matches/tournament/${tournamentId}`,
+      `https://react-clg-tournament.onrender.com/api/matches/tournament/${tournamentId}`,
       auth
     );
     setMatches(res.data);
@@ -59,7 +59,7 @@ export default function Matches() {
 
     try {
       await axios.post(
-        "http://localhost:5000/api/matches",
+        "https://react-clg-tournament.onrender.com/api/matches",
         {
           tournamentId: form.tournamentId,
           teams: [form.teamA, form.teamB],

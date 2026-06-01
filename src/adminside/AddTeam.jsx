@@ -29,10 +29,10 @@ export default function AddTeam() {
   const fetchData = async () => {
   try {
     // ✅ FIXED: Use public endpoint for tournaments
-    const tournamentsRes = await axios.get("http://localhost:5000/api/tournaments/public");
+    const tournamentsRes = await axios.get("https://react-clg-tournament.onrender.com/api/tournaments/public");
     setTournaments(tournamentsRes.data);
 
-    const usersRes = await axios.get("http://localhost:5000/api/users", auth);
+    const usersRes = await axios.get("https://react-clg-tournament.onrender.com/api/users", auth);
     const allowed = usersRes.data.filter(u =>
       ["organizer", "coach"].includes(u.role)
     );
@@ -63,7 +63,7 @@ export default function AddTeam() {
 
     try {
       await axios.post(
-        "http://localhost:5000/api/teams",
+        "https://react-clg-tournament.onrender.com/api/teams",
         {
           teamName: form.teamName.trim(),
           tournamentId: form.tournamentId,

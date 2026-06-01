@@ -25,7 +25,7 @@ export default function ApprovePlayers() {
       setLoading(true);
 
       const res = await axios.get(
-        "http://localhost:5000/api/registrations",
+        "https://react-clg-tournament.onrender.com/api/registrations",
         auth
       );
 
@@ -47,7 +47,7 @@ export default function ApprovePlayers() {
   const updateStatus = async (id, status) => {
     try {
       await axios.put(
-        `http://localhost:5000/api/registrations/${id}`,
+        `https://react-clg-tournament.onrender.com/api/registrations/${id}`,
         { approvalStatus: status },
         auth
       );
