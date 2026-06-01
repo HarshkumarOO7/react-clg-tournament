@@ -1,5 +1,5 @@
 const express = require("express");
-const Sport = require("../models/Sport");
+const Sport = require("../models/sport");
 const router = express.Router();
 
 router.post("/", async (req, res) => {
