@@ -1,3 +1,5 @@
+/* schedule.css - Fully Responsive */
+
 /* ================= SCHEDULE PAGE ================= */
 .schedule-page {
   max-width: 1200px;
@@ -46,11 +48,13 @@
 
 .schedule-filters button:hover {
   background: #e5e7eb;
+  transform: translateY(-1px);
 }
 
 .schedule-filters button.active {
   background: linear-gradient(135deg, #4f46e5, #7c3aed);
   color: white;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
 }
 
 /* Matches Grid */
@@ -68,11 +72,12 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   transition: all 0.3s;
   border: 1px solid #e5e7eb;
+  animation: fadeInUp 0.4s ease forwards;
 }
 
 .match-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
 }
 
 /* Teams Section */
@@ -94,6 +99,7 @@
   font-size: 18px;
   font-weight: 700;
   color: #1f2937;
+  word-break: break-word;
 }
 
 .vs {
@@ -111,90 +117,444 @@
 }
 
 .match-info p {
-  margin: 8px 0;
+  margin: 10px 0;
   font-size: 14px;
   color: #6b7280;
   display: flex;
   align-items: center;
   gap: 8px;
+  word-break: break-word;
 }
 
 /* Status Badge */
 .match-info .status {
   display: inline-block;
-  padding: 4px 12px;
+  padding: 5px 14px;
   border-radius: 20px;
   font-size: 12px;
   font-weight: 600;
   color: white;
-  margin-top: 10px;
+  margin-top: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 /* View Button */
 .view-btn {
   display: block;
   text-align: center;
-  background: #4f46e5;
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
   color: white;
   text-decoration: none;
-  padding: 10px;
-  border-radius: 8px;
+  padding: 10px 16px;
+  border-radius: 10px;
   font-size: 14px;
   font-weight: 500;
   transition: all 0.2s;
 }
 
 .view-btn:hover {
-  background: #4338ca;
-  transform: translateY(-1px);
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
 }
 
 /* No Matches */
 .no-matches {
   text-align: center;
-  padding: 60px;
+  padding: 80px 40px;
   background: #f9fafb;
   border-radius: 16px;
   color: #6b7280;
+  border: 1px dashed #e5e7eb;
+}
+
+.no-matches p {
+  font-size: 18px;
+  margin: 0;
+}
+
+.no-matches::before {
+  content: "⚽";
+  display: block;
+  font-size: 64px;
+  margin-bottom: 20px;
+  opacity: 0.5;
 }
 
 /* Loading State */
 .loading-spinner {
   text-align: center;
-  padding: 60px;
+  padding: 80px;
   font-size: 18px;
   color: #6b7280;
 }
 
-/* Mobile Responsive */
+.loading-spinner::before {
+  content: "⏳";
+  display: inline-block;
+  animation: spin 1s linear infinite;
+  margin-right: 10px;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ================= RESPONSIVE DESIGN ================= */
+
+/* TABLET (768px - 1024px) */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .schedule-page {
+    padding: 35px 20px;
+  }
+  
+  .schedule-header h1 {
+    font-size: 32px;
+  }
+  
+  .schedule-header p {
+    font-size: 16px;
+  }
+  
+  .matches-grid {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 22px;
+  }
+  
+  .team-name {
+    font-size: 17px;
+  }
+  
+  .match-info p {
+    font-size: 13px;
+  }
+}
+
+/* LARGE MOBILE (641px - 768px) */
 @media (max-width: 768px) {
   .schedule-page {
-    padding: 20px 15px;
+    padding: 30px 15px;
   }
 
+  .schedule-header {
+    margin-bottom: 30px;
+  }
+  
   .schedule-header h1 {
     font-size: 28px;
+  }
+  
+  .schedule-header p {
+    font-size: 15px;
+  }
+  
+  .schedule-filters {
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+  
+  .schedule-filters button {
+    padding: 8px 18px;
+    font-size: 13px;
   }
 
   .matches-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
 
   .match-card {
-    padding: 15px;
+    padding: 18px;
+    border-radius: 14px;
+  }
+  
+  .match-teams {
+    margin-bottom: 18px;
+    padding-bottom: 12px;
   }
 
   .team-name {
     font-size: 16px;
   }
-
-  .schedule-filters button {
-    padding: 8px 18px;
+  
+  .vs {
     font-size: 13px;
+    padding: 3px 10px;
+  }
+  
+  .match-info p {
+    font-size: 13px;
+    margin: 8px 0;
+  }
+  
+  .match-info .status {
+    padding: 4px 12px;
+    font-size: 11px;
+    margin-top: 10px;
+  }
+  
+  .view-btn {
+    padding: 9px 16px;
+    font-size: 13px;
+  }
+  
+  .no-matches {
+    padding: 60px 30px;
+  }
+  
+  .no-matches p {
+    font-size: 16px;
+  }
+  
+  .no-matches::before {
+    font-size: 50px;
   }
 }
 
-/* Dark Mode */
+/* MOBILE (up to 640px) */
+@media (max-width: 640px) {
+  .schedule-page {
+    padding: 25px 12px;
+  }
+  
+  .schedule-header h1 {
+    font-size: 26px;
+  }
+  
+  .schedule-header p {
+    font-size: 14px;
+  }
+  
+  .schedule-filters {
+    gap: 8px;
+  }
+  
+  .schedule-filters button {
+    padding: 7px 14px;
+    font-size: 12px;
+  }
+  
+  .match-card {
+    padding: 15px;
+    border-radius: 12px;
+  }
+  
+  .team-name {
+    font-size: 14px;
+  }
+  
+  .vs {
+    font-size: 11px;
+    padding: 3px 8px;
+  }
+  
+  .match-info p {
+    font-size: 12px;
+    margin: 7px 0;
+  }
+  
+  .match-info .status {
+    font-size: 10px;
+    padding: 3px 10px;
+  }
+  
+  .view-btn {
+    padding: 8px 14px;
+    font-size: 12px;
+    border-radius: 8px;
+  }
+}
+
+/* SMALL MOBILE (up to 480px) */
+@media (max-width: 480px) {
+  .schedule-page {
+    padding: 20px 10px;
+  }
+  
+  .schedule-header {
+    margin-bottom: 25px;
+  }
+  
+  .schedule-header h1 {
+    font-size: 24px;
+  }
+  
+  .schedule-header p {
+    font-size: 13px;
+  }
+  
+  .schedule-filters {
+    gap: 6px;
+    margin-bottom: 25px;
+  }
+  
+  .schedule-filters button {
+    padding: 6px 12px;
+    font-size: 11px;
+  }
+  
+  .match-card {
+    padding: 12px;
+  }
+  
+  .match-teams {
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+  }
+  
+  .team-name {
+    font-size: 13px;
+  }
+  
+  .vs {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+  
+  .match-info p {
+    font-size: 11px;
+    gap: 6px;
+  }
+  
+  .match-info p svg,
+  .match-info p span {
+    font-size: 11px;
+  }
+  
+  .match-info .status {
+    font-size: 9px;
+    padding: 2px 8px;
+  }
+  
+  .view-btn {
+    padding: 7px 12px;
+    font-size: 11px;
+  }
+  
+  .loading-spinner {
+    padding: 50px 20px;
+    font-size: 16px;
+  }
+  
+  .no-matches {
+    padding: 40px 20px;
+  }
+  
+  .no-matches p {
+    font-size: 14px;
+  }
+  
+  .no-matches::before {
+    font-size: 40px;
+  }
+}
+
+/* EXTRA SMALL (up to 360px) */
+@media (max-width: 360px) {
+  .schedule-header h1 {
+    font-size: 22px;
+  }
+  
+  .schedule-filters button {
+    padding: 5px 10px;
+    font-size: 10px;
+  }
+  
+  .team-name {
+    font-size: 12px;
+  }
+  
+  .match-info p {
+    font-size: 10px;
+  }
+  
+  .match-info .status {
+    font-size: 8px;
+  }
+}
+
+/* LARGE DESKTOP (1400px+) */
+@media (min-width: 1400px) {
+  .schedule-page {
+    max-width: 1400px;
+    padding: 50px 30px;
+  }
+  
+  .schedule-header h1 {
+    font-size: 42px;
+  }
+  
+  .schedule-header p {
+    font-size: 20px;
+  }
+  
+  .matches-grid {
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 30px;
+  }
+  
+  .match-card {
+    padding: 25px;
+    border-radius: 20px;
+  }
+  
+  .team-name {
+    font-size: 20px;
+  }
+  
+  .vs {
+    font-size: 16px;
+    padding: 5px 14px;
+  }
+  
+  .match-info p {
+    font-size: 15px;
+    margin: 12px 0;
+  }
+  
+  .view-btn {
+    padding: 12px 20px;
+    font-size: 15px;
+  }
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Stagger animation for match cards */
+.match-card:nth-child(1) { animation-delay: 0.05s; }
+.match-card:nth-child(2) { animation-delay: 0.1s; }
+.match-card:nth-child(3) { animation-delay: 0.15s; }
+.match-card:nth-child(4) { animation-delay: 0.2s; }
+.match-card:nth-child(5) { animation-delay: 0.25s; }
+.match-card:nth-child(6) { animation-delay: 0.3s; }
+
+/* Live match pulse animation */
+.match-card:has(.status[style*="background-color: #ef4444"]) {
+  animation: pulseGlow 2s infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(239, 68, 68, 0.3);
+  }
+}
+
+/* ================= DARK MODE SUPPORT ================= */
 @media (prefers-color-scheme: dark) {
   .schedule-page {
     background: #111827;
@@ -203,22 +563,180 @@
   .schedule-header h1 {
     color: #f3f4f6;
   }
+  
+  .schedule-header p {
+    color: #9ca3af;
+  }
+  
+  .schedule-filters button {
+    background: #1f2937;
+    color: #9ca3af;
+  }
+  
+  .schedule-filters button:hover {
+    background: #374151;
+  }
+  
+  .schedule-filters button.active {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: white;
+  }
 
   .match-card {
     background: #1f2937;
     border-color: #374151;
   }
+  
+  .match-card:hover {
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3);
+  }
+  
+  .match-teams {
+    border-bottom-color: #374151;
+  }
 
   .team-name {
     color: #f3f4f6;
   }
-
+  
+  .vs {
+    background: #374151;
+    color: #6b7280;
+  }
+  
   .match-info p {
     color: #9ca3af;
   }
-
+  
   .no-matches {
     background: #1f2937;
+    border-color: #374151;
     color: #9ca3af;
+  }
+  
+  .loading-spinner {
+    color: #9ca3af;
+  }
+}
+
+/* ================= LIVE INDICATOR ================= */
+.match-card:has(.status:contains("live")) {
+  position: relative;
+  overflow: hidden;
+}
+
+.match-card:has(.status:contains("live"))::before {
+  content: "🔴 LIVE";
+  position: absolute;
+  top: 12px;
+  right: -30px;
+  background: #ef4444;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 4px 30px;
+  transform: rotate(45deg);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* ================= REDUCED MOTION ================= */
+@media (prefers-reduced-motion: reduce) {
+  .match-card,
+  .loading-spinner::before {
+    animation: none;
+  }
+  
+  .match-card:hover,
+  .schedule-filters button:hover,
+  .view-btn:hover {
+    transform: none;
+  }
+  
+  .match-card:has(.status[style*="background-color: #ef4444"]) {
+    animation: none;
+  }
+}
+
+/* ================= TOUCH DEVICE OPTIMIZATIONS ================= */
+@media (hover: none) and (pointer: coarse) {
+  .match-card:hover {
+    transform: none;
+  }
+  
+  .schedule-filters button:hover {
+    transform: none;
+  }
+  
+  .view-btn:hover {
+    transform: none;
+  }
+}
+
+/* ================= ACCESSIBILITY FOCUS STATES ================= */
+.schedule-filters button:focus-visible,
+.view-btn:focus-visible {
+  outline: 2px solid #4f46e5;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .schedule-filters button:focus-visible,
+  .view-btn:focus-visible {
+    outline-color: #a78bfa;
+  }
+}
+
+/* ================= PRINT STYLES ================= */
+@media print {
+  .schedule-page {
+    padding: 20px;
+    max-width: 100%;
+  }
+  
+  .schedule-filters,
+  .view-btn {
+    display: none;
+  }
+  
+  .match-card {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+  
+  .status {
+    print-color-adjust: exact;
+  }
+}
+
+/* ================= SCROLLBAR STYLING ================= */
+.matches-grid::-webkit-scrollbar {
+  width: 8px;
+}
+
+.matches-grid::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.matches-grid::-webkit-scrollbar-thumb {
+  background: #c5c5c5;
+  border-radius: 10px;
+}
+
+.matches-grid::-webkit-scrollbar-thumb:hover {
+  background: #a0a0a0;
+}
+
+@media (prefers-color-scheme: dark) {
+  .matches-grid::-webkit-scrollbar-track {
+    background: #374151;
+  }
+  
+  .matches-grid::-webkit-scrollbar-thumb {
+    background: #6b7280;
   }
 }

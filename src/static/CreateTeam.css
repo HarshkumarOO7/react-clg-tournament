@@ -1,3 +1,5 @@
+/* CreateTeam.css - Fully Responsive */
+
 .create-team-page {
   max-width: 600px;
   margin: 40px auto;
@@ -11,6 +13,7 @@
   color: #1f2937;
   margin-bottom: 30px;
   text-align: center;
+  font-size: 28px;
 }
 
 .create-team-form {
@@ -28,6 +31,7 @@
 .form-group label {
   font-weight: 500;
   color: #374151;
+  font-size: 15px;
 }
 
 .form-group input,
@@ -37,6 +41,7 @@
   border-radius: 8px;
   font-size: 1rem;
   transition: all 0.3s;
+  font-family: inherit;
 }
 
 .form-group input:focus,
@@ -50,11 +55,13 @@
 .form-group select:disabled {
   background: #f3f4f6;
   cursor: not-allowed;
+  color: #6b7280;
 }
 
 .form-group small {
   color: #6b7280;
   font-size: 0.85rem;
+  margin-top: 4px;
 }
 
 .error-message {
@@ -63,6 +70,8 @@
   padding: 12px;
   border-radius: 8px;
   margin-bottom: 20px;
+  font-size: 14px;
+  text-align: center;
 }
 
 .form-actions {
@@ -86,6 +95,7 @@
 
 .cancel-btn:hover {
   background: #6b7280;
+  transform: translateY(-1px);
 }
 
 .submit-btn {
@@ -112,14 +122,184 @@
   cursor: not-allowed;
 }
 
-/* Responsive */
+/* ======================
+   RESPONSIVE DESIGN
+   Laptop view untouched, only tablet & mobile improvements
+====================== */
+
+/* TABLET (600px - 1024px) */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .create-team-page {
+    max-width: 550px;
+    margin: 35px auto;
+    padding: 28px;
+  }
+  
+  .create-team-page h1 {
+    font-size: 26px;
+    margin-bottom: 25px;
+  }
+  
+  .form-group input,
+  .form-group select {
+    padding: 11px;
+  }
+  
+  .cancel-btn,
+  .submit-btn {
+    padding: 11px;
+  }
+}
+
+/* MOBILE (up to 768px) */
 @media (max-width: 768px) {
   .create-team-page {
     margin: 20px;
     padding: 20px;
+    border-radius: 12px;
+  }
+  
+  .create-team-page h1 {
+    font-size: 24px;
+    margin-bottom: 25px;
+  }
+  
+  .create-team-form {
+    gap: 16px;
+  }
+  
+  .form-group {
+    gap: 6px;
+  }
+  
+  .form-group label {
+    font-size: 14px;
+  }
+  
+  .form-group input,
+  .form-group select {
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 6px;
+  }
+  
+  .form-group small {
+    font-size: 12px;
+  }
+  
+  .error-message {
+    padding: 10px;
+    font-size: 13px;
+    margin-bottom: 15px;
+    border-radius: 6px;
   }
   
   .form-actions {
     flex-direction: column;
+    gap: 12px;
+    margin-top: 15px;
+  }
+  
+  .cancel-btn,
+  .submit-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+  }
+  
+  .cancel-btn {
+    order: 2;
+  }
+  
+  .submit-btn {
+    order: 1;
+  }
+}
+
+/* SMALL MOBILE (up to 480px) */
+@media (max-width: 480px) {
+  .create-team-page {
+    margin: 15px;
+    padding: 18px;
+    border-radius: 10px;
+  }
+  
+  .create-team-page h1 {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+  
+  .create-team-form {
+    gap: 14px;
+  }
+  
+  .form-group label {
+    font-size: 13px;
+  }
+  
+  .form-group input,
+  .form-group select {
+    padding: 9px;
+    font-size: 14px;
+  }
+  
+  .error-message {
+    padding: 8px;
+    font-size: 12px;
+  }
+  
+  .cancel-btn,
+  .submit-btn {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+/* EXTRA SMALL (up to 360px) */
+@media (max-width: 360px) {
+  .create-team-page {
+    margin: 10px;
+    padding: 15px;
+  }
+  
+  .create-team-page h1 {
+    font-size: 20px;
+  }
+  
+  .form-group input,
+  .form-group select {
+    padding: 8px;
+    font-size: 13px;
+  }
+  
+  .cancel-btn,
+  .submit-btn {
+    padding: 9px;
+    font-size: 13px;
+  }
+}
+
+/* LARGE DESKTOP (1200px+) */
+@media (min-width: 1200px) {
+  .create-team-page {
+    max-width: 650px;
+    margin: 50px auto;
+    padding: 35px;
+  }
+  
+  .create-team-page h1 {
+    font-size: 32px;
+    margin-bottom: 35px;
+  }
+  
+  .form-group input,
+  .form-group select {
+    padding: 14px;
+    font-size: 1rem;
+  }
+  
+  .cancel-btn,
+  .submit-btn {
+    padding: 14px;
   }
 }

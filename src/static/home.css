@@ -1,5 +1,5 @@
 /* ======================
-   SPORTS EVENT THEME - CLEAN VERSION
+   SPORTS EVENT THEME - FULLY RESPONSIVE (ENHANCED)
 ====================== */
 
 /* Loading Spinner */
@@ -26,10 +26,11 @@
   align-items: center;
   position: relative;
   color: white;
+  overflow: hidden;
 }
 
 .hero-overlay {
-  display: none; /* Remove overlay since we have gradient */
+  display: none;
 }
 
 .hero-content {
@@ -37,6 +38,7 @@
   margin: 0 auto;
   padding: 0 20px;
   text-align: center;
+  width: 100%;
 }
 
 .hero-content h1 {
@@ -71,6 +73,7 @@
   display: flex;
   gap: 20px;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .primary-btn {
@@ -81,6 +84,8 @@
   text-decoration: none;
   font-weight: 600;
   transition: all 0.3s;
+  display: inline-block;
+  text-align: center;
 }
 
 .primary-btn:hover {
@@ -98,6 +103,8 @@
   font-weight: 600;
   border: 2px solid white;
   transition: all 0.3s;
+  display: inline-block;
+  text-align: center;
 }
 
 .secondary-btn:hover {
@@ -155,12 +162,15 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 40px;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
 .section-header h2 {
   font-size: 2rem;
   font-weight: 700;
   color: #333;
+  margin: 0;
 }
 
 .view-all {
@@ -187,6 +197,8 @@
   box-shadow: 0 2px 10px rgba(0,0,0,0.05);
   transition: transform 0.3s;
   border: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
 }
 
 .tournament-card:hover {
@@ -205,6 +217,11 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.tournament-card:hover .tournament-image img {
+  transform: scale(1.05);
 }
 
 .status-badge {
@@ -237,12 +254,16 @@
 
 .tournament-details {
   padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .tournament-details h3 {
   margin: 0 0 5px 0;
   font-size: 1.2rem;
   color: #333;
+  line-height: 1.3;
 }
 
 .tournament-details .sport {
@@ -257,6 +278,7 @@
   color: #666;
   font-size: 0.9rem;
   margin-bottom: 10px;
+  flex-wrap: wrap;
 }
 
 .tournament-prize {
@@ -274,6 +296,8 @@
   border-radius: 50px;
   font-weight: 600;
   transition: all 0.3s;
+  text-align: center;
+  margin-top: auto;
 }
 
 .btn-outline:hover {
@@ -308,12 +332,22 @@
   align-items: center;
   box-shadow: 0 2px 10px rgba(0,0,0,0.05);
   border: 1px solid #eee;
+  flex-wrap: wrap;
+  gap: 15px;
+  transition: all 0.3s;
+}
+
+.match-card:hover {
+  transform: translateX(5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 .match-teams {
   display: flex;
   align-items: center;
   gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .team {
@@ -332,6 +366,8 @@
   align-items: center;
   color: #666;
   font-size: 0.9rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .status.scheduled {
@@ -377,6 +413,7 @@
   border-radius: 10px;
   transition: all 0.3s;
   border: 1px solid #eee;
+  cursor: pointer;
 }
 
 .sport-item:hover {
@@ -418,6 +455,12 @@
   color: #333;
   box-shadow: 0 2px 10px rgba(0,0,0,0.05);
   border: 1px solid #eee;
+  transition: all 0.3s;
+}
+
+.sponsor-logo:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 /* CTA Section */
@@ -443,6 +486,7 @@
   display: flex;
   gap: 20px;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .cta-primary {
@@ -453,6 +497,7 @@
   text-decoration: none;
   font-weight: 600;
   transition: all 0.3s;
+  display: inline-block;
 }
 
 .cta-primary:hover {
@@ -469,6 +514,7 @@
   font-weight: 600;
   border: 2px solid white;
   transition: all 0.3s;
+  display: inline-block;
 }
 
 .cta-secondary:hover {
@@ -492,68 +538,6 @@
   }
 }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
-  .stats-section {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .tournament-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .sports-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .hero-content h1 {
-    font-size: 2.5rem;
-  }
-  
-  .hero-content h1 span {
-    font-size: 1.8rem !important;
-  }
-  
-  .hero-buttons {
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .tournament-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .match-card {
-    flex-direction: column;
-    gap: 15px;
-    text-align: center;
-  }
-  
-  .match-info {
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .sponsors-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .cta-buttons {
-    flex-direction: column;
-  }
-  
-  .stats-section,
-  .tournaments-section,
-  .matches-section,
-  .sports-categories,
-  .sponsors-section,
-  .cta-section {
-    padding: 40px 20px;
-  }
-}
-
 .default-image {
   width: 100%;
   height: 100%;
@@ -565,18 +549,493 @@
   color: white;
 }
 
-.loading-spinner {
-  text-align: center;
-  padding: 60px;
-  color: #6b7280;
-  font-size: 1.2rem;
+/* ======================
+   RESPONSIVE DESIGN
+   Laptop view untouched, only tablet & mobile improvements
+====================== */
+
+/* TABLET (768px - 1024px) */
+@media (max-width: 1024px) and (min-width: 769px) {
+  /* Stats - 2 columns on tablet */
+  .stats-section {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    padding: 50px 40px;
+  }
+  
+  /* Tournament grid - 2 columns on tablet */
+  .tournament-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+  
+  /* Sports grid - 3 columns on tablet */
+  .sports-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+  /* Sponsors - 3 columns on tablet */
+  .sponsors-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    max-width: 90%;
+  }
+  
+  /* Section padding adjustment for tablet */
+  .tournaments-section,
+  .matches-section,
+  .sports-categories,
+  .sponsors-section,
+  .cta-section {
+    padding: 60px 40px;
+  }
+  
+  /* Hero text adjustment */
+  .hero-content h1 {
+    font-size: 3rem;
+  }
+  
+  .highlight {
+    font-size: 2.8rem !important;
+  }
+  
+  .hero-content p {
+    font-size: 1.1rem;
+  }
 }
 
-.no-data {
-  text-align: center;
-  padding: 40px;
-  color: #6b7280;
-  background: white;
-  border-radius: 10px;
-  grid-column: 1 / -1;
+/* MOBILE (up to 768px) */
+@media (max-width: 768px) {
+  /* Hero section */
+  .clean-hero {
+    min-height: 60vh;
+  }
+  
+  .hero-content h1 {
+    font-size: 1.8rem;
+  }
+  
+  .hero-content h1 span {
+    font-size: 1.3rem !important;
+  }
+  
+  .highlight {
+    font-size: 1.6rem !important;
+  }
+  
+  .hero-content p {
+    font-size: 1rem;
+    padding: 0 10px;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+  
+  .primary-btn, .secondary-btn {
+    width: 80%;
+    max-width: 250px;
+  }
+  
+  /* Stats section - 1 column on mobile */
+  .stats-section {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 40px 20px;
+  }
+  
+  .stat-card {
+    padding: 20px;
+  }
+  
+  .stat-number {
+    font-size: 2rem;
+  }
+  
+  .stat-icon {
+    font-size: 2rem;
+  }
+  
+  /* Tournament section */
+  .tournaments-section {
+    padding: 40px 20px;
+  }
+  
+  .section-header {
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .section-header h2 {
+    font-size: 1.5rem;
+  }
+  
+  .tournament-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .tournament-image {
+    height: 160px;
+  }
+  
+  .tournament-details h3 {
+    font-size: 1.1rem;
+  }
+  
+  .tournament-meta {
+    gap: 10px;
+    font-size: 0.85rem;
+  }
+  
+  /* Matches section */
+  .matches-section {
+    padding: 40px 20px;
+  }
+  
+  .matches-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+  }
+  
+  .match-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 15px;
+  }
+  
+  .match-card:hover {
+    transform: translateX(0);
+  }
+  
+  .match-teams {
+    gap: 10px;
+  }
+  
+  .team {
+    font-size: 0.95rem;
+  }
+  
+  .match-info {
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+  
+  /* Sports categories */
+  .sports-categories {
+    padding: 40px 20px;
+  }
+  
+  .sports-categories h2 {
+    font-size: 1.5rem;
+  }
+  
+  .sports-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  
+  .sport-item {
+    padding: 15px;
+  }
+  
+  .sport-icon {
+    font-size: 1.5rem;
+  }
+  
+  /* Sponsors section */
+  .sponsors-section {
+    padding: 40px 20px;
+  }
+  
+  .sponsors-section h2 {
+    font-size: 1.5rem;
+  }
+  
+  .sponsors-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    max-width: 100%;
+  }
+  
+  .sponsor-logo {
+    padding: 15px;
+    font-size: 0.9rem;
+  }
+  
+  /* CTA section */
+  .cta-section {
+    padding: 50px 20px;
+  }
+  
+  .cta-content h2 {
+    font-size: 1.6rem;
+  }
+  
+  .cta-content p {
+    font-size: 1rem;
+    padding: 0 15px;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+  
+  .cta-primary, .cta-secondary {
+    width: 80%;
+    max-width: 250px;
+  }
+  
+  /* Loading spinner */
+  .loading-spinner {
+    padding: 40px 20px;
+    font-size: 1rem;
+  }
+  
+  /* No data message */
+  .no-data {
+    padding: 30px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+/* SMALL MOBILE (up to 480px) */
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 1.5rem;
+  }
+  
+  .hero-content h1 span {
+    font-size: 1.1rem !important;
+  }
+  
+  .highlight {
+    font-size: 1.3rem !important;
+  }
+  
+  .hero-content p {
+    font-size: 0.9rem;
+  }
+  
+  .stat-number {
+    font-size: 1.8rem;
+  }
+  
+  .stat-icon {
+    font-size: 1.8rem;
+  }
+  
+  .stat-label {
+    font-size: 0.85rem;
+  }
+  
+  .tournament-meta {
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .sports-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .sponsors-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .cta-content h2 {
+    font-size: 1.3rem;
+  }
+  
+  .cta-content p {
+    font-size: 0.9rem;
+  }
+  
+  .match-teams {
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .vs {
+    margin: 0;
+  }
+}
+
+/* EXTRA SMALL (up to 360px) */
+@media (max-width: 360px) {
+  .hero-content h1 {
+    font-size: 1.3rem;
+  }
+  
+  .hero-buttons {
+    gap: 10px;
+  }
+  
+  .primary-btn, .secondary-btn {
+    padding: 10px 20px;
+    font-size: 0.85rem;
+  }
+  
+  .stat-number {
+    font-size: 1.5rem;
+  }
+  
+  .tournament-details h3 {
+    font-size: 1rem;
+  }
+  
+  .cta-primary, .cta-secondary {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Fix for very large screens (keeps content centered) */
+@media (min-width: 1400px) {
+  .hero-content,
+  .tournaments-section .section-header,
+  .tournament-grid {
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .stats-section,
+  .tournaments-section,
+  .matches-section,
+  .sports-categories,
+  .sponsors-section,
+  .cta-section {
+    padding-left: calc((100% - 1300px) / 2);
+    padding-right: calc((100% - 1300px) / 2);
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .stats-section {
+    background: #111827;
+  }
+  
+  .stat-card {
+    background: #1f2937;
+  }
+  
+  .stat-number {
+    color: #a78bfa;
+  }
+  
+  .stat-label {
+    color: #9ca3af;
+  }
+  
+  .tournaments-section {
+    background: #111827;
+  }
+  
+  .section-header h2 {
+    color: #f9fafb;
+  }
+  
+  .tournament-card {
+    background: #1f2937;
+    border-color: #374151;
+  }
+  
+  .tournament-details h3 {
+    color: #f9fafb;
+  }
+  
+  .tournament-meta {
+    color: #9ca3af;
+  }
+  
+  .matches-section {
+    background: #111827;
+  }
+  
+  .matches-section h2 {
+    color: #f9fafb;
+  }
+  
+  .match-card {
+    background: #1f2937;
+    border-color: #374151;
+  }
+  
+  .team {
+    color: #f9fafb;
+  }
+  
+  .match-info {
+    color: #9ca3af;
+  }
+  
+  .sports-categories {
+    background: #111827;
+  }
+  
+  .sports-categories h2 {
+    color: #f9fafb;
+  }
+  
+  .sport-item {
+    background: #1f2937;
+    border-color: #374151;
+    color: #d1d5db;
+  }
+  
+  .sponsors-section {
+    background: #111827;
+  }
+  
+  .sponsors-section h2 {
+    color: #f9fafb;
+  }
+  
+  .sponsor-logo {
+    background: #1f2937;
+    color: #f9fafb;
+    border-color: #374151;
+  }
+  
+  .loading-spinner {
+    color: #9ca3af;
+  }
+  
+  .no-data {
+    color: #6b7280;
+  }
+}
+
+/* Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+  .fade-up,
+  .stat-card,
+  .tournament-card,
+  .match-card,
+  .sport-item,
+  .sponsor-logo {
+    animation: none;
+    transition: none;
+  }
+  
+  .primary-btn:hover,
+  .secondary-btn:hover,
+  .cta-primary:hover,
+  .cta-secondary:hover {
+    transform: none;
+  }
+  
+  @keyframes pulse {
+    0%, 50%, 100% { opacity: 1; }
+  }
 }

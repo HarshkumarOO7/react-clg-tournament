@@ -1,4 +1,6 @@
-body{
+/* CreateTournament.css - Fully Responsive */
+
+body {
   color: black;
 }
 
@@ -59,6 +61,7 @@ body{
   font-size: 14px;
   transition: all 0.3s;
   font-family: inherit;
+  background: white;
 }
 
 .ct-group input:focus,
@@ -71,7 +74,7 @@ body{
 
 .ct-group input::placeholder,
 .ct-group textarea::placeholder {
-  color: #000000;
+  color: #9ca3af;
 }
 
 /* Row Layout */
@@ -91,17 +94,22 @@ body{
 .ct-group input[type="file"]::-webkit-file-upload-button {
   padding: 8px 16px;
   background: #4f46e5;
-  color: rgb(0, 0, 0);
+  color: white;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   margin-right: 15px;
+  transition: background 0.3s;
+}
+
+.ct-group input[type="file"]::-webkit-file-upload-button:hover {
+  background: #6366f1;
 }
 
 /* Submit Button */
 .ct-btn {
   background: linear-gradient(135deg, #4f46e5, #7c3aed);
-  color: rgb(0, 0, 0);
+  color: white;
   border: none;
   padding: 14px 28px;
   border-radius: 10px;
@@ -112,7 +120,7 @@ body{
   margin-top: 10px;
 }
 
-.ct-btn:hover {
+.ct-btn:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: 0 10px 25px rgba(79, 70, 229, 0.3);
 }
@@ -123,41 +131,315 @@ body{
   transform: none;
 }
 
-/* Responsive */
-@media (max-width: 640px) {
+/* ======================
+   RESPONSIVE DESIGN
+   Laptop view untouched, only tablet & mobile improvements
+====================== */
+
+/* TABLET (768px - 1024px) */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .ct-page {
+    max-width: 700px;
+    padding: 35px 20px;
+  }
+  
   .ct-card {
-    padding: 20px;
+    padding: 30px;
   }
-
+  
   .ct-card h2 {
-    font-size: 22px;
+    font-size: 26px;
   }
-
-  .ct-row {
-    grid-template-columns: 1fr;
-    gap: 20px;
+  
+  .ct-form {
+    gap: 18px;
   }
+  
+  .ct-group input,
+  .ct-group select,
+  .ct-group textarea {
+    padding: 11px 14px;
+  }
+}
 
+/* LARGE MOBILE & SMALL TABLET (641px - 768px) */
+@media (max-width: 768px) {
+  .ct-page {
+    max-width: 90%;
+    padding: 30px 15px;
+  }
+  
+  .ct-card {
+    padding: 25px;
+    border-radius: 16px;
+  }
+  
+  .ct-card h2 {
+    font-size: 24px;
+    margin-bottom: 6px;
+  }
+  
+  .ct-card p {
+    font-size: 14px;
+    margin-bottom: 25px;
+  }
+  
+  .ct-form {
+    gap: 18px;
+  }
+  
+  .ct-group {
+    gap: 6px;
+  }
+  
+  .ct-group label {
+    font-size: 13px;
+  }
+  
   .ct-group input,
   .ct-group select,
   .ct-group textarea {
     padding: 10px 12px;
+    font-size: 14px;
+    border-radius: 8px;
+  }
+  
+  .ct-row {
+    gap: 15px;
+  }
+  
+  .ct-group input[type="file"] {
+    padding: 8px;
+  }
+  
+  .ct-group input[type="file"]::-webkit-file-upload-button {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+  
+  .ct-btn {
+    padding: 12px 24px;
+    font-size: 15px;
   }
 }
 
-/* Dark Mode */
+/* MOBILE (up to 640px) - Your original breakpoint enhanced */
+@media (max-width: 640px) {
+  .ct-page {
+    max-width: 95%;
+    padding: 20px 12px;
+  }
+  
+  .ct-card {
+    padding: 20px;
+    border-radius: 14px;
+  }
+  
+  .ct-card h2 {
+    font-size: 22px;
+  }
+  
+  .ct-card p {
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+  
+  .ct-form {
+    gap: 16px;
+  }
+  
+  .ct-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .ct-group input,
+  .ct-group select,
+  .ct-group textarea {
+    padding: 10px 12px;
+    font-size: 14px;
+    border-radius: 8px;
+  }
+  
+  .ct-group textarea {
+    min-height: 80px;
+  }
+  
+  .ct-group input[type="file"] {
+    padding: 8px;
+  }
+  
+  .ct-group input[type="file"]::-webkit-file-upload-button {
+    padding: 6px 12px;
+    font-size: 12px;
+    margin-right: 10px;
+  }
+  
+  .ct-btn {
+    padding: 12px 20px;
+    font-size: 15px;
+    border-radius: 8px;
+  }
+}
+
+/* SMALL MOBILE (up to 480px) */
+@media (max-width: 480px) {
+  .ct-page {
+    max-width: 100%;
+    padding: 15px 12px;
+  }
+  
+  .ct-card {
+    padding: 18px;
+    border-radius: 12px;
+  }
+  
+  .ct-card h2 {
+    font-size: 20px;
+  }
+  
+  .ct-card p {
+    font-size: 12px;
+    margin-bottom: 18px;
+  }
+  
+  .ct-form {
+    gap: 14px;
+  }
+  
+  .ct-group label {
+    font-size: 12px;
+  }
+  
+  .ct-group input,
+  .ct-group select,
+  .ct-group textarea {
+    padding: 9px 11px;
+    font-size: 13px;
+    border-radius: 7px;
+  }
+  
+  .ct-group textarea {
+    min-height: 70px;
+  }
+  
+  .ct-group input[type="file"] {
+    padding: 6px;
+    font-size: 12px;
+  }
+  
+  .ct-group input[type="file"]::-webkit-file-upload-button {
+    padding: 5px 10px;
+    font-size: 11px;
+  }
+  
+  .ct-btn {
+    padding: 10px 18px;
+    font-size: 14px;
+    border-radius: 7px;
+    margin-top: 5px;
+  }
+}
+
+/* EXTRA SMALL (up to 360px) */
+@media (max-width: 360px) {
+  .ct-page {
+    padding: 10px 10px;
+  }
+  
+  .ct-card {
+    padding: 15px;
+  }
+  
+  .ct-card h2 {
+    font-size: 18px;
+  }
+  
+  .ct-card p {
+    font-size: 11px;
+  }
+  
+  .ct-group input,
+  .ct-group select,
+  .ct-group textarea {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+  
+  .ct-group label {
+    font-size: 11px;
+  }
+  
+  .ct-btn {
+    padding: 9px 16px;
+    font-size: 13px;
+  }
+}
+
+/* LARGE DESKTOP (1200px+) */
+@media (min-width: 1200px) {
+  .ct-page {
+    max-width: 900px;
+    padding: 50px 20px;
+  }
+  
+  .ct-card {
+    padding: 45px;
+    border-radius: 24px;
+  }
+  
+  .ct-card h2 {
+    font-size: 32px;
+    margin-bottom: 12px;
+  }
+  
+  .ct-card p {
+    font-size: 16px;
+    margin-bottom: 35px;
+  }
+  
+  .ct-form {
+    gap: 24px;
+  }
+  
+  .ct-group input,
+  .ct-group select,
+  .ct-group textarea {
+    padding: 14px 18px;
+    font-size: 15px;
+  }
+  
+  .ct-group label {
+    font-size: 15px;
+  }
+  
+  .ct-btn {
+    padding: 16px 32px;
+    font-size: 17px;
+  }
+}
+
+/* Fix for dark mode text colors */
 @media (prefers-color-scheme: dark) {
+  body {
+    background: #111827;
+  }
+  
   .ct-card {
     background: #1f2937;
     border-color: #374151;
   }
 
   .ct-card h2 {
-    color: #000000;
+    color: #f9fafb;
+  }
+
+  .ct-card p {
+    color: #d1d5db;
   }
 
   .ct-group label {
-    color: #000000;
+    color: #f3f4f6;
   }
 
   .ct-group input,
@@ -165,11 +447,32 @@ body{
   .ct-group textarea {
     background: #374151;
     border-color: #4b5563;
-    color: #000000;
+    color: #f9fafb;
+  }
+
+  .ct-group input:focus,
+  .ct-group select:focus,
+  .ct-group textarea:focus {
+    border-color: #818cf8;
+    box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.2);
   }
 
   .ct-group input::placeholder,
   .ct-group textarea::placeholder {
-    color: #0000003e;
+    color: #9ca3af;
+  }
+  
+  .ct-group input[type="file"] {
+    background: #374151;
+    color: #f9fafb;
+  }
+  
+  .ct-group input[type="file"]::-webkit-file-upload-button {
+    background: #6366f1;
+    color: white;
+  }
+  
+  .ct-group input[type="file"]::-webkit-file-upload-button:hover {
+    background: #818cf8;
   }
 }

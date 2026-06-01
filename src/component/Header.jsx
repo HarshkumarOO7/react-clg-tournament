@@ -25,6 +25,125 @@ export default function Header() {
   const isOrganizer = user?.role === "organizer";
   const unreadCount = notifications.filter(n => !n.isRead).length;
 
+  // Close mobile menu on route change
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [location.pathname]);
+
+  // Handle scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Handle click outside for dropdowns
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (profileRef.current && !profileRef.current.contains(e.target)) {
+        setOpenProfile(false);
+      }
+      if (notificationRef.current && !notificationRef.current.contains(e.target)) {
+        setOpenNotification(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  // Close mobile menu on resize
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768 && mobileMenuOpen) {
+        setMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [mobileMenuOpen]);
+
+  // Fetch captain status
+  useEffect(() => {
+    if (user) {
+      api.get("/api/teams/captain-teams")
+        .then(res => setIsCaptain(res.data.length > 0))
+        .catch(() => setIsCaptain(false));
+    }
+  }, [user]);
+
+  // Socket connection for notifications
+  useEffect(() => {
+    if (user?._id) {
+      socket.emit("register", user._id);
+    }
+  }, [user]);
+
+  // Listen for new notifications
+  useEffect(() => {
+    const handleNotification = (data) => {
+      setNotifications(prev => [data, ...prev]);
+    };
+    socket.on("new_notification", handleNotification);
+    return () => socket.off("new_notification", handleNotification);
+  }, []);
+
+  // Fetch existing notifications
+  useEffect(() => {
+    if (user) {
+      api.get("/api/notifications")
+        .then(res => setNotifications(res.data))
+        .catch(err => console.error("Notification fetch error", err));
+    }
+  }, [user]);
+
+  const handleLogout = () => {
+    logout();
+    setOpenProfile(false);
+    setMobileMenuOpen(false);
+    navigate("/login");
+  };
+
+  const markAsRead = async (n) => {
+    try {
+      if (!n._id) return;
+      await api.put(`/notifications/${n._id}`);
+      setNotifications(prev => prev.map(item =>
+        item._id === n._id ? { ...item, isRead: true } : item
+      ));
+      if (n.type === "join_request") {
+        navigate("/approve-players");
+        setOpenNotification(false);
+      } else if (n.type === "registration_approved") {
+        navigate("/my-registrations");
+        setOpenNotification(false);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const markAllAsRead = async () => {
+    const unreadNotifications = notifications.filter(n => !n.isRead);
+    for (const n of unreadNotifications) {
+      try {
+        await api.put(`/notifications/${n._id}`);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    setNotifications(prev => prev.map(n => ({ ...n, isRead: true })));
+  };
+
+  const isActive = (path) => location.pathname === path;
+
+  // Get breadcrumb path
+  const breadcrumb = location.pathname
+    .replace("/admin", "")
+    .replace("/", "")
+    .replace(/-/g, " ") || "dashboard";
+
   // ==================== ADMIN NAVIGATION ====================
   const adminNavLinks = {
     main: [
@@ -123,9 +242,8 @@ export default function Header() {
     notifications: { path: "/notifications", label: "Notifications", icon: "🔔" }
   };
 
-  // ==================== ORGANIZER NAVIGATION (CLEANED) ====================
+  // ==================== ORGANIZER NAVIGATION ====================
   const organizerNavLinks = {
-    // Combined Tournament Dropdown (My Tournaments + Create Tournament)
     dropdowns: {
       tournaments: {
         icon: "🏆",
@@ -195,84 +313,6 @@ export default function Header() {
     notifications: { path: "/notifications", label: "Notifications", icon: "🔔" }
   };
 
-  // Effects
-  useEffect(() => {
-    if (user) {
-      api.get("/api/teams/captain-teams")
-        .then(res => setIsCaptain(res.data.length > 0))
-        .catch(() => setIsCaptain(false));
-    }
-  }, [user]);
-
-  useEffect(() => {
-    if (user?._id) socket.emit("register", user._id);
-  }, [user]);
-
-  useEffect(() => {
-    const handleNotification = (data) => setNotifications(prev => [data, ...prev]);
-    socket.on("new_notification", handleNotification);
-    return () => socket.off("new_notification", handleNotification);
-  }, []);
-
-  useEffect(() => {
-    if (user) {
-      api.get("/api/notifications")
-        .then(res => setNotifications(res.data))
-        .catch(err => console.error("Notification fetch error", err));
-    }
-  }, [user]);
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (profileRef.current && !profileRef.current.contains(e.target)) setOpenProfile(false);
-      if (notificationRef.current && !notificationRef.current.contains(e.target)) setOpenNotification(false);
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
-  const handleLogout = () => {
-    logout();
-    setOpenProfile(false);
-    navigate("/login");
-  };
-
-  const markAsRead = async (n) => {
-    try {
-      if (!n._id) return;
-      await api.put(`/notifications/${n._id}`);
-      setNotifications(prev => prev.map(item =>
-        item._id === n._id ? { ...item, isRead: true } : item
-      ));
-      if (n.type === "join_request") {
-        navigate("/approve-players");
-        setOpenNotification(false);
-      } else if (n.type === "registration_approved") {
-        navigate("/my-registrations");
-        setOpenNotification(false);
-      }
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  const markAllAsRead = async () => {
-    const unreadNotifications = notifications.filter(n => !n.isRead);
-    for (const n of unreadNotifications) {
-      try { await api.put(`/notifications/${n._id}`); } catch (err) { console.error(err); }
-    }
-    setNotifications(prev => prev.map(n => ({ ...n, isRead: true })));
-  };
-
-  const isActive = (path) => location.pathname === path;
-  const breadcrumb = location.pathname.replace("/admin", "").replace("/", "").replace(/-/g, " ") || "dashboard";
-
   return (
     <>
       <header className={`navbar ${scrolled ? "scrolled" : ""} ${isAdmin ? "admin-navbar" : ""}`}>
@@ -283,7 +323,7 @@ export default function Header() {
 
         {/* Mobile Menu Button */}
         <div className="mobile-menu-btn" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-          ☰
+          {mobileMenuOpen ? "✕" : "☰"}
         </div>
 
         {!loading && (
@@ -294,7 +334,12 @@ export default function Header() {
                 <>
                   {/* Admin Main Links */}
                   {adminNavLinks.main.map(link => (
-                    <Link key={link.path} to={link.path} className={isActive(link.path) ? "active" : ""}>
+                    <Link 
+                      key={link.path} 
+                      to={link.path} 
+                      className={isActive(link.path) ? "active" : ""}
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
                       {link.icon} {link.label}
                     </Link>
                   ))}
@@ -304,7 +349,13 @@ export default function Header() {
                       <span className="nav-link">{dropdown.icon} {dropdown.label} ▾</span>
                       <div className="dropdown-menu">
                         {dropdown.links.map(link => (
-                          <Link key={link.path} to={link.path}>{link.label}</Link>
+                          <Link 
+                            key={link.path} 
+                            to={link.path}
+                            onClick={() => setMobileMenuOpen(false)}
+                          >
+                            {link.label}
+                          </Link>
                         ))}
                       </div>
                     </div>
@@ -312,13 +363,17 @@ export default function Header() {
                 </>
               ) : isOrganizer ? (
                 <>
-                  {/* Organizer - Only Dropdowns (No Main Links) */}
+                  {/* Organizer - Only Dropdowns */}
                   {Object.values(organizerNavLinks.dropdowns).map((dropdown, idx) => (
                     <div key={idx} className="nav-dropdown">
                       <span className="nav-link">{dropdown.icon} {dropdown.label} ▾</span>
                       <div className="dropdown-menu">
                         {dropdown.links.map(link => (
-                          <Link key={link.path} to={link.path}>
+                          <Link 
+                            key={link.path} 
+                            to={link.path}
+                            onClick={() => setMobileMenuOpen(false)}
+                          >
                             {link.icon && <span style={{ marginRight: "8px" }}>{link.icon}</span>}
                             {link.label}
                           </Link>
@@ -327,7 +382,11 @@ export default function Header() {
                     </div>
                   ))}
                   {/* Notifications Link */}
-                  <Link to={organizerNavLinks.notifications.path} className="notifications-link">
+                  <Link 
+                    to={organizerNavLinks.notifications.path} 
+                    className="notifications-link"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
                     🔔 {organizerNavLinks.notifications.label}
                     {unreadCount > 0 && <span className="notif-link-badge">{unreadCount}</span>}
                   </Link>
@@ -336,7 +395,12 @@ export default function Header() {
                 <>
                   {/* Player Main Links */}
                   {playerNavLinks.main.map(link => (
-                    <Link key={link.path} to={link.path} className={isActive(link.path) ? "active" : ""}>
+                    <Link 
+                      key={link.path} 
+                      to={link.path} 
+                      className={isActive(link.path) ? "active" : ""}
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
                       {link.icon} {link.label}
                     </Link>
                   ))}
@@ -346,7 +410,11 @@ export default function Header() {
                       <span className="nav-link">{dropdown.icon} {dropdown.label} ▾</span>
                       <div className="dropdown-menu">
                         {dropdown.links.map(link => (
-                          <Link key={link.path} to={link.path}>
+                          <Link 
+                            key={link.path} 
+                            to={link.path}
+                            onClick={() => setMobileMenuOpen(false)}
+                          >
                             {link.icon && <span style={{ marginRight: "8px" }}>{link.icon}</span>}
                             {link.label}
                           </Link>
@@ -355,7 +423,11 @@ export default function Header() {
                     </div>
                   ))}
                   {/* Notifications Link */}
-                  <Link to={playerNavLinks.notifications.path} className="notifications-link">
+                  <Link 
+                    to={playerNavLinks.notifications.path} 
+                    className="notifications-link"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
                     🔔 {playerNavLinks.notifications.label}
                     {unreadCount > 0 && <span className="notif-link-badge">{unreadCount}</span>}
                   </Link>
@@ -373,14 +445,14 @@ export default function Header() {
                 </div>
               )}
 
-              {/* Profile */}
+              {/* Profile Dropdown */}
               {user ? (
                 <div className="profile-wrapper" ref={profileRef}>
                   <div className="profile-icon" onClick={() => setOpenProfile(!openProfile)}>
                     {user.profileImage ? (
                       <img src={user.profileImage} alt="Profile" />
                     ) : (
-                      user.name?.charAt(0)?.toUpperCase()
+                      user.name?.charAt(0)?.toUpperCase() || "U"
                     )}
                   </div>
 
@@ -417,12 +489,16 @@ export default function Header() {
                 <Link to="/login" className="login-btn">🔐 Login</Link>
               )}
             </div>
-
-            {/* Admin Breadcrumb */}
-            {isAdmin && <div className="admin-breadcrumb">Admin / {breadcrumb}</div>}
           </>
         )}
       </header>
+
+      {/* Admin Breadcrumb */}
+      {isAdmin && !loading && (
+        <div className="admin-breadcrumb">
+          Admin / {breadcrumb.charAt(0).toUpperCase() + breadcrumb.slice(1)}
+        </div>
+      )}
 
       {/* Notification Popup */}
       {openNotification && (
@@ -437,16 +513,22 @@ export default function Header() {
                 <button onClick={() => setOpenNotification(false)} className="close-btn">×</button>
               </div>
             </div>
-            {notifications.length > 0 ? (
-              notifications.map(n => (
-                <div key={n._id} className={`notif-item ${!n.isRead ? "unread" : ""}`} onClick={() => markAsRead(n)}>
-                  <p>{n.message}</p>
-                  <small>{n.createdAt ? new Date(n.createdAt).toLocaleString() : "Just now"}</small>
-                </div>
-              ))
-            ) : (
-              <div className="empty-notif">📭 No notifications</div>
-            )}
+            <div style={{ flex: 1, overflowY: "auto" }}>
+              {notifications.length > 0 ? (
+                notifications.map(n => (
+                  <div 
+                    key={n._id} 
+                    className={`notif-item ${!n.isRead ? "unread" : ""}`} 
+                    onClick={() => markAsRead(n)}
+                  >
+                    <p>{n.message}</p>
+                    <small>{n.createdAt ? new Date(n.createdAt).toLocaleString() : "Just now"}</small>
+                  </div>
+                ))
+              ) : (
+                <div className="empty-notif">📭 No notifications</div>
+              )}
+            </div>
           </div>
         </div>
       )}

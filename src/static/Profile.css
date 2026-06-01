@@ -1,3 +1,5 @@
+/* Profile.css - Fully Responsive */
+
 .profile-container {
   max-width: 1000px;
   margin: 40px auto;
@@ -67,12 +69,35 @@
   text-transform: capitalize;
 }
 
+.profile-email {
+  font-size: 0.9rem;
+  opacity: 0.85;
+  margin-top: 8px;
+}
+
 /* Tabs */
 .profile-tabs {
   display: flex;
   border-bottom: 1px solid #e5e7eb;
   padding: 0 40px;
   background: #f9fafb;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
+.profile-tabs::-webkit-scrollbar {
+  height: 4px;
+}
+
+.profile-tabs::-webkit-scrollbar-track {
+  background: #e5e7eb;
+  border-radius: 10px;
+}
+
+.profile-tabs::-webkit-scrollbar-thumb {
+  background: #4f46e5;
+  border-radius: 10px;
 }
 
 .tab-btn {
@@ -85,6 +110,7 @@
   cursor: pointer;
   transition: all 0.3s;
   position: relative;
+  white-space: nowrap;
 }
 
 .tab-btn:hover {
@@ -152,6 +178,7 @@
   border-radius: 8px;
   font-size: 1rem;
   transition: all 0.3s;
+  font-family: inherit;
 }
 
 .form-group input:focus,
@@ -167,6 +194,12 @@
 .form-group textarea:disabled {
   background: #f3f4f6;
   cursor: not-allowed;
+  color: #6b7280;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #9ca3af;
 }
 
 .form-row {
@@ -249,6 +282,7 @@
 
 .cancel-btn:hover {
   background: #6b7280;
+  transform: translateY(-2px);
 }
 
 /* Danger Zone */
@@ -260,6 +294,12 @@
 
 .danger-zone h3 {
   color: #ef4444;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.danger-zone p {
+  color: #6b7280;
   margin-bottom: 20px;
 }
 
@@ -277,6 +317,7 @@
 
 .deactivate-btn:hover {
   background: #dc2626;
+  transform: translateY(-2px);
 }
 
 /* Teams & Registrations */
@@ -300,13 +341,14 @@
 }
 
 .team-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
 }
 
 .team-card h3 {
   color: #1f2937;
   margin-bottom: 10px;
+  font-size: 18px;
 }
 
 .team-role {
@@ -325,6 +367,7 @@
   color: #10b981;
   font-weight: 500;
   margin-bottom: 15px;
+  font-size: 0.9rem;
 }
 
 .view-btn {
@@ -340,6 +383,7 @@
 
 .view-btn:hover {
   background: #6366f1;
+  transform: translateY(-2px);
 }
 
 /* Registrations */
@@ -354,6 +398,12 @@
   padding: 20px;
   border-radius: 10px;
   border: 1px solid #e5e7eb;
+  transition: all 0.3s;
+}
+
+.registration-card:hover {
+  transform: translateX(2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
 .reg-header {
@@ -361,27 +411,49 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 15px;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .reg-header h3 {
   color: #1f2937;
+  margin: 0;
+  font-size: 18px;
 }
 
 .reg-team {
   color: #4f46e5;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
+  font-size: 14px;
 }
 
 .reg-date {
   color: #6b7280;
   font-size: 0.9rem;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
 }
 
 .reg-payment {
-  color: #10b981;
-  font-size: 0.9rem;
-  text-transform: capitalize;
+  margin-bottom: 15px;
+}
+
+.payment-status {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-left: 8px;
+}
+
+.payment-status.paid {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.payment-status.pending {
+  background: #fef3c7;
+  color: #d97706;
 }
 
 /* Empty State */
@@ -389,12 +461,30 @@
   text-align: center;
   padding: 60px 20px;
   background: #f9fafb;
-  border-radius: 10px;
+  border-radius: 12px;
 }
 
 .empty-state p {
   color: #6b7280;
   margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.primary-btn {
+  padding: 10px 24px;
+  background: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.primary-btn:hover {
+  background: #6366f1;
+  transform: translateY(-2px);
 }
 
 /* Loading */
@@ -416,44 +506,533 @@
   margin-bottom: 20px;
 }
 
+.loading-spinner {
+  text-align: center;
+  padding: 40px;
+  color: #6b7280;
+}
+
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
 
-/* Responsive */
+/* ================= RESPONSIVE DESIGN ================= */
+
+/* TABLET (768px - 1024px) */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .profile-container {
+    margin: 30px 20px;
+  }
+  
+  .profile-header {
+    padding: 50px 30px 35px;
+  }
+  
+  .profile-name {
+    font-size: 1.8rem;
+  }
+  
+  .profile-content {
+    padding: 35px;
+  }
+  
+  .teams-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 18px;
+  }
+}
+
+/* LARGE MOBILE (641px - 768px) */
 @media (max-width: 768px) {
   .profile-container {
     margin: 20px;
+    border-radius: 16px;
   }
 
   .profile-header {
-    padding: 40px 20px;
+    padding: 40px 20px 30px;
+  }
+  
+  .profile-avatar-wrapper {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .avatar-upload {
+    width: 28px;
+    height: 28px;
   }
 
   .profile-name {
     font-size: 1.5rem;
   }
+  
+  .profile-role {
+    font-size: 0.9rem;
+  }
+  
+  .profile-email {
+    font-size: 0.8rem;
+  }
 
   .profile-tabs {
     padding: 0 20px;
-    overflow-x: auto;
   }
 
   .tab-btn {
-    padding: 12px 15px;
+    padding: 12px 18px;
     font-size: 0.9rem;
   }
 
   .profile-content {
-    padding: 20px;
+    padding: 25px;
+  }
+  
+  .edit-profile-btn {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 25px;
+  }
+  
+  .profile-form {
+    max-width: 100%;
   }
 
   .form-row {
     grid-template-columns: 1fr;
     gap: 0;
   }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 10px;
+    font-size: 14px;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .save-btn,
+  .cancel-btn {
+    width: 100%;
+    text-align: center;
+  }
 
   .teams-grid {
     grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .team-card {
+    padding: 18px;
+  }
+  
+  .registration-card {
+    padding: 18px;
+  }
+  
+  .reg-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .danger-zone {
+    margin-top: 40px;
+    padding-top: 25px;
+  }
+  
+  .deactivate-btn {
+    width: 100%;
+  }
+}
+
+/* MOBILE (up to 640px) */
+@media (max-width: 640px) {
+  .profile-container {
+    margin: 15px;
+    border-radius: 14px;
+  }
+  
+  .profile-header {
+    padding: 35px 15px 25px;
+  }
+  
+  .profile-avatar-wrapper {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .profile-name {
+    font-size: 1.3rem;
+  }
+  
+  .profile-tabs {
+    padding: 0 15px;
+  }
+  
+  .tab-btn {
+    padding: 10px 14px;
+    font-size: 0.85rem;
+  }
+  
+  .profile-content {
+    padding: 20px;
+  }
+  
+  .team-card h3,
+  .reg-header h3 {
+    font-size: 16px;
+  }
+  
+  .team-role,
+  .team-sport,
+  .team-players,
+  .reg-team,
+  .reg-date {
+    font-size: 13px;
+  }
+  
+  .empty-state {
+    padding: 40px 15px;
+  }
+  
+  .empty-state p {
+    font-size: 14px;
+  }
+  
+  .primary-btn {
+    padding: 8px 20px;
+    font-size: 13px;
+  }
+  
+  .danger-zone h3 {
+    font-size: 16px;
+  }
+  
+  .danger-zone p {
+    font-size: 13px;
+  }
+  
+  .deactivate-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
+
+/* SMALL MOBILE (up to 480px) */
+@media (max-width: 480px) {
+  .profile-container {
+    margin: 10px;
+  }
+  
+  .profile-header {
+    padding: 30px 12px 20px;
+  }
+  
+  .profile-avatar-wrapper {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .avatar-upload {
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+  }
+  
+  .profile-name {
+    font-size: 1.2rem;
+  }
+  
+  .profile-role,
+  .profile-email {
+    font-size: 0.75rem;
+  }
+  
+  .tab-btn {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+  }
+  
+  .profile-content {
+    padding: 15px;
+  }
+  
+  .form-group label {
+    font-size: 13px;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 8px;
+    font-size: 13px;
+  }
+  
+  .team-card {
+    padding: 15px;
+  }
+  
+  .registration-card {
+    padding: 15px;
+  }
+}
+
+/* LARGE DESKTOP (1200px+) */
+@media (min-width: 1200px) {
+  .profile-container {
+    max-width: 1100px;
+    margin: 50px auto;
+  }
+  
+  .profile-header {
+    padding: 70px 50px 50px;
+  }
+  
+  .profile-avatar-wrapper {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .profile-name {
+    font-size: 2.2rem;
+  }
+  
+  .profile-content {
+    padding: 50px;
+  }
+  
+  .teams-grid {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
+  }
+  
+  .team-card {
+    padding: 25px;
+  }
+  
+  .team-card h3 {
+    font-size: 20px;
+  }
+}
+
+/* ================= DARK MODE SUPPORT ================= */
+@media (prefers-color-scheme: dark) {
+  .profile-container {
+    background: #1f2937;
+  }
+  
+  .profile-tabs {
+    background: #111827;
+    border-bottom-color: #374151;
+  }
+  
+  .tab-btn {
+    color: #9ca3af;
+  }
+  
+  .tab-btn:hover,
+  .tab-btn.active {
+    color: #a78bfa;
+  }
+  
+  .profile-content {
+    background: #1f2937;
+  }
+  
+  .form-group label {
+    color: #d1d5db;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: #374151;
+    border-color: #4b5563;
+    color: #f3f4f6;
+  }
+  
+  .form-group input:disabled,
+  .form-group select:disabled,
+  .form-group textarea:disabled {
+    background: #1f2937;
+    color: #9ca3af;
+  }
+  
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: #818cf8;
+  }
+  
+  .team-card,
+  .registration-card {
+    background: #111827;
+    border-color: #374151;
+  }
+  
+  .team-card h3,
+  .reg-header h3 {
+    color: #f3f4f6;
+  }
+  
+  .team-role {
+    color: #a78bfa;
+  }
+  
+  .team-sport {
+    color: #9ca3af;
+  }
+  
+  .empty-state {
+    background: #111827;
+  }
+  
+  .empty-state p {
+    color: #9ca3af;
+  }
+  
+  .info-box {
+    background: #111827;
+  }
+  
+  .info-box p {
+    color: #d1d5db;
+  }
+  
+  .danger-zone {
+    border-top-color: #374151;
+  }
+  
+  .payment-status.paid {
+    background: #064e3b;
+    color: #34d399;
+  }
+  
+  .payment-status.pending {
+    background: #451a03;
+    color: #fbbf24;
+  }
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.team-card,
+.registration-card {
+  animation: fadeInUp 0.3s ease forwards;
+}
+
+/* Stagger animations */
+.team-card:nth-child(1) { animation-delay: 0.05s; }
+.team-card:nth-child(2) { animation-delay: 0.1s; }
+.team-card:nth-child(3) { animation-delay: 0.15s; }
+.team-card:nth-child(4) { animation-delay: 0.2s; }
+.team-card:nth-child(5) { animation-delay: 0.25s; }
+
+.registration-card:nth-child(1) { animation-delay: 0.05s; }
+.registration-card:nth-child(2) { animation-delay: 0.1s; }
+.registration-card:nth-child(3) { animation-delay: 0.15s; }
+.registration-card:nth-child(4) { animation-delay: 0.2s; }
+
+/* ================= REDUCED MOTION ================= */
+@media (prefers-reduced-motion: reduce) {
+  .team-card,
+  .registration-card {
+    animation: none;
+  }
+  
+  .team-card:hover,
+  .registration-card:hover,
+  .edit-profile-btn:hover,
+  .save-btn:hover,
+  .cancel-btn:hover,
+  .deactivate-btn:hover,
+  .view-btn:hover,
+  .primary-btn:hover {
+    transform: none;
+  }
+  
+  .spinner {
+    animation: none;
+  }
+}
+
+/* ================= TOUCH DEVICE OPTIMIZATIONS ================= */
+@media (hover: none) and (pointer: coarse) {
+  .team-card:hover,
+  .registration-card:hover {
+    transform: none;
+  }
+  
+  .avatar-upload:hover {
+    transform: none;
+  }
+}
+
+/* ================= PRINT STYLES ================= */
+@media print {
+  .profile-container {
+    margin: 0;
+    box-shadow: none;
+  }
+  
+  .avatar-upload,
+  .edit-profile-btn,
+  .form-actions,
+  .danger-zone,
+  .view-btn,
+  .primary-btn,
+  .profile-tabs {
+    display: none;
+  }
+  
+  .profile-form {
+    max-width: 100%;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    border: none;
+    padding: 0;
+  }
+}
+
+/* ================= ACCESSIBILITY FOCUS STATES ================= */
+.tab-btn:focus-visible,
+.edit-profile-btn:focus-visible,
+.save-btn:focus-visible,
+.cancel-btn:focus-visible,
+.deactivate-btn:focus-visible,
+.view-btn:focus-visible,
+.primary-btn:focus-visible,
+.avatar-upload:focus-visible {
+  outline: 2px solid #4f46e5;
+  outline-offset: 2px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .tab-btn:focus-visible,
+  .edit-profile-btn:focus-visible,
+  .save-btn:focus-visible,
+  .cancel-btn:focus-visible,
+  .deactivate-btn:focus-visible,
+  .view-btn:focus-visible,
+  .primary-btn:focus-visible,
+  .avatar-upload:focus-visible {
+    outline-color: #a78bfa;
   }
 }

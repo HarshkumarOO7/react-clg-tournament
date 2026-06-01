@@ -1,3 +1,5 @@
+/* contact.css - Fully Responsive */
+
 .contact-section {
   padding: 80px 60px;
   background: #ffffff;
@@ -21,6 +23,9 @@
 .contact-subtitle {
   color: #555;
   margin-bottom: 50px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* INFO BOXES */
@@ -35,6 +40,12 @@
   background: #fff;
   padding: 35px 20px;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.info-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.12);
 }
 
 .info-box.large {
@@ -51,16 +62,25 @@
   margin: 0 auto 15px;
   font-size: 22px;
   color: #f82249;
+  transition: all 0.3s;
+}
+
+.info-box:hover .icon-circle {
+  background: #f82249;
+  color: white;
+  border: 2px solid #f82249;
 }
 
 .info-box h4 {
   margin-bottom: 8px;
   color: #0b0b3b;
+  font-size: 18px;
 }
 
 .info-box p {
   color: #555;
   font-size: 15px;
+  line-height: 1.5;
 }
 
 /* MAP + FORM */
@@ -71,6 +91,12 @@
 }
 
 /* MAP */
+.map-box {
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.08);
+}
+
 .map-box iframe {
   width: 100%;
   height: 100%;
@@ -83,6 +109,7 @@
   background: #fff;
   padding: 30px;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
 }
 
 .contact-form .row {
@@ -97,11 +124,20 @@
   margin-bottom: 15px;
   border: 1px solid #ddd;
   font-size: 14px;
+  transition: border-color 0.3s;
+  border-radius: 5px;
+  font-family: inherit;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #f82249;
 }
 
 .contact-form textarea {
   height: 120px;
-  resize: none;
+  resize: vertical;
 }
 
 .contact-form button {
@@ -112,22 +148,238 @@
   cursor: pointer;
   font-size: 15px;
   transition: 0.3s;
+  border-radius: 5px;
+  font-weight: 600;
 }
 
 .contact-form button:hover {
   background: #d91e40;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(248, 34, 73, 0.3);
 }
 
+/* ======================
+   RESPONSIVE DESIGN
+   Laptop view untouched, only tablet & mobile improvements
+====================== */
+
+/* TABLET (768px - 1200px) */
+@media (max-width: 1200px) and (min-width: 769px) {
+  .contact-section {
+    padding: 60px 40px;
+  }
+  
+  .contact-info {
+    gap: 20px;
+  }
+  
+  .info-box {
+    padding: 25px 15px;
+  }
+  
+  .info-box.large {
+    padding: 25px;
+  }
+  
+  .contact-bottom {
+    gap: 25px;
+  }
+  
+  .contact-form {
+    padding: 25px;
+  }
+}
+
+/* TABLET PORTRAIT & LARGE MOBILE (768px - 992px) */
 @media (max-width: 992px) {
   .contact-info {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
-
+  
+  .info-box.large {
+    order: -1;
+  }
+  
   .contact-bottom {
     grid-template-columns: 1fr;
+    gap: 30px;
   }
-
+  
   .contact-form .row {
     flex-direction: column;
+    gap: 0;
+  }
+  
+  .map-box iframe {
+    min-height: 300px;
+  }
+}
+
+/* MOBILE (up to 768px) */
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 50px 20px;
+  }
+  
+  /* Title section */
+  .contact-title {
+    font-size: 28px;
+  }
+  
+  .contact-underline {
+    width: 45px;
+    margin: 8px auto 15px;
+  }
+  
+  .contact-subtitle {
+    font-size: 15px;
+    margin-bottom: 35px;
+    padding: 0 10px;
+  }
+  
+  /* Info boxes */
+  .contact-info {
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+  
+  .info-box {
+    padding: 25px 15px;
+  }
+  
+  .info-box.large {
+    padding: 25px 15px;
+  }
+  
+  .icon-circle {
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+  
+  .info-box h4 {
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+  
+  .info-box p {
+    font-size: 14px;
+  }
+  
+  /* Map and Form */
+  .contact-bottom {
+    gap: 25px;
+  }
+  
+  .map-box {
+    border-radius: 6px;
+  }
+  
+  .map-box iframe {
+    min-height: 250px;
+  }
+  
+  .contact-form {
+    padding: 20px;
+    border-radius: 6px;
+  }
+  
+  .contact-form .row {
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    padding: 12px;
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+  
+  .contact-form textarea {
+    height: 100px;
+  }
+  
+  .contact-form button {
+    padding: 10px 25px;
+    font-size: 14px;
+    width: 100%;
+    max-width: 200px;
+  }
+}
+
+/* SMALL MOBILE (up to 480px) */
+@media (max-width: 480px) {
+  .contact-section {
+    padding: 40px 15px;
+  }
+  
+  .contact-title {
+    font-size: 24px;
+  }
+  
+  .contact-subtitle {
+    font-size: 14px;
+    margin-bottom: 30px;
+  }
+  
+  .info-box {
+    padding: 20px 12px;
+  }
+  
+  .icon-circle {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+  
+  .info-box h4 {
+    font-size: 15px;
+  }
+  
+  .info-box p {
+    font-size: 13px;
+  }
+  
+  .map-box iframe {
+    min-height: 200px;
+  }
+  
+  .contact-form {
+    padding: 15px;
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    padding: 10px;
+    font-size: 13px;
+  }
+  
+  .contact-form button {
+    padding: 10px 20px;
+    font-size: 13px;
+    max-width: 180px;
+  }
+}
+
+/* LARGE DESKTOP (1400px+) */
+@media (min-width: 1400px) {
+  .contact-section {
+    padding: 100px 0;
+  }
+  
+  .contact-section > * {
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .contact-info,
+  .contact-bottom {
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }

@@ -1,12 +1,14 @@
-/* RESET */
+/* venue.css - Fully Responsive */
+
+/* ================= RESET ================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Segoe UI", sans-serif;
+  font-family: "Segoe UI", "Roboto", sans-serif;
 }
 
-/* NAVBAR */
+/* ================= NAVBAR ================= */
 .venue-navbar {
   background: #2f354b;
   padding: 18px 60px;
@@ -14,6 +16,14 @@
   justify-content: space-between;
   align-items: center;
   color: white;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.venue-navbar nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
 }
 
 .venue-navbar nav a {
@@ -21,6 +31,12 @@
   color: #cfd2da;
   font-size: 15px;
   cursor: pointer;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.venue-navbar nav a:hover {
+  color: white;
 }
 
 .venue-navbar nav a.active {
@@ -36,17 +52,27 @@
   border-radius: 25px;
   color: white;
   font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
 }
 
-/* TITLE */
+.ticket-btn:hover {
+  background: #e60032;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 23, 68, 0.3);
+}
+
+/* ================= TITLE SECTION ================= */
 .venue-title {
   text-align: center;
   padding: 80px 20px 50px;
+  background: linear-gradient(180deg, #ffffff, #f8fafc);
 }
 
 .venue-title h1 {
   font-size: 36px;
   color: #1a1a1a;
+  font-weight: 700;
 }
 
 .venue-title span {
@@ -55,69 +81,541 @@
   height: 3px;
   background: #ff1744;
   margin: 15px auto;
+  border-radius: 2px;
 }
 
 .venue-title p {
   color: #6b7280;
   max-width: 600px;
   margin: auto;
+  font-size: 16px;
+  line-height: 1.6;
 }
 
-/* MAP + INFO */
+/* ================= MAP + INFO SECTION ================= */
 .venue-main {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  background: #f5f7fa;
 }
 
 .venue-main iframe {
   width: 100%;
   height: 420px;
   border: none;
+  transition: all 0.3s;
 }
 
 .venue-info {
-  /* background: url("https://images.unsplash.com/photo-1497366216548-37526070297c") */
-  background: url(https://m.media-amazon.com/images/I/71cn0hnj7gL._AC_UF1000,1000_QL80_.jpg)
-  center/cover no-repeat;
+  background: url("https://m.media-amazon.com/images/I/71cn0hnj7gL._AC_UF1000,1000_QL80_.jpg") center/cover no-repeat;
   position: relative;
   color: white;
+  min-height: 420px;
 }
 
 .venue-info .overlay {
   position: absolute;
   inset: 0;
-  background: rgba(10, 15, 30, 0.8);
+  background: rgba(10, 15, 30, 0.85);
+  transition: background 0.3s;
 }
 
 .venue-info .text {
   position: relative;
   padding: 60px;
+  z-index: 1;
 }
 
 .venue-info h2 {
   font-size: 28px;
   margin-bottom: 15px;
+  font-weight: 700;
 }
 
-/* GALLERY */
+.venue-info p {
+  font-size: 16px;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* ================= GALLERY SECTION ================= */
 .venue-gallery {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  gap: 0;
 }
 
 .venue-gallery img {
   width: 100%;
-  height: 220px;
+  height: 250px;
   object-fit: cover;
+  transition: transform 0.4s ease;
+  cursor: pointer;
 }
 
-/* RESPONSIVE */
+.venue-gallery img:hover {
+  transform: scale(1.02);
+}
+
+/* ================= RESPONSIVE DESIGN ================= */
+
+/* TABLET LANDSCAPE (900px - 1200px) */
+@media (max-width: 1200px) and (min-width: 901px) {
+  .venue-navbar {
+    padding: 15px 40px;
+  }
+  
+  .venue-title {
+    padding: 70px 20px 45px;
+  }
+  
+  .venue-title h1 {
+    font-size: 32px;
+  }
+  
+  .venue-info .text {
+    padding: 40px;
+  }
+  
+  .venue-info h2 {
+    font-size: 24px;
+  }
+  
+  .venue-gallery img {
+    height: 220px;
+  }
+}
+
+/* TABLET PORTRAIT (768px - 900px) */
 @media (max-width: 900px) {
+  .venue-navbar {
+    padding: 15px 30px;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .venue-navbar nav {
+    justify-content: center;
+  }
+  
+  .venue-title {
+    padding: 60px 20px 40px;
+  }
+  
+  .venue-title h1 {
+    font-size: 28px;
+  }
+  
+  .venue-title p {
+    font-size: 14px;
+    padding: 0 15px;
+  }
+  
   .venue-main {
     grid-template-columns: 1fr;
   }
-
+  
+  .venue-main iframe {
+    height: 350px;
+  }
+  
+  .venue-info {
+    min-height: auto;
+  }
+  
+  .venue-info .text {
+    padding: 40px 30px;
+  }
+  
+  .venue-info h2 {
+    font-size: 24px;
+  }
+  
+  .venue-info p {
+    font-size: 14px;
+  }
+  
   .venue-gallery {
     grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .venue-gallery img {
+    height: 200px;
+  }
+}
+
+/* LARGE MOBILE (641px - 768px) */
+@media (max-width: 768px) {
+  .venue-navbar {
+    padding: 12px 20px;
+  }
+  
+  .venue-navbar nav a {
+    margin: 0 8px;
+    font-size: 14px;
+  }
+  
+  .ticket-btn {
+    padding: 8px 18px;
+    font-size: 14px;
+  }
+  
+  .venue-title {
+    padding: 50px 15px 35px;
+  }
+  
+  .venue-title h1 {
+    font-size: 26px;
+  }
+  
+  .venue-title span {
+    width: 45px;
+    margin: 12px auto;
+  }
+  
+  .venue-title p {
+    font-size: 13px;
+  }
+  
+  .venue-main iframe {
+    height: 300px;
+  }
+  
+  .venue-info .text {
+    padding: 35px 25px;
+  }
+  
+  .venue-info h2 {
+    font-size: 22px;
+  }
+  
+  .venue-info p {
+    font-size: 13px;
+  }
+  
+  .venue-gallery img {
+    height: 180px;
+  }
+}
+
+/* MOBILE (up to 640px) */
+@media (max-width: 640px) {
+  .venue-title {
+    padding: 45px 12px 30px;
+  }
+  
+  .venue-title h1 {
+    font-size: 24px;
+  }
+  
+  .venue-title p {
+    font-size: 13px;
+  }
+  
+  .venue-main iframe {
+    height: 280px;
+  }
+  
+  .venue-info .text {
+    padding: 30px 20px;
+  }
+  
+  .venue-info h2 {
+    font-size: 20px;
+  }
+  
+  .venue-info p {
+    font-size: 13px;
+  }
+  
+  .venue-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .venue-gallery img {
+    height: 160px;
+  }
+}
+
+/* SMALL MOBILE (up to 480px) */
+@media (max-width: 480px) {
+  .venue-navbar {
+    padding: 10px 15px;
+  }
+  
+  .venue-navbar nav a {
+    margin: 0 6px;
+    font-size: 12px;
+  }
+  
+  .ticket-btn {
+    padding: 6px 14px;
+    font-size: 12px;
+  }
+  
+  .venue-title {
+    padding: 40px 10px 25px;
+  }
+  
+  .venue-title h1 {
+    font-size: 22px;
+  }
+  
+  .venue-title span {
+    width: 40px;
+    height: 2.5px;
+  }
+  
+  .venue-title p {
+    font-size: 12px;
+  }
+  
+  .venue-main iframe {
+    height: 250px;
+  }
+  
+  .venue-info .text {
+    padding: 25px 15px;
+  }
+  
+  .venue-info h2 {
+    font-size: 18px;
+  }
+  
+  .venue-info p {
+    font-size: 12px;
+  }
+  
+  .venue-gallery {
+    grid-template-columns: 1fr;
+  }
+  
+  .venue-gallery img {
+    height: 200px;
+  }
+}
+
+/* EXTRA SMALL (up to 360px) */
+@media (max-width: 360px) {
+  .venue-title h1 {
+    font-size: 20px;
+  }
+  
+  .venue-navbar nav a {
+    margin: 0 4px;
+    font-size: 11px;
+  }
+  
+  .venue-main iframe {
+    height: 220px;
+  }
+  
+  .venue-info .text {
+    padding: 20px 12px;
+  }
+  
+  .venue-info h2 {
+    font-size: 16px;
+  }
+  
+  .venue-gallery img {
+    height: 180px;
+  }
+}
+
+/* LARGE DESKTOP (1400px+) */
+@media (min-width: 1400px) {
+  .venue-title {
+    padding: 100px 20px 60px;
+  }
+  
+  .venue-title h1 {
+    font-size: 42px;
+  }
+  
+  .venue-title p {
+    max-width: 700px;
+    font-size: 18px;
+  }
+  
+  .venue-main iframe {
+    height: 500px;
+  }
+  
+  .venue-info .text {
+    padding: 80px;
+  }
+  
+  .venue-info h2 {
+    font-size: 32px;
+  }
+  
+  .venue-info p {
+    font-size: 18px;
+  }
+  
+  .venue-gallery img {
+    height: 300px;
+  }
+}
+
+/* ================= DARK MODE SUPPORT ================= */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #111827;
+  }
+  
+  .venue-title {
+    background: linear-gradient(180deg, #1f2937, #111827);
+  }
+  
+  .venue-title h1 {
+    color: #f3f4f6;
+  }
+  
+  .venue-title p {
+    color: #9ca3af;
+  }
+  
+  .venue-main {
+    background: #1f2937;
+  }
+  
+  .venue-info .overlay {
+    background: rgba(0, 0, 0, 0.7);
+  }
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.venue-title,
+.venue-main,
+.venue-gallery {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Stagger gallery images */
+.venue-gallery img:nth-child(1) { animation-delay: 0.05s; }
+.venue-gallery img:nth-child(2) { animation-delay: 0.1s; }
+.venue-gallery img:nth-child(3) { animation-delay: 0.15s; }
+.venue-gallery img:nth-child(4) { animation-delay: 0.2s; }
+
+/* ================= REDUCED MOTION ================= */
+@media (prefers-reduced-motion: reduce) {
+  .venue-title,
+  .venue-main,
+  .venue-gallery,
+  .venue-gallery img {
+    animation: none;
+  }
+  
+  .ticket-btn:hover,
+  .venue-gallery img:hover {
+    transform: none;
+  }
+}
+
+/* ================= ACCESSIBILITY ================= */
+.ticket-btn:focus-visible,
+.venue-navbar nav a:focus-visible {
+  outline: 2px solid #ff1744;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ================= PRINT STYLES ================= */
+@media print {
+  .venue-navbar,
+  .ticket-btn {
+    display: none;
+  }
+  
+  .venue-main {
+    grid-template-columns: 1fr;
+  }
+  
+  .venue-info .overlay {
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  .venue-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ================= LOADING STATE (Optional) ================= */
+.venue-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.venue-loading .spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e5e7eb;
+  border-top-color: #ff1744;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ================= HOVER EFFECTS ================= */
+.venue-gallery img {
+  position: relative;
+  overflow: hidden;
+}
+
+.venue-gallery img::after {
+  content: "📷";
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(0,0,0,0.5);
+  padding: 5px;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.venue-gallery img:hover::after {
+  opacity: 1;
+}
+
+/* ================= SCROLLBAR STYLING ================= */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ff1744;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e60032;
+}
+
+@media (prefers-color-scheme: dark) {
+  ::-webkit-scrollbar-track {
+    background: #374151;
   }
 }

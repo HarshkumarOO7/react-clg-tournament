@@ -1,3 +1,5 @@
+/* EditTeam.css - Fully Responsive */
+
 .edit-team-page {
   max-width: 500px;
   margin: 0 auto;
@@ -15,6 +17,7 @@
 .edit-team-card h2 {
   margin-bottom: 20px;
   color: #1f2937;
+  font-size: 24px;
 }
 
 .form-group {
@@ -26,6 +29,7 @@
   margin-bottom: 8px;
   font-weight: 500;
   color: #374151;
+  font-size: 14px;
 }
 
 .form-group input {
@@ -34,6 +38,18 @@
   border: 1px solid #d1d5db;
   border-radius: 8px;
   font-size: 16px;
+  transition: all 0.3s;
+  font-family: inherit;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.form-group input::placeholder {
+  color: #9ca3af;
 }
 
 .form-actions {
@@ -49,6 +65,14 @@
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.cancel-btn:hover {
+  background: #4b5563;
+  transform: translateY(-1px);
 }
 
 .save-btn {
@@ -58,4 +82,294 @@
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.save-btn:hover:not(:disabled) {
+  background: #6366f1;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3);
+}
+
+.save-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.loading {
+  text-align: center;
+  padding: 50px;
+  font-size: 16px;
+  color: #6b7280;
+}
+
+/* ======================
+   RESPONSIVE DESIGN
+   Laptop view untouched, only tablet & mobile improvements
+====================== */
+
+/* TABLET (600px - 1024px) */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .edit-team-page {
+    max-width: 450px;
+    padding: 35px 20px;
+  }
+  
+  .edit-team-card {
+    padding: 28px;
+  }
+  
+  .edit-team-card h2 {
+    font-size: 22px;
+    margin-bottom: 18px;
+  }
+  
+  .form-group input {
+    padding: 9px;
+  }
+}
+
+/* LARGE MOBILE (641px - 768px) */
+@media (max-width: 768px) {
+  .edit-team-page {
+    max-width: 90%;
+    padding: 30px 15px;
+  }
+  
+  .edit-team-card {
+    padding: 25px;
+    border-radius: 10px;
+  }
+  
+  .edit-team-card h2 {
+    font-size: 22px;
+    margin-bottom: 18px;
+  }
+  
+  .form-group {
+    margin-bottom: 18px;
+  }
+  
+  .form-group label {
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+  
+  .form-group input {
+    padding: 10px 12px;
+    font-size: 15px;
+    border-radius: 7px;
+  }
+  
+  .form-actions {
+    gap: 12px;
+  }
+  
+  .cancel-btn,
+  .save-btn {
+    padding: 9px 18px;
+    font-size: 14px;
+  }
+}
+
+/* MOBILE (up to 640px) */
+@media (max-width: 640px) {
+  .edit-team-page {
+    max-width: 95%;
+    padding: 20px 15px;
+  }
+  
+  .edit-team-card {
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .edit-team-card h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .form-group {
+    margin-bottom: 16px;
+  }
+  
+  .form-group label {
+    font-size: 13px;
+  }
+  
+  .form-group input {
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 7px;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .cancel-btn,
+  .save-btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 6px;
+  }
+  
+  .cancel-btn {
+    order: 2;
+  }
+  
+  .save-btn {
+    order: 1;
+  }
+}
+
+/* SMALL MOBILE (up to 480px) */
+@media (max-width: 480px) {
+  .edit-team-page {
+    max-width: 100%;
+    padding: 15px 12px;
+  }
+  
+  .edit-team-card {
+    padding: 18px;
+    border-radius: 8px;
+  }
+  
+  .edit-team-card h2 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+  
+  .form-group {
+    margin-bottom: 14px;
+  }
+  
+  .form-group label {
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input {
+    padding: 9px;
+    font-size: 14px;
+    border-radius: 6px;
+  }
+  
+  .cancel-btn,
+  .save-btn {
+    padding: 9px;
+    font-size: 13px;
+  }
+}
+
+/* EXTRA SMALL (up to 360px) */
+@media (max-width: 360px) {
+  .edit-team-page {
+    padding: 10px 10px;
+  }
+  
+  .edit-team-card {
+    padding: 15px;
+  }
+  
+  .edit-team-card h2 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .form-group {
+    margin-bottom: 12px;
+  }
+  
+  .form-group input {
+    padding: 8px;
+    font-size: 13px;
+  }
+  
+  .cancel-btn,
+  .save-btn {
+    padding: 8px;
+    font-size: 12px;
+  }
+  
+  .loading {
+    padding: 30px 20px;
+    font-size: 14px;
+  }
+}
+
+/* LARGE DESKTOP (1200px+) */
+@media (min-width: 1200px) {
+  .edit-team-page {
+    max-width: 550px;
+    padding: 50px 20px;
+  }
+  
+  .edit-team-card {
+    padding: 35px;
+    border-radius: 14px;
+  }
+  
+  .edit-team-card h2 {
+    font-size: 26px;
+    margin-bottom: 22px;
+  }
+  
+  .form-group {
+    margin-bottom: 22px;
+  }
+  
+  .form-group label {
+    font-size: 15px;
+  }
+  
+  .form-group input {
+    padding: 12px;
+    font-size: 16px;
+  }
+  
+  .cancel-btn,
+  .save-btn {
+    padding: 12px 24px;
+    font-size: 15px;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .edit-team-card {
+    background: #1f2937;
+    border-color: #374151;
+  }
+  
+  .edit-team-card h2 {
+    color: #f9fafb;
+  }
+  
+  .form-group label {
+    color: #d1d5db;
+  }
+  
+  .form-group input {
+    background: #374151;
+    border-color: #4b5563;
+    color: #f9fafb;
+  }
+  
+  .form-group input:focus {
+    border-color: #818cf8;
+    box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.2);
+  }
+  
+  .form-group input::placeholder {
+    color: #9ca3af;
+  }
+  
+  .loading {
+    color: #9ca3af;
+  }
 }

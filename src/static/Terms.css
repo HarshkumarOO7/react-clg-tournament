@@ -1,3 +1,5 @@
+/* Terms.css - Fully Responsive */
+
 .terms-page {
   max-width: 800px;
   margin: 0 auto;
@@ -43,6 +45,7 @@
 
 .terms-content ul {
   padding-left: 25px;
+  margin: 10px 0;
 }
 
 .terms-content li {
@@ -51,12 +54,411 @@
   line-height: 1.5;
 }
 
+/* ================= RESPONSIVE DESIGN ================= */
+
+/* TABLET (768px - 1024px) */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .terms-page {
+    max-width: 750px;
+    padding: 35px 25px;
+  }
+  
+  .terms-header h1 {
+    font-size: 32px;
+  }
+  
+  .terms-content h2 {
+    font-size: 20px;
+  }
+  
+  .terms-content p,
+  .terms-content li {
+    font-size: 14px;
+  }
+}
+
+/* LARGE MOBILE (641px - 768px) */
 @media (max-width: 768px) {
+  .terms-page {
+    padding: 30px 20px;
+  }
+  
+  .terms-header {
+    margin-bottom: 35px;
+  }
+  
   .terms-header h1 {
     font-size: 28px;
   }
   
+  .terms-header p {
+    font-size: 13px;
+  }
+  
+  .terms-content section {
+    margin-bottom: 25px;
+  }
+  
   .terms-content h2 {
     font-size: 18px;
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+  }
+  
+  .terms-content p {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+  
+  .terms-content ul {
+    padding-left: 20px;
+  }
+  
+  .terms-content li {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+}
+
+/* MOBILE (up to 640px) */
+@media (max-width: 640px) {
+  .terms-page {
+    padding: 25px 15px;
+  }
+  
+  .terms-header {
+    margin-bottom: 30px;
+  }
+  
+  .terms-header h1 {
+    font-size: 26px;
+  }
+  
+  .terms-header p {
+    font-size: 12px;
+  }
+  
+  .terms-content section {
+    margin-bottom: 22px;
+  }
+  
+  .terms-content h2 {
+    font-size: 17px;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+  }
+  
+  .terms-content p {
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  
+  .terms-content ul {
+    padding-left: 18px;
+  }
+  
+  .terms-content li {
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+}
+
+/* SMALL MOBILE (up to 480px) */
+@media (max-width: 480px) {
+  .terms-page {
+    padding: 20px 12px;
+  }
+  
+  .terms-header {
+    margin-bottom: 25px;
+  }
+  
+  .terms-header h1 {
+    font-size: 24px;
+  }
+  
+  .terms-header p {
+    font-size: 11px;
+  }
+  
+  .terms-content section {
+    margin-bottom: 20px;
+  }
+  
+  .terms-content h2 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+  }
+  
+  .terms-content p {
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  
+  .terms-content ul {
+    padding-left: 16px;
+  }
+  
+  .terms-content li {
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+}
+
+/* EXTRA SMALL (up to 360px) */
+@media (max-width: 360px) {
+  .terms-page {
+    padding: 15px 10px;
+  }
+  
+  .terms-header h1 {
+    font-size: 22px;
+  }
+  
+  .terms-header p {
+    font-size: 10px;
+  }
+  
+  .terms-content h2 {
+    font-size: 15px;
+  }
+  
+  .terms-content p,
+  .terms-content li {
+    font-size: 12px;
+  }
+  
+  .terms-content ul {
+    padding-left: 14px;
+  }
+}
+
+/* LARGE DESKTOP (1200px+) */
+@media (min-width: 1200px) {
+  .terms-page {
+    max-width: 900px;
+    padding: 50px 30px;
+  }
+  
+  .terms-header {
+    margin-bottom: 50px;
+  }
+  
+  .terms-header h1 {
+    font-size: 42px;
+  }
+  
+  .terms-header p {
+    font-size: 16px;
+  }
+  
+  .terms-content section {
+    margin-bottom: 40px;
+  }
+  
+  .terms-content h2 {
+    font-size: 26px;
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+  }
+  
+  .terms-content p {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 18px;
+  }
+  
+  .terms-content li {
+    font-size: 16px;
+    margin-bottom: 12px;
+    line-height: 1.6;
+  }
+  
+  .terms-content ul {
+    padding-left: 30px;
+  }
+}
+
+/* ================= DARK MODE SUPPORT ================= */
+@media (prefers-color-scheme: dark) {
+  .terms-page {
+    background: #111827;
+  }
+  
+  .terms-header h1 {
+    color: #f3f4f6;
+  }
+  
+  .terms-header p {
+    color: #6b7280;
+  }
+  
+  .terms-content h2 {
+    color: #f3f4f6;
+    border-bottom-color: #818cf8;
+  }
+  
+  .terms-content p,
+  .terms-content li {
+    color: #d1d5db;
+  }
+}
+
+/* ================= PRINT STYLES ================= */
+@media print {
+  .terms-page {
+    padding: 20px;
+    max-width: 100%;
+  }
+  
+  .terms-header h1 {
+    color: black;
+  }
+  
+  .terms-content h2 {
+    border-bottom-color: black;
+  }
+  
+  .terms-content p,
+  .terms-content li {
+    color: black;
+  }
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.terms-content section {
+  animation: fadeIn 0.4s ease forwards;
+  opacity: 0;
+}
+
+/* Stagger animation for sections */
+.terms-content section:nth-child(1) { animation-delay: 0.05s; }
+.terms-content section:nth-child(2) { animation-delay: 0.1s; }
+.terms-content section:nth-child(3) { animation-delay: 0.15s; }
+.terms-content section:nth-child(4) { animation-delay: 0.2s; }
+.terms-content section:nth-child(5) { animation-delay: 0.25s; }
+.terms-content section:nth-child(6) { animation-delay: 0.3s; }
+.terms-content section:nth-child(7) { animation-delay: 0.35s; }
+.terms-content section:nth-child(8) { animation-delay: 0.4s; }
+.terms-content section:nth-child(9) { animation-delay: 0.45s; }
+
+/* ================= REDUCED MOTION ================= */
+@media (prefers-reduced-motion: reduce) {
+  .terms-content section {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* ================= ACCESSIBILITY ================= */
+.terms-content a {
+  color: #4f46e5;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.terms-content a:hover {
+  color: #6366f1;
+}
+
+@media (prefers-color-scheme: dark) {
+  .terms-content a {
+    color: #a78bfa;
+  }
+  
+  .terms-content a:hover {
+    color: #c4b5fd;
+  }
+}
+
+.terms-content a:focus-visible {
+  outline: 2px solid #4f46e5;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ================= SCROLL BEHAVIOR ================= */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ================= CUSTOM SCROLLBAR ================= */
+.terms-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.terms-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.terms-content::-webkit-scrollbar-thumb {
+  background: #c5c5c5;
+  border-radius: 10px;
+}
+
+.terms-content::-webkit-scrollbar-thumb:hover {
+  background: #a0a0a0;
+}
+
+@media (prefers-color-scheme: dark) {
+  .terms-content::-webkit-scrollbar-track {
+    background: #374151;
+  }
+  
+  .terms-content::-webkit-scrollbar-thumb {
+    background: #6b7280;
+  }
+  
+  .terms-content::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+  }
+}
+
+/* ================= FOCUS VISIBLE ================= */
+.terms-content h2:focus-visible,
+.terms-content section:focus-visible {
+  outline: 2px solid #4f46e5;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .terms-content h2:focus-visible,
+  .terms-content section:focus-visible {
+    outline-color: #a78bfa;
+  }
+}
+
+/* ================= SELECTION HIGHLIGHT ================= */
+.terms-content ::selection {
+  background: #4f46e5;
+  color: white;
+}
+
+@media (prefers-color-scheme: dark) {
+  .terms-content ::selection {
+    background: #6366f1;
   }
 }

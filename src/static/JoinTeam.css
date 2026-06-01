@@ -1,0 +1,822 @@
+/* JoinTeam.css - Fully Responsive */
+
+.join-team-page {
+  min-height: calc(100vh - 200px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.join-team-container {
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Header Styles */
+.team-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.team-icon {
+  font-size: 60px;
+  margin-bottom: 15px;
+}
+
+.team-header h1 {
+  font-size: 28px;
+  color: #1f2937;
+  margin-bottom: 8px;
+}
+
+.team-header p {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+/* Team Details Card */
+.team-details-card {
+  background: #f9fafb;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 25px;
+  border: 1px solid #e5e7eb;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.detail-label {
+  font-weight: 600;
+  color: #4b5563;
+  font-size: 14px;
+}
+
+.detail-value {
+  color: #1f2937;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.spots-left {
+  color: #10b981;
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+.spots-full {
+  color: #ef4444;
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+/* Badge Styles */
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge.upcoming {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.badge.ongoing {
+  background: #d1fae5;
+  color: #059669;
+}
+
+.badge.completed {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+/* Team Players Preview */
+.team-players-preview {
+  margin-bottom: 25px;
+}
+
+.team-players-preview h3 {
+  font-size: 16px;
+  color: #1f2937;
+  margin-bottom: 15px;
+}
+
+.players-list {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.player-avatar-mini {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.player-avatar-mini.more {
+  background: #9ca3af;
+  font-size: 14px;
+}
+
+.no-players {
+  color: #9ca3af;
+  font-size: 14px;
+  font-style: italic;
+}
+
+/* Action Section */
+.action-section {
+  margin: 25px 0;
+}
+
+.apply-section {
+  text-align: center;
+}
+
+.apply-btn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.apply-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
+}
+
+.apply-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.login-hint {
+  margin-top: 15px;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.login-hint a {
+  color: #4f46e5;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.login-hint a:hover {
+  text-decoration: underline;
+}
+
+/* Already Member State */
+.already-member,
+.already-applied,
+.team-full {
+  text-align: center;
+  padding: 20px;
+}
+
+.success-icon,
+.pending-icon,
+.full-icon {
+  font-size: 60px;
+  margin-bottom: 15px;
+}
+
+.already-member h3,
+.already-applied h3,
+.team-full h3 {
+  color: #1f2937;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.already-applied p,
+.team-full p {
+  color: #6b7280;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.waiting-text {
+  font-size: 13px;
+  color: #f59e0b;
+  margin-top: 10px;
+}
+
+.view-team-btn,
+.check-status-btn,
+.browse-teams-btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #4f46e5;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.view-team-btn:hover,
+.check-status-btn:hover,
+.browse-teams-btn:hover {
+  background: #6366f1;
+  transform: translateY(-2px);
+}
+
+/* Messages */
+.success-message,
+.error-message {
+  padding: 12px;
+  border-radius: 10px;
+  margin: 15px 0;
+  font-size: 14px;
+  text-align: center;
+}
+
+.success-message {
+  background: #dcfce7;
+  color: #16a34a;
+  border-left: 4px solid #16a34a;
+}
+
+.error-message {
+  background: #fee2e2;
+  color: #dc2626;
+  border-left: 4px solid #dc2626;
+}
+
+/* Back Link */
+.back-link {
+  text-align: center;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.back-link a {
+  color: #6b7280;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.back-link a:hover {
+  color: #4f46e5;
+}
+
+/* Loading State */
+.join-team-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: 15px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e5e7eb;
+  border-top-color: #4f46e5;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.join-team-loading p {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+/* Error State */
+.join-team-error {
+  text-align: center;
+  padding: 40px 20px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.error-icon {
+  font-size: 80px;
+  margin-bottom: 20px;
+}
+
+.join-team-error h2 {
+  font-size: 28px;
+  color: #1f2937;
+  margin-bottom: 10px;
+}
+
+.join-team-error p {
+  color: #6b7280;
+  margin-bottom: 25px;
+}
+
+/* ======================
+   RESPONSIVE DESIGN
+   Laptop view untouched, only tablet & mobile improvements
+====================== */
+
+/* TABLET (768px - 1024px) */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .join-team-container {
+    max-width: 550px;
+    padding: 35px;
+  }
+  
+  .team-header h1 {
+    font-size: 26px;
+  }
+  
+  .team-icon {
+    font-size: 55px;
+  }
+  
+  .detail-row {
+    padding: 10px 0;
+  }
+  
+  .apply-btn {
+    padding: 13px;
+  }
+}
+
+/* LARGE MOBILE (641px - 768px) */
+@media (max-width: 768px) {
+  .join-team-page {
+    padding: 30px 15px;
+  }
+  
+  .join-team-container {
+    max-width: 90%;
+    padding: 30px;
+    border-radius: 16px;
+  }
+  
+  .team-header h1 {
+    font-size: 24px;
+  }
+  
+  .team-icon {
+    font-size: 50px;
+  }
+  
+  .team-details-card {
+    padding: 18px;
+  }
+  
+  .detail-label,
+  .detail-value {
+    font-size: 13px;
+  }
+  
+  .players-list {
+    gap: 8px;
+  }
+  
+  .player-avatar-mini {
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
+  }
+}
+
+/* MOBILE (up to 640px) */
+@media (max-width: 640px) {
+  .join-team-page {
+    padding: 25px 15px;
+  }
+  
+  .join-team-container {
+    max-width: 95%;
+    padding: 25px;
+    border-radius: 14px;
+  }
+  
+  .team-header {
+    margin-bottom: 25px;
+  }
+  
+  .team-header h1 {
+    font-size: 22px;
+  }
+  
+  .team-header p {
+    font-size: 13px;
+  }
+  
+  .team-icon {
+    font-size: 45px;
+    margin-bottom: 10px;
+  }
+  
+  .team-details-card {
+    padding: 15px;
+    border-radius: 12px;
+  }
+  
+  .detail-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    padding: 10px 0;
+  }
+  
+  .detail-label {
+    font-size: 12px;
+  }
+  
+  .detail-value {
+    font-size: 13px;
+  }
+  
+  .team-players-preview h3 {
+    font-size: 15px;
+  }
+  
+  .players-list {
+    gap: 8px;
+  }
+  
+  .player-avatar-mini {
+    width: 32px;
+    height: 32px;
+    font-size: 13px;
+  }
+  
+  .apply-btn {
+    padding: 12px;
+    font-size: 15px;
+    border-radius: 10px;
+  }
+  
+  .already-member h3,
+  .already-applied h3,
+  .team-full h3 {
+    font-size: 18px;
+  }
+  
+  .success-icon,
+  .pending-icon,
+  .full-icon {
+    font-size: 50px;
+  }
+  
+  .view-team-btn,
+  .check-status-btn,
+  .browse-teams-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+  
+  .back-link {
+    margin-top: 15px;
+    padding-top: 15px;
+  }
+}
+
+/* SMALL MOBILE (up to 480px) */
+@media (max-width: 480px) {
+  .join-team-page {
+    padding: 20px 12px;
+  }
+  
+  .join-team-container {
+    padding: 20px;
+    border-radius: 12px;
+  }
+  
+  .team-header h1 {
+    font-size: 20px;
+  }
+  
+  .team-header p {
+    font-size: 12px;
+  }
+  
+  .team-icon {
+    font-size: 40px;
+  }
+  
+  .team-details-card {
+    padding: 12px;
+  }
+  
+  .detail-row {
+    padding: 8px 0;
+  }
+  
+  .detail-label {
+    font-size: 11px;
+  }
+  
+  .detail-value {
+    font-size: 12px;
+  }
+  
+  .badge {
+    font-size: 10px;
+    padding: 3px 10px;
+  }
+  
+  .spots-left,
+  .spots-full {
+    font-size: 10px;
+  }
+  
+  .team-players-preview h3 {
+    font-size: 14px;
+  }
+  
+  .player-avatar-mini {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+  
+  .player-avatar-mini.more {
+    font-size: 11px;
+  }
+  
+  .apply-btn {
+    padding: 10px;
+    font-size: 14px;
+  }
+  
+  .login-hint {
+    font-size: 12px;
+  }
+  
+  .already-member h3,
+  .already-applied h3,
+  .team-full h3 {
+    font-size: 16px;
+  }
+  
+  .already-applied p,
+  .team-full p {
+    font-size: 13px;
+  }
+  
+  .waiting-text {
+    font-size: 12px;
+  }
+  
+  .success-icon,
+  .pending-icon,
+  .full-icon {
+    font-size: 45px;
+  }
+  
+  .success-message,
+  .error-message {
+    padding: 10px;
+    font-size: 12px;
+  }
+  
+  .back-link a {
+    font-size: 13px;
+  }
+}
+
+/* EXTRA SMALL (up to 360px) */
+@media (max-width: 360px) {
+  .join-team-container {
+    padding: 18px;
+  }
+  
+  .team-header h1 {
+    font-size: 18px;
+  }
+  
+  .team-icon {
+    font-size: 35px;
+  }
+  
+  .player-avatar-mini {
+    width: 25px;
+    height: 25px;
+    font-size: 11px;
+  }
+  
+  .apply-btn {
+    padding: 9px;
+    font-size: 13px;
+  }
+  
+  .view-team-btn,
+  .check-status-btn,
+  .browse-teams-btn {
+    padding: 7px 14px;
+    font-size: 13px;
+  }
+}
+
+/* LARGE DESKTOP (1200px+) */
+@media (min-width: 1200px) {
+  .join-team-container {
+    max-width: 650px;
+    padding: 50px;
+    border-radius: 24px;
+  }
+  
+  .team-header h1 {
+    font-size: 32px;
+  }
+  
+  .team-icon {
+    font-size: 70px;
+  }
+  
+  .team-header p {
+    font-size: 15px;
+  }
+  
+  .detail-label,
+  .detail-value {
+    font-size: 15px;
+  }
+  
+  .apply-btn {
+    padding: 16px;
+    font-size: 17px;
+  }
+  
+  .player-avatar-mini {
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .join-team-page {
+    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+  }
+  
+  .join-team-container {
+    background: #1f2937;
+  }
+  
+  .team-header h1 {
+    color: #f9fafb;
+  }
+  
+  .team-header p {
+    color: #9ca3af;
+  }
+  
+  .team-details-card {
+    background: #374151;
+    border-color: #4b5563;
+  }
+  
+  .detail-label {
+    color: #9ca3af;
+  }
+  
+  .detail-value {
+    color: #f9fafb;
+  }
+  
+  .detail-row {
+    border-bottom-color: #4b5563;
+  }
+  
+  .team-players-preview h3 {
+    color: #f9fafb;
+  }
+  
+  .no-players {
+    color: #6b7280;
+  }
+  
+  .already-member h3,
+  .already-applied h3,
+  .team-full h3 {
+    color: #f9fafb;
+  }
+  
+  .already-applied p,
+  .team-full p {
+    color: #9ca3af;
+  }
+  
+  .back-link {
+    border-top-color: #374151;
+  }
+  
+  .back-link a {
+    color: #9ca3af;
+  }
+  
+  .back-link a:hover {
+    color: #a78bfa;
+  }
+  
+  .join-team-loading p {
+    color: #9ca3af;
+  }
+  
+  .join-team-error h2 {
+    color: #f9fafb;
+  }
+  
+  .join-team-error p {
+    color: #9ca3af;
+  }
+  
+  .success-message {
+    background: #064e3b;
+    color: #34d399;
+  }
+  
+  .error-message {
+    background: #7f1d1d;
+    color: #fca5a5;
+  }
+}
+
+/* Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+  .join-team-container,
+  .apply-btn,
+  .view-team-btn,
+  .check-status-btn,
+  .browse-teams-btn {
+    animation: none;
+    transition: none;
+  }
+  
+  .apply-btn:hover:not(:disabled) {
+    transform: none;
+  }
+  
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .apply-btn:hover:not(:disabled) {
+    transform: none;
+  }
+  
+  .view-team-btn:hover,
+  .check-status-btn:hover,
+  .browse-teams-btn:hover {
+    transform: none;
+  }
+}
