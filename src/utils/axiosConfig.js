@@ -2,7 +2,6 @@ import axios from "axios";
 
 const api = axios.create({
   baseURL: "http://localhost:5000/api",
-<<<<<<< HEAD
   headers: {
     "Content-Type": "application/json",
   },
@@ -10,11 +9,6 @@ const api = axios.create({
 });
 
 // 🔐 Request Interceptor - Attach JWT token to every request
-=======
-});
-
-// 🔐 Attach JWT token to every request
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("token");
@@ -24,7 +18,6 @@ api.interceptors.request.use(
       config.headers.Authorization = `Bearer ${token}`;
     }
 
-<<<<<<< HEAD
     // For FormData, remove Content-Type to let browser set it with boundary
     if (config.data instanceof FormData) {
       delete config.headers["Content-Type"];
@@ -153,11 +146,3 @@ export const clearCache = (url = null) => {
 };
 
 export default api;
-=======
-    return config;
-  },
-  (error) => Promise.reject(error)
-);
-
-export default api;
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0

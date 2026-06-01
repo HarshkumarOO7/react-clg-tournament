@@ -6,14 +6,11 @@
   font-family: "Segoe UI", sans-serif;
 }
 
-<<<<<<< HEAD
 body {
   padding-top: 80px; /* height of your header */
 }
 
 
-=======
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0
 /* NAVBAR */
 .navbar {
   position: fixed;
@@ -24,11 +21,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-<<<<<<< HEAD
   color: rgb(0, 0, 0);
-=======
-  color: white;
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0
   z-index: 10;
 }
 
@@ -43,7 +36,6 @@ body {
   border: none;
   padding: 10px 20px;
   border-radius: 30px;
-<<<<<<< HEAD
   color: rgb(0, 0, 0);
   font-weight: 600;
 }
@@ -51,22 +43,14 @@ html, body {
   overflow-y: auto;
 }
 
-=======
-  color: white;
-  font-weight: 600;
-}
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0
 
 /* HERO */
 
 .hero-content {
   position: relative;
   z-index: 2;
-<<<<<<< HEAD
   min-height: 100vh;
   height: auto;
-=======
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0
 }
 
 
@@ -75,10 +59,7 @@ html, body {
   background: url("https://images.unsplash.com/photo-1503428593586-e225b39bddfe")
     center / cover no-repeat fixed; /* ✅ FIXED BACKGROUND */
   position: relative;
-<<<<<<< HEAD
   
-=======
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0
 }
 .hero::before {
   content: "";
@@ -113,11 +94,7 @@ html, body {
   position: relative;
   z-index: 2;
   height: 100%;
-<<<<<<< HEAD
   color: rgb(0, 0, 0);
-=======
-  color: white;
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -156,19 +133,12 @@ html, body {
 /* INFO SECTION */
 .info {
   background: #020617;
-<<<<<<< HEAD
   color: rgb(0, 0, 0);
-=======
-  color: white;
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0
   padding: 60px;
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
   gap: 40px;
-<<<<<<< HEAD
   position: relative;
-=======
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0
 }
 
 .info h2 {

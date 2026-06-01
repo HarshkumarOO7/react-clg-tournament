@@ -1,15 +1,10 @@
-<<<<<<< HEAD
 import { createContext, useContext, useState, useEffect } from "react";
 import api from "../utils/axiosConfig";
 import socket from "../utils/socket";
-=======
-import { createContext, useContext, useState } from "react";
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0
 
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
-<<<<<<< HEAD
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [loading, setLoading] = useState(true);
@@ -90,56 +85,11 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider value={{ user, token, login, logout, updateUser, loading }}>
-=======
-  const [user, setUser] = useState(() => {
-    try {
-      return JSON.parse(localStorage.getItem("user"));
-    } catch {
-      return null;
-    }
-  });
-
-  const [token, setToken] = useState(
-    localStorage.getItem("token")
-  );
-
-  const login = (userData, jwtToken) => {
-    if (!jwtToken) {
-      console.error("JWT token missing during login");
-      return;
-    }
-
-    setUser(userData);
-    setToken(jwtToken);
-
-    localStorage.setItem("user", JSON.stringify(userData));
-    localStorage.setItem("token", jwtToken);
-  };
-
-  const logout = () => {
-    setUser(null);
-    setToken(null);
-
-    localStorage.removeItem("user");
-    localStorage.removeItem("token");
-  };
-
-  return (
-    <AuthContext.Provider
-      value={{
-        user,
-        token,
-        login,
-        logout,
-      }}
-    >
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0
       {children}
     </AuthContext.Provider>
   );
 };
 
-<<<<<<< HEAD
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
@@ -147,6 +97,3 @@ export const useAuth = () => {
   }
   return context;
 };
-=======
-export const useAuth = () => useContext(AuthContext);
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0

@@ -13,15 +13,11 @@ export default function Registration() {
     role: "player",
   });
 
-<<<<<<< HEAD
   const [errors, setErrors] = useState({});
-=======
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
-<<<<<<< HEAD
 
     // Clear error while typing
     setErrors({ ...errors, [e.target.name]: "" });
@@ -53,14 +49,11 @@ export default function Registration() {
     }
 
     return newErrors;
-=======
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-<<<<<<< HEAD
     const validationErrors = validate();
 
     if (Object.keys(validationErrors).length > 0) {
@@ -68,8 +61,6 @@ export default function Registration() {
       return; // ❌ Stop submission
     }
 
-=======
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0
     try {
       setLoading(true);
 
@@ -101,15 +92,9 @@ export default function Registration() {
               type="text"
               name="name"
               placeholder="Full Name"
-<<<<<<< HEAD
               onChange={handleChange}
             />
             {errors.name && <p className="error">{errors.name}</p>}
-=======
-              required
-              onChange={handleChange}
-            />
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0
           </div>
 
           <div className="input-group">
@@ -117,15 +102,9 @@ export default function Registration() {
               type="email"
               name="email"
               placeholder="Email Address"
-<<<<<<< HEAD
               onChange={handleChange}
             />
             {errors.email && <p className="error">{errors.email}</p>}
-=======
-              required
-              onChange={handleChange}
-            />
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0
           </div>
 
           <div className="input-group">
@@ -133,15 +112,9 @@ export default function Registration() {
               type="password"
               name="password"
               placeholder="Password"
-<<<<<<< HEAD
               onChange={handleChange}
             />
             {errors.password && <p className="error">{errors.password}</p>}
-=======
-              required
-              onChange={handleChange}
-            />
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0
           </div>
 
           <div className="input-group">
@@ -169,8 +142,4 @@ export default function Registration() {
       </div>
     </div>
   );
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0

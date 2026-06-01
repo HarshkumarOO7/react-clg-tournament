@@ -1,19 +1,16 @@
 const mongoose = require("mongoose");
 
 const TournamentSchema = new mongoose.Schema({
-<<<<<<< HEAD
   eventName: {
     type: String,
     required: true,
   },
-=======
+
   eventName: String,
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0
 
   sportId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Sport",
-<<<<<<< HEAD
     required: true,
   },
 
@@ -42,14 +39,11 @@ const TournamentSchema = new mongoose.Schema({
 
   maxParticipants: Number,
 
-=======
-  },
-
   location: String,
   startDate: Date,
   endDate: Date,
   maxParticipants: Number,
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0
+
   description: String,
   rules: String,
 
@@ -69,15 +63,13 @@ const TournamentSchema = new mongoose.Schema({
   ],
 
   logo: String,
-<<<<<<< HEAD
 
   createdAt: {
     type: Date,
     default: Date.now,
   },
-=======
+
   createdAt: { type: Date, default: Date.now },
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0
 });
 
 module.exports = mongoose.model("Tournament", TournamentSchema);

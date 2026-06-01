@@ -3,7 +3,6 @@ const router = express.Router();
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-<<<<<<< HEAD
 const { validateEmail, validatePassword, validateName } = require("../utils/validators");
 const { sendVerificationEmail, sendResetPasswordEmail, sendWelcomeEmail } = require("../config/email");
 
@@ -32,38 +31,21 @@ router.post("/register", async (req, res) => {
     const verificationCode = Math.floor(100000 + Math.random() * 900000).toString();
     const verificationCodeExpires = Date.now() + 3600000; // 1 hour
 
-=======
-
-// ================= REGISTER =================
-router.post("/register", async (req, res) => {
-  try {
-    const { name, email, password, role } = req.body;
-
-    if (!password) {
-      return res.status(400).json({ message: "Password required" });
-    }
-
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = new User({
       name,
       email,
       password: hashedPassword,
-<<<<<<< HEAD
       role: role || "player",
       status: "active",
       emailVerified: false,
       verificationCode,
       verificationCodeExpires
-=======
-      role,
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0
     });
 
     await user.save();
 
-<<<<<<< HEAD
     // 📧 Show OTP in console for testing
     console.log("\n" + "=".repeat(60));
     console.log(`📧 EMAIL VERIFICATION OTP`);
@@ -195,12 +177,6 @@ router.post("/resend-verification", async (req, res) => {
   } catch (err) {
     console.error("Resend error:", err);
     res.status(500).json({ message: "Failed to resend code" });
-=======
-    res.json({ message: "User registered successfully" });
-  } catch (err) {
-    console.error("REGISTER ERROR:", err);
-    res.status(500).json({ message: "Registration failed" });
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0
   }
 });
 
@@ -208,18 +184,9 @@ router.post("/resend-verification", async (req, res) => {
 router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
-<<<<<<< HEAD
     
     if (!email) return res.status(400).json({ message: "Email is required" });
     if (!password) return res.status(400).json({ message: "Password is required" });
-=======
-
-    if (!email || !password) {
-      return res
-        .status(400)
-        .json({ message: "Email and password required" });
-    }
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0
 
     const user = await User.findOne({ email });
 
@@ -227,7 +194,6 @@ router.post("/login", async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-<<<<<<< HEAD
     // Check if email is verified
     if (!user.emailVerified) {
       return res.status(403).json({ 
@@ -244,42 +210,21 @@ router.post("/login", async (req, res) => {
 
     // Check password
     const isMatch = await bcrypt.compare(password, user.password);
-=======
-    if (!user.password) {
-      return res.status(500).json({
-        message: "User password is missing. Please re-register.",
-      });
-    }
-
-    const isMatch = await bcrypt.compare(password, user.password);
-
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0
     if (!isMatch) {
       return res.status(401).json({ message: "Invalid password" });
     }
 
-<<<<<<< HEAD
     // Generate JWT token
-=======
-    if (!process.env.JWT_SECRET) {
-      throw new Error("JWT_SECRET is missing in .env");
-    }
-
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0
     const token = jwt.sign(
       { userId: user._id, role: user.role },
       process.env.JWT_SECRET,
       { expiresIn: "7d" }
     );
 
-<<<<<<< HEAD
     console.log(`\n✅ User logged in: ${email} (${user.role})\n`);
 
     res.json({
       success: true,
-=======
-    res.json({
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0
       message: "Login successful",
       token,
       user: {
@@ -287,19 +232,14 @@ router.post("/login", async (req, res) => {
         name: user.name,
         email: user.email,
         role: user.role,
-<<<<<<< HEAD
         status: user.status,
         profileImage: user.profileImage || "",
         phoneNumber: user.phoneNumber || "",
-=======
-        profileImage: user.profileImage,
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0
         createdAt: user.createdAt,
       },
     });
   } catch (err) {
     console.error("LOGIN ERROR:", err);
-<<<<<<< HEAD
     res.status(500).json({ message: "Login failed. Please try again." });
   }
 });
@@ -447,10 +387,3 @@ router.post("/reset-password", async (req, res) => {
 });
 
 module.exports = router;
-=======
-    res.status(500).json({ message: "Login failed" });
-  }
-});
-
-module.exports = router;
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0

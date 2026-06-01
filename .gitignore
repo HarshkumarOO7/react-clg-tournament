@@ -22,11 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-<<<<<<< HEAD
 
 node_modules
 .env
 backend/.env
 dist
-=======
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0

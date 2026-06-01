@@ -3,10 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Header from "./component/Header";
 import Footer from "./component/Footer";
 
-<<<<<<< HEAD
 /* ================= PUBLIC ================= */
-=======
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0
 import Home from "./screen/Home";
 import Login from "./screen/Login";
 import Registration from "./screen/Registration";
@@ -18,7 +15,6 @@ import Venue from "./screen/Venue";
 import Sponsors from "./screen/Sponsors";
 import Contact from "./screen/Contact";
 import Profile from "./screen/Profile";
-<<<<<<< HEAD
 import TeamsList from "./screen/TeamsList";
 import TeamDetails from "./screen/TeamDetails";
 import CreateTeam from "./screen/CreateTeam";
@@ -80,8 +76,6 @@ import Reports from "./adminside/Reports";
 // // import Userlist from "./cognisun/Userlist";
 
 
-=======
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0
 
 import "./index.css";
 import "./App.css";
@@ -91,7 +85,6 @@ function App() {
     <>
       <Header />
 
-<<<<<<< HEAD
   {/* ================= ADMIN OTHER =================   */}
       <Routes>
         {/* ========== PUBLIC ROUTES ========== */}
@@ -101,20 +94,12 @@ function App() {
         <Route path="/register" element={<RegisterWithVerification />} />
         <Route path="/events" element={<Events />} />
         <Route path="/tournaments" element={<Events />} />
-=======
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Registration />} />
-        <Route path="/events" element={<Events />} />
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0
         <Route path="/schedule" element={<Schedule />} />
         <Route path="/speakers" element={<Speakers />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/venue" element={<Venue />} />
         <Route path="/sponsors" element={<Sponsors />} />
         <Route path="/contact" element={<Contact />} />
-<<<<<<< HEAD
         <Route path="/profile" element={<Profile />} />
         <Route path="/tournament/:id" element={<TournamentDetailsss />} />
         <Route path="/teams" element={<TeamsList />} />
@@ -308,12 +293,6 @@ function App() {
 
       <Footer />
 
-=======
-         <Route path="/profile" element={<Profile />} />
-      </Routes>
-
-      <Footer />
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0
     </>
   );
 }

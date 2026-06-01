@@ -12,7 +12,6 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-<<<<<<< HEAD
     "@cloudinary/react": "^1.14.3",
     "@cloudinary/url-gen": "^1.22.0",
     "bcryptjs": "^3.0.3",
@@ -31,12 +30,6 @@
     "socket.io": "^4.8.3",
     "socket.io-client": "^4.8.3",
     "twilio": "^5.13.1"
-=======
-    "cors": "^2.8.5",
-    "dotenv": "^17.2.3",
-    "express": "^5.2.1",
-    "mongoose": "^9.1.2"
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0
   },
   "devDependencies": {
     "nodemon": "^3.1.11"

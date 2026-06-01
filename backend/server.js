@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
 
-<<<<<<< HEAD
+
 const http = require("http");
 const { Server } = require("socket.io");
 
@@ -54,11 +54,10 @@ app.set("io", io);
 app.set("users", users);
 
 /* ================= CORS ================= */
-=======
-const app = express();
+
 
 /* ================= CORS (FIXED FOR NODE 24) ================= */
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0
+
 app.use(
   cors({
     origin: "http://localhost:5173",
@@ -72,7 +71,7 @@ app.use(
 app.use(express.json());
 
 /* ================= ROUTES ================= */
-<<<<<<< HEAD
+
 app.use("/api", require("./routes/auth"));
 app.use("/api/profile", require("./routes/profile"));
 
@@ -105,13 +104,7 @@ app.get("/health", (req, res) => {
     timestamp: new Date().toISOString()
   });
 });
-=======
-const authRoutes = require("./routes/auth");
-const profileRoutes = require("./routes/profile");
 
-app.use("/api", authRoutes);
-app.use("/api/profile", profileRoutes);
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0
 
 /* ================= DATABASE ================= */
 mongoose
@@ -119,7 +112,7 @@ mongoose
   .then(() => console.log("✅ MongoDB Connected"))
   .catch((err) => console.error("❌ MongoDB Error:", err));
 
-<<<<<<< HEAD
+
 /* ================= ERROR HANDLER ================= */
 app.use((err, req, res, next) => {
   console.error("UNHANDLED ERROR:", err);
@@ -139,25 +132,17 @@ app.use((err, req, res, next) => {
   }
 
   res.status(500).json({ message: err.message || "Internal Server Error" });
-=======
-/* ================= TEST ROUTE ================= */
-app.get("/", (req, res) => {
-  res.send("Backend is running");
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0
-});
+
+}); 
 
 /* ================= START SERVER ================= */
 const PORT = process.env.PORT || 5000;
-<<<<<<< HEAD
 
 server.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
   console.log(`📍 Frontend URL: http://localhost:5173`);
   console.log(`📡 Socket.IO ready for real-time updates`);
-  console.log(`📊 Analytics endpoint: http://localhost:${PORT}/api/analytics/stats`);
+  console.log(
+    `📊 Analytics endpoint: http://localhost:${PORT}/api/analytics/stats`
+  );
 });
-=======
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-});
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0

@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 
-<<<<<<< HEAD
 const MatchSchema = new mongoose.Schema(
   {
     /* ================= TOURNAMENT ================= */
@@ -62,38 +61,5 @@ const MatchSchema = new mongoose.Schema(
     timestamps: true, // createdAt & updatedAt
   }
 );
-=======
-const MatchSchema = new mongoose.Schema({
-  tournamentId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Tournament",
-  },
-
-  teams: [
-    { type: mongoose.Schema.Types.ObjectId, ref: "Team" }
-  ],
-
-  matchDate: Date,
-
-  venueId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Venue",
-  },
-
-  status: {
-    type: String,
-    enum: ["scheduled", "completed"],
-    default: "scheduled",
-  },
-
-  result: {
-    winnerTeamId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Team",
-    },
-    score: String,
-  },
-});
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0
 
 module.exports = mongoose.model("Match", MatchSchema);

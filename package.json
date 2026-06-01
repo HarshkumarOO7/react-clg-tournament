@@ -11,7 +11,6 @@
   "dependencies": {
     "axios": "^1.13.2",
     "bcryptjs": "^3.0.3",
-<<<<<<< HEAD
     "chart.js": "^4.5.1",
     "cloudinary": "^2.8.0",
     "jsonwebtoken": "^9.0.3",
@@ -25,16 +24,6 @@
     "react-router-dom": "^6.22.3",
     "recharts": "^3.8.1",
     "socket.io-client": "^4.8.3"
-=======
-    "cloudinary": "^1.41.3",
-    "jsonwebtoken": "^9.0.3",
-    "mongodb": "^7.0.0",
-    "multer": "^2.0.2",
-    "multer-storage-cloudinary": "^4.0.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.22.3"
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",

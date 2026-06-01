@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 
-<<<<<<< HEAD
 const sponsorSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
@@ -16,18 +15,3 @@ const sponsorSchema = new mongoose.Schema(
 );
 
 module.exports = mongoose.model("Sponsor", sponsorSchema);
-=======
-const SponsorSchema = new mongoose.Schema({
-  name: String,
-  logo: String,
-
-  tournamentId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Tournament",
-  },
-
-  amount: Number,
-});
-
-module.exports = mongoose.model("Sponsor", SponsorSchema);
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0

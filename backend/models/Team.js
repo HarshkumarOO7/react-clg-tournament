@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 
-<<<<<<< HEAD
 const TeamSchema = new mongoose.Schema(
   {
     teamName: {
@@ -46,29 +45,3 @@ const TeamSchema = new mongoose.Schema(
 
 /* 🚨 THIS LINE IS MANDATORY */
 module.exports = mongoose.models.Team || mongoose.model("Team", TeamSchema);
-=======
-const TeamSchema = new mongoose.Schema({
-  teamName: String,
-
-  sportId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Sport",
-  },
-
-  coachId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-  },
-
-  players: [
-    { type: mongoose.Schema.Types.ObjectId, ref: "User" }
-  ],
-
-  createdBy: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-  },
-});
-
-module.exports = mongoose.model("Team", TeamSchema);
->>>>>>> afacff30c05aff69d1f51a582bc22e00fa64d1e0
