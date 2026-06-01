@@ -30,7 +30,7 @@ export default function ForgotPassword() {
     setMessage("");
 
     try {
-      const res = await axios.post("http://localhost:5000/api/forgot-password", { email });
+      const res = await axios.post("https://react-clg-tournament.onrender.com/api/forgot-password", { email });
       setMessage(res.data.message);
       setStep(2);
     } catch (err) {
@@ -65,7 +65,7 @@ export default function ForgotPassword() {
     setMessage("");
 
     try {
-      await axios.post("http://localhost:5000/api/reset-password", {
+      await axios.post("https://react-clg-tournament.onrender.com/api/reset-password", {
         email,
         code,
         newPassword,

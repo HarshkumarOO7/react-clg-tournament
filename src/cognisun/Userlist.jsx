@@ -11,7 +11,7 @@ export default function Userlist(){
 
     const getCongnisum = async () => {
         try{
-                const res = await axios.get("http://localhost:5000/api/cog/cogData");
+                const res = await axios.get("https://react-clg-tournament.onrender.com/api/cog/cogData");
                 setUser(res.data);
         }
         catch(error){
@@ -32,7 +32,7 @@ export default function Userlist(){
 
     const deleteuser = async (id) => {
         try{
-            await axios.delete(`http://localhost:5000/api/cog/${id}`);
+            await axios.delete(`https://react-clg-tournament.onrender.com/api/cog/${id}`);
             console.log(id);
             getCongnisum();
         }

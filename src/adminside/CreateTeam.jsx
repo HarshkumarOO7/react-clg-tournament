@@ -8,7 +8,7 @@ export default function CreateTeam() {
   const [tournamentId, setTournamentId] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/tournaments")
+    axios.get("https://react-clg-tournament.onrender.com/api/tournaments")
       .then(res => setTournaments(res.data));
   }, []);
 
@@ -16,7 +16,7 @@ export default function CreateTeam() {
     e.preventDefault();
 
     await axios.post(
-      "http://localhost:5000/api/teams",
+      "https://react-clg-tournament.onrender.com/api/teams",
       { teamName, tournamentId },
       { headers: { Authorization: `Bearer ${token}` } }
     );

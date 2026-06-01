@@ -13,7 +13,7 @@ export default function RegisterTeam() {
   /* LOAD TOURNAMENTS */
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/tournaments")
+      .get("https://react-clg-tournament.onrender.com/api/tournaments")
       .then((res) => setTournaments(res.data))
       .catch((err) => console.error(err));
   }, []);
@@ -56,7 +56,7 @@ export default function RegisterTeam() {
       });
 
       const teamRes = await axios.post(
-        "http://localhost:5000/api/teams",
+        "https://react-clg-tournament.onrender.com/api/teams",
         teamData,
         {
           headers: {
@@ -67,7 +67,7 @@ export default function RegisterTeam() {
 
       // 2️⃣ Register Team to Tournament
       await axios.post(
-        "http://localhost:5000/api/registrations",
+        "https://react-clg-tournament.onrender.com/api/registrations",
         {
           tournamentId,
           teamId: teamRes.data._id,

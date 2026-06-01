@@ -22,7 +22,7 @@ export default function Enroll(){
 
     const Submited = async (e) =>{
         e.preventDefault();
-        await axios.post("http://localhost:5000/api/cog/",{name,password});
+        await axios.post("https://react-clg-tournament.onrender.com/api/cog/",{name,password});
         alert("done 👍");
         setName("");
         setPassword("");

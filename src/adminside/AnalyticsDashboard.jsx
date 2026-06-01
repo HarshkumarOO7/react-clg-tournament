@@ -57,7 +57,7 @@ export default function AnalyticsDashboard() {
 
   const setupSocketConnection = () => {
     // Connect to Socket.IO
-    socketRef.current = io("http://localhost:5000", {
+    socketRef.current = io("https://react-clg-tournament.onrender.com", {
       transports: ["websocket"],
       auth: { token },
     });
@@ -103,7 +103,7 @@ export default function AnalyticsDashboard() {
   const fetchAnalytics = async () => {
     try {
       setLoading(true);
-      const response = await axios.get("http://localhost:5000/api/analytics/stats", auth);
+      const response = await axios.get("https://react-clg-tournament.onrender.com/api/analytics/stats", auth);
       
       if (response.data) {
         updateDashboardData(response.data);

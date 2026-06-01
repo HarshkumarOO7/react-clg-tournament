@@ -36,7 +36,7 @@ export default function AdminProfile() {
 
   const fetchProfile = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/profile/me", auth);
+      const res = await axios.get("https://react-clg-tournament.onrender.com/api/profile/me", auth);
       setForm({
         name: res.data.name || "",
         email: res.data.email || "",
@@ -89,7 +89,7 @@ export default function AdminProfile() {
       });
       if (image) data.append("profileImage", image);
 
-      const res = await axios.put("http://localhost:5000/api/profile/update", data, {
+      const res = await axios.put("https://react-clg-tournament.onrender.com/api/profile/update", data, {
         headers: { Authorization: `Bearer ${token}`, "Content-Type": "multipart/form-data" },
       });
 
@@ -126,7 +126,7 @@ export default function AdminProfile() {
 
     try {
       await axios.put(
-        "http://localhost:5000/api/profile/change-password",
+        "https://react-clg-tournament.onrender.com/api/profile/change-password",
         {
           currentPassword: passwordForm.currentPassword,
           newPassword: passwordForm.newPassword,
@@ -148,7 +148,7 @@ export default function AdminProfile() {
     if (!window.confirm("Are you sure you want to deactivate your account? This action cannot be undone.")) return;
 
     try {
-      await axios.delete("http://localhost:5000/api/profile/delete", auth);
+      await axios.delete("https://react-clg-tournament.onrender.com/api/profile/delete", auth);
       logout();
       window.location.href = "/login";
     } catch (err) {

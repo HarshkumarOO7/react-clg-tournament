@@ -30,19 +30,19 @@ const loadDashboardData = async () => {
   try {
     setLoading(true);
 
-    const usersRes = await axios.get("http://localhost:5000/api/users", authHeader);
+    const usersRes = await axios.get("https://react-clg-tournament.onrender.com/api/users", authHeader);
     console.log("USERS OK");
 
-    const tournamentsRes = await axios.get("http://localhost:5000/api/tournaments/public");
+    const tournamentsRes = await axios.get("https://react-clg-tournament.onrender.com/api/tournaments/public");
     console.log("TOURNAMENTS OK");
 
-    const teamsRes = await axios.get("http://localhost:5000/api/teams", authHeader);
+    const teamsRes = await axios.get("https://react-clg-tournament.onrender.com/api/teams", authHeader);
     console.log("TEAMS OK");
 
-    const sponsorsRes = await axios.get("http://localhost:5000/api/sponsors", authHeader);
+    const sponsorsRes = await axios.get("https://react-clg-tournament.onrender.com/api/sponsors", authHeader);
     console.log("SPONSORS OK");
 
-    const registrationsRes = await axios.get("http://localhost:5000/api/registrations", authHeader);
+    const registrationsRes = await axios.get("https://react-clg-tournament.onrender.com/api/registrations", authHeader);
     console.log("REGISTRATIONS OK");
 
     const prizePool = sponsorsRes.data.reduce(

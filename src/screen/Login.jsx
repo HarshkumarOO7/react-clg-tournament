@@ -58,7 +58,7 @@ export default function Login() {
     setErrors({});
 
     try {
-      const res = await axios.post("http://localhost:5000/api/login", form);
+      const res = await axios.post("https://react-clg-tournament.onrender.com/api/login", form);
       login(res.data.user, res.data.token);
       
       if (res.data.user.role === "admin") {
@@ -82,7 +82,7 @@ export default function Login() {
   const handleResendVerification = async () => {
     setLoading(true);
     try {
-      await axios.post("http://localhost:5000/api/resend-verification", {
+      await axios.post("https://react-clg-tournament.onrender.com/api/resend-verification", {
         email: verificationEmail
       });
       alert("New verification code sent to your email!");

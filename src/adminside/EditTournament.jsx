@@ -18,7 +18,7 @@ export default function EditTournament() {
   // ✅ FIXED: Use public endpoint to GET tournament data
   const fetchTournament = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/tournaments/public/${id}`);
+      const res = await axios.get(`https://react-clg-tournament.onrender.com/api/tournaments/public/${id}`);
       setForm(res.data);
     } catch (err) {
       console.error("Failed to fetch tournament:", err);
@@ -31,7 +31,7 @@ export default function EditTournament() {
   const update = async () => {
     try {
       await axios.put(
-        `http://localhost:5000/api/tournaments/${id}`,
+        `https://react-clg-tournament.onrender.com/api/tournaments/${id}`,
         {
           eventName: form.eventName,
           location: form.location,

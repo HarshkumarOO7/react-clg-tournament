@@ -13,7 +13,7 @@ export default function EditUser(){
     const [password,setPassword]=useState("");
 
     useEffect(()=>{
-        axios.get(`http://localhost:5000/api/cog/${id}`).then((res)=>{
+        axios.get(`https://react-clg-tournament.onrender.com/api/cog/${id}`).then((res)=>{
                 setName(res.data.name);
                 setPassword(res.data.password);
         });
@@ -26,7 +26,7 @@ export default function EditUser(){
     const userUpdate = async (e) => {
     e.preventDefault();
     try{
-        await axios.put(`http://localhost:5000/api/cog/${id}`, {
+        await axios.put(`https://react-clg-tournament.onrender.com/api/cog/${id}`, {
         name,
         password,
         });

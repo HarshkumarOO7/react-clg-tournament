@@ -19,7 +19,7 @@ export default function TournamentDetails() {
   const fetchTournament = async () => {
     try {
       // ✅ FIXED: Use public endpoint to get tournament details
-      const res = await axios.get(`http://localhost:5000/api/tournaments/public/${id}`);
+      const res = await axios.get(`https://react-clg-tournament.onrender.com/api/tournaments/public/${id}`);
       setTournament(res.data);
     } catch (err) {
       console.error("Failed to fetch tournament:", err);
@@ -33,7 +33,7 @@ export default function TournamentDetails() {
     if (!window.confirm("Are you sure you want to delete this tournament?")) return;
     
     try {
-      await axios.delete(`http://localhost:5000/api/tournaments/${id}`, auth);
+      await axios.delete(`https://react-clg-tournament.onrender.com/api/tournaments/${id}`, auth);
       alert("Tournament deleted successfully!");
       navigate("/admin/tournaments");
     } catch (err) {

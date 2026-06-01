@@ -19,8 +19,8 @@ export default function Reports() {
     try {
       setLoading(true);
       const [tournamentsRes, registrationsRes] = await Promise.all([
-        axios.get("http://localhost:5000/api/tournaments/public"),
-        axios.get("http://localhost:5000/api/registrations", auth),
+        axios.get("https://react-clg-tournament.onrender.com/api/tournaments/public"),
+        axios.get("https://react-clg-tournament.onrender.com/api/registrations", auth),
       ]);
       setTournaments(tournamentsRes.data || []);
       setRegistrations(registrationsRes.data || []);
