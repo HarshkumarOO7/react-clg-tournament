@@ -17,6 +17,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [openProfile, setOpenProfile] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [openDropdowns, setOpenDropdowns] = useState({});
 
   const profileRef = useRef(null);
   const notificationRef = useRef(null);
@@ -25,9 +26,18 @@ export default function Header() {
   const isOrganizer = user?.role === "organizer";
   const unreadCount = notifications.filter(n => !n.isRead).length;
 
+  // Toggle dropdown on mobile
+  const toggleDropdown = (key) => {
+    setOpenDropdowns(prev => ({
+      ...prev,
+      [key]: !prev[key]
+    }));
+  };
+
   // Close mobile menu on route change
   useEffect(() => {
     setMobileMenuOpen(false);
+    setOpenDropdowns({});
   }, [location.pathname]);
 
   // Handle scroll effect
@@ -58,6 +68,7 @@ export default function Header() {
     const handleResize = () => {
       if (window.innerWidth > 768 && mobileMenuOpen) {
         setMobileMenuOpen(false);
+        setOpenDropdowns({});
       }
     };
     window.addEventListener("resize", handleResize);
@@ -344,15 +355,23 @@ export default function Header() {
                     </Link>
                   ))}
                   {/* Admin Dropdowns */}
-                  {Object.values(adminNavLinks.dropdowns).map((dropdown, idx) => (
-                    <div key={idx} className="nav-dropdown">
-                      <span className="nav-link">{dropdown.icon} {dropdown.label} ▾</span>
+                  {Object.entries(adminNavLinks.dropdowns).map(([key, dropdown]) => (
+                    <div key={key} className={`nav-dropdown ${openDropdowns[key] ? 'open' : ''}`}>
+                      <button 
+                        className="nav-link" 
+                        onClick={() => toggleDropdown(key)}
+                      >
+                        {dropdown.icon} {dropdown.label} <span>{openDropdowns[key] ? '▲' : '▼'}</span>
+                      </button>
                       <div className="dropdown-menu">
                         {dropdown.links.map(link => (
                           <Link 
                             key={link.path} 
                             to={link.path}
-                            onClick={() => setMobileMenuOpen(false)}
+                            onClick={() => {
+                              setMobileMenuOpen(false);
+                              setOpenDropdowns({});
+                            }}
                           >
                             {link.label}
                           </Link>
@@ -363,16 +382,24 @@ export default function Header() {
                 </>
               ) : isOrganizer ? (
                 <>
-                  {/* Organizer - Only Dropdowns */}
-                  {Object.values(organizerNavLinks.dropdowns).map((dropdown, idx) => (
-                    <div key={idx} className="nav-dropdown">
-                      <span className="nav-link">{dropdown.icon} {dropdown.label} ▾</span>
+                  {/* Organizer Dropdowns */}
+                  {Object.entries(organizerNavLinks.dropdowns).map(([key, dropdown]) => (
+                    <div key={key} className={`nav-dropdown ${openDropdowns[key] ? 'open' : ''}`}>
+                      <button 
+                        className="nav-link" 
+                        onClick={() => toggleDropdown(key)}
+                      >
+                        {dropdown.icon} {dropdown.label} <span>{openDropdowns[key] ? '▲' : '▼'}</span>
+                      </button>
                       <div className="dropdown-menu">
                         {dropdown.links.map(link => (
                           <Link 
                             key={link.path} 
                             to={link.path}
-                            onClick={() => setMobileMenuOpen(false)}
+                            onClick={() => {
+                              setMobileMenuOpen(false);
+                              setOpenDropdowns({});
+                            }}
                           >
                             {link.icon && <span style={{ marginRight: "8px" }}>{link.icon}</span>}
                             {link.label}
@@ -405,15 +432,23 @@ export default function Header() {
                     </Link>
                   ))}
                   {/* Player Dropdowns */}
-                  {Object.values(playerNavLinks.dropdowns).map((dropdown, idx) => (
-                    <div key={idx} className="nav-dropdown">
-                      <span className="nav-link">{dropdown.icon} {dropdown.label} ▾</span>
+                  {Object.entries(playerNavLinks.dropdowns).map(([key, dropdown]) => (
+                    <div key={key} className={`nav-dropdown ${openDropdowns[key] ? 'open' : ''}`}>
+                      <button 
+                        className="nav-link" 
+                        onClick={() => toggleDropdown(key)}
+                      >
+                        {dropdown.icon} {dropdown.label} <span>{openDropdowns[key] ? '▲' : '▼'}</span>
+                      </button>
                       <div className="dropdown-menu">
                         {dropdown.links.map(link => (
                           <Link 
                             key={link.path} 
                             to={link.path}
-                            onClick={() => setMobileMenuOpen(false)}
+                            onClick={() => {
+                              setMobileMenuOpen(false);
+                              setOpenDropdowns({});
+                            }}
                           >
                             {link.icon && <span style={{ marginRight: "8px" }}>{link.icon}</span>}
                             {link.label}
