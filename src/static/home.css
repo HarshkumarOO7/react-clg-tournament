@@ -612,6 +612,10 @@
     min-height: 60vh;
   }
   
+  .hero-content {
+    padding: 0 15px;
+  }
+  
   .hero-content h1 {
     font-size: 1.8rem;
   }
@@ -638,6 +642,8 @@
   .primary-btn, .secondary-btn {
     width: 80%;
     max-width: 250px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
   }
   
   /* Stats section - 1 column on mobile */
@@ -681,6 +687,10 @@
   
   .tournament-image {
     height: 160px;
+  }
+  
+  .tournament-details {
+    padding: 15px;
   }
   
   .tournament-details h3 {
@@ -791,6 +801,8 @@
   .cta-primary, .cta-secondary {
     width: 80%;
     max-width: 250px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
   }
   
   /* Loading spinner */
@@ -841,6 +853,15 @@
     gap: 5px;
   }
   
+  .tournament-details .sport {
+    font-size: 0.8rem;
+  }
+  
+  .btn-outline {
+    padding: 6px 15px;
+    font-size: 0.8rem;
+  }
+  
   .sports-grid {
     grid-template-columns: 1fr;
     gap: 12px;
@@ -867,6 +888,11 @@
   .vs {
     margin: 0;
   }
+  
+  .status-badge {
+    font-size: 0.7rem;
+    padding: 4px 10px;
+  }
 }
 
 /* EXTRA SMALL (up to 360px) */
@@ -880,7 +906,7 @@
   }
   
   .primary-btn, .secondary-btn {
-    padding: 10px 20px;
+    padding: 8px 16px;
     font-size: 0.85rem;
   }
   
@@ -893,8 +919,16 @@
   }
   
   .cta-primary, .cta-secondary {
-    padding: 10px 20px;
-    font-size: 0.9rem;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+  
+  .match-card {
+    padding: 12px;
+  }
+  
+  .team {
+    font-size: 0.85rem;
   }
 }
 
@@ -954,8 +988,22 @@
     color: #f9fafb;
   }
   
+  .tournament-details .sport {
+    color: #a78bfa;
+  }
+  
   .tournament-meta {
     color: #9ca3af;
+  }
+  
+  .btn-outline {
+    border-color: #a78bfa;
+    color: #a78bfa;
+  }
+  
+  .btn-outline:hover {
+    background: #a78bfa;
+    color: white;
   }
   
   .matches-section {
@@ -1037,5 +1085,58 @@
   
   @keyframes pulse {
     0%, 50%, 100% { opacity: 1; }
+  }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .tournament-card:hover {
+    transform: none;
+  }
+  
+  .tournament-card:hover .tournament-image img {
+    transform: none;
+  }
+  
+  .match-card:hover {
+    transform: none;
+  }
+  
+  .stat-card:hover {
+    transform: none;
+  }
+  
+  .sport-item:hover {
+    transform: none;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .clean-hero {
+    background: #f0f0f0;
+    color: black;
+  }
+  
+  .hero-content h1 {
+    color: black;
+  }
+  
+  .stats-section,
+  .tournaments-section,
+  .matches-section,
+  .cta-section {
+    background: white;
+  }
+  
+  .tournament-card,
+  .match-card {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  
+  .cta-buttons,
+  .hero-buttons {
+    display: none;
   }
 }
