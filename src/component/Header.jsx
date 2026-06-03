@@ -10,7 +10,6 @@ export default function Header() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // State Management
   const [notifications, setNotifications] = useState([]);
   const [openNotification, setOpenNotification] = useState(false);
   const [isCaptain, setIsCaptain] = useState(false);
@@ -26,7 +25,6 @@ export default function Header() {
   const isOrganizer = user?.role === "organizer";
   const unreadCount = notifications.filter(n => !n.isRead).length;
 
-  // Toggle dropdown on mobile
   const toggleDropdown = (key) => {
     setOpenDropdowns(prev => ({
       ...prev,
@@ -34,13 +32,10 @@ export default function Header() {
     }));
   };
 
-  // Close mobile menu on route change
   useEffect(() => {
     setMobileMenuOpen(false);
-    setOpenDropdowns({});
   }, [location.pathname]);
 
-  // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -49,7 +44,6 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Handle click outside for dropdowns
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (profileRef.current && !profileRef.current.contains(e.target)) {
@@ -63,19 +57,12 @@ export default function Header() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Close mobile menu on resize
   useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth > 768 && mobileMenuOpen) {
-        setMobileMenuOpen(false);
-        setOpenDropdowns({});
-      }
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    if (window.innerWidth > 768 && mobileMenuOpen) {
+      setMobileMenuOpen(false);
+    }
   }, [mobileMenuOpen]);
 
-  // Fetch captain status
   useEffect(() => {
     if (user) {
       api.get("/api/teams/captain-teams")
@@ -84,14 +71,12 @@ export default function Header() {
     }
   }, [user]);
 
-  // Socket connection for notifications
   useEffect(() => {
     if (user?._id) {
       socket.emit("register", user._id);
     }
   }, [user]);
 
-  // Listen for new notifications
   useEffect(() => {
     const handleNotification = (data) => {
       setNotifications(prev => [data, ...prev]);
@@ -100,7 +85,6 @@ export default function Header() {
     return () => socket.off("new_notification", handleNotification);
   }, []);
 
-  // Fetch existing notifications
   useEffect(() => {
     if (user) {
       api.get("/api/notifications")
@@ -112,7 +96,6 @@ export default function Header() {
   const handleLogout = () => {
     logout();
     setOpenProfile(false);
-    setMobileMenuOpen(false);
     navigate("/login");
   };
 
@@ -123,13 +106,6 @@ export default function Header() {
       setNotifications(prev => prev.map(item =>
         item._id === n._id ? { ...item, isRead: true } : item
       ));
-      if (n.type === "join_request") {
-        navigate("/approve-players");
-        setOpenNotification(false);
-      } else if (n.type === "registration_approved") {
-        navigate("/my-registrations");
-        setOpenNotification(false);
-      }
     } catch (err) {
       console.error(err);
     }
@@ -149,13 +125,7 @@ export default function Header() {
 
   const isActive = (path) => location.pathname === path;
 
-  // Get breadcrumb path
-  const breadcrumb = location.pathname
-    .replace("/admin", "")
-    .replace("/", "")
-    .replace(/-/g, " ") || "dashboard";
-
-  // ==================== ADMIN NAVIGATION ====================
+  // Admin Navigation
   const adminNavLinks = {
     main: [
       { path: "/admin/dashboard", label: "Dashboard", icon: "📊" },
@@ -201,149 +171,29 @@ export default function Header() {
         icon: "📊",
         label: "Analytics",
         links: [
-          { path: "/admin/analytics", label: "Dashboard" },
+          { path: "/admin/analytics", label: "Analytics" },
           { path: "/admin/reports", label: "Reports" },
         ]
       }
     }
   };
 
-  // ==================== PLAYER NAVIGATION ====================
-  const playerNavLinks = {
-    main: [
-      { path: "/", label: "Home", icon: "🏠" },
-      { path: "/tournaments", label: "Events", icon: "🏆" },
-      { path: "/schedule", label: "Schedule", icon: "📅" },
-      { path: "/match-results", label: "Results", icon: "📊" },
-    ],
-    dropdowns: {
-      myStuff: {
-        icon: "👤",
-        label: "My Stuff",
-        links: [
-          { path: "/my-teams", label: "My Teams", icon: "👥" },
-          { path: "/my-registrations", label: "My Registrations", icon: "📋" },
-          { path: "/profile", label: "My Profile", icon: "👤" },
-          ...(isCaptain ? [{ path: "/approve-players", label: "Approve Players", icon: "✅" }] : []),
-        ]
-      },
-      explore: {
-        icon: "🔍",
-        label: "Explore",
-        links: [
-          { path: "/leaderboard", label: "Leaderboard", icon: "🏆" },
-          { path: "/speakers", label: "Speakers", icon: "🎤" },
-          { path: "/gallery", label: "Gallery", icon: "🖼️" },
-          { path: "/venue", label: "Venue", icon: "🏟️" },
-          { path: "/sponsors", label: "Sponsors", icon: "🤝" },
-        ]
-      },
-      info: {
-        icon: "ℹ️",
-        label: "Info",
-        links: [
-          { path: "/about", label: "About Us", icon: "📖" },
-          { path: "/faq", label: "FAQ", icon: "❓" },
-          { path: "/contact", label: "Contact", icon: "📞" },
-          { path: "/terms", label: "Terms", icon: "📜" },
-          { path: "/privacy", label: "Privacy", icon: "🔒" },
-        ]
-      }
-    },
-    notifications: { path: "/notifications", label: "Notifications", icon: "🔔" }
-  };
-
-  // ==================== ORGANIZER NAVIGATION ====================
-  const organizerNavLinks = {
-    dropdowns: {
-      tournaments: {
-        icon: "🏆",
-        label: "Tournaments",
-        links: [
-          { path: "/my-tournaments", label: "My Tournaments", icon: "📋" },
-          { path: "/create-tournament", label: "Create Tournament", icon: "✨" },
-        ]
-      },
-      matches: {
-        icon: "⚽",
-        label: "Matches",
-        links: [
-          { path: "/organizer/matches", label: "Manage Matches", icon: "📅" },
-          { path: "/match-results", label: "Match Results", icon: "📊" },
-          { path: "/schedule", label: "Schedule", icon: "📅" },
-        ]
-      },
-      teams: {
-        icon: "👥",
-        label: "Teams",
-        links: [
-          { path: "/my-teams", label: "My Teams", icon: "👥" },
-          { path: "/teams/create", label: "Create Team", icon: "➕" },
-          { path: "/teams", label: "Browse Teams", icon: "🔍" },
-          ...(isCaptain ? [{ path: "/approve-players", label: "Approve Players", icon: "✅" }] : []),
-        ]
-      },
-      registrations: {
-        icon: "📋",
-        label: "Registrations",
-        links: [
-          { path: "/my-registrations", label: "My Registrations", icon: "📋" },
-          { path: "/RegisterTeam", label: "Register Team", icon: "📝" },
-        ]
-      },
-      finance: {
-        icon: "💰",
-        label: "Finance",
-        links: [
-          { path: "/my-sponsors", label: "Manage Sponsors", icon: "🤝" },
-          { path: "/sponsors", label: "View Sponsors", icon: "👀" },
-        ]
-      },
-      explore: {
-        icon: "🔍",
-        label: "Explore",
-        links: [
-          { path: "/leaderboard", label: "Leaderboard", icon: "🏆" },
-          { path: "/speakers", label: "Speakers", icon: "🎤" },
-          { path: "/gallery", label: "Gallery", icon: "🖼️" },
-          { path: "/venue", label: "Venue", icon: "🏟️" },
-        ]
-      },
-      info: {
-        icon: "ℹ️",
-        label: "Info",
-        links: [
-          { path: "/about", label: "About Us", icon: "📖" },
-          { path: "/faq", label: "FAQ", icon: "❓" },
-          { path: "/contact", label: "Contact", icon: "📞" },
-          { path: "/terms", label: "Terms", icon: "📜" },
-          { path: "/privacy", label: "Privacy", icon: "🔒" },
-        ]
-      }
-    },
-    notifications: { path: "/notifications", label: "Notifications", icon: "🔔" }
-  };
-
   return (
     <>
-      <header className={`navbar ${scrolled ? "scrolled" : ""} ${isAdmin ? "admin-navbar" : ""}`}>
-        {/* Logo */}
+      <header className={`navbar ${scrolled ? "scrolled" : ""}`}>
         <div className="logo" onClick={() => navigate("/")}>
           🏆 ArenaSync
         </div>
 
-        {/* Mobile Menu Button */}
         <div className="mobile-menu-btn" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-          {mobileMenuOpen ? "✕" : "☰"}
+          ☰
         </div>
 
         {!loading && (
           <>
-            {/* Navigation */}
             <nav className={mobileMenuOpen ? "mobile-open" : ""}>
               {isAdmin ? (
                 <>
-                  {/* Admin Main Links */}
                   {adminNavLinks.main.map(link => (
                     <Link 
                       key={link.path} 
@@ -354,14 +204,10 @@ export default function Header() {
                       {link.icon} {link.label}
                     </Link>
                   ))}
-                  {/* Admin Dropdowns */}
                   {Object.entries(adminNavLinks.dropdowns).map(([key, dropdown]) => (
                     <div key={key} className={`nav-dropdown ${openDropdowns[key] ? 'open' : ''}`}>
-                      <button 
-                        className="nav-link" 
-                        onClick={() => toggleDropdown(key)}
-                      >
-                        {dropdown.icon} {dropdown.label} <span>{openDropdowns[key] ? '▲' : '▼'}</span>
+                      <button className="nav-link" onClick={() => toggleDropdown(key)}>
+                        {dropdown.icon} {dropdown.label} {openDropdowns[key] ? '▲' : '▼'}
                       </button>
                       <div className="dropdown-menu">
                         {dropdown.links.map(link => (
@@ -379,100 +225,19 @@ export default function Header() {
                       </div>
                     </div>
                   ))}
-                </>
-              ) : isOrganizer ? (
-                <>
-                  {/* Organizer Dropdowns */}
-                  {Object.entries(organizerNavLinks.dropdowns).map(([key, dropdown]) => (
-                    <div key={key} className={`nav-dropdown ${openDropdowns[key] ? 'open' : ''}`}>
-                      <button 
-                        className="nav-link" 
-                        onClick={() => toggleDropdown(key)}
-                      >
-                        {dropdown.icon} {dropdown.label} <span>{openDropdowns[key] ? '▲' : '▼'}</span>
-                      </button>
-                      <div className="dropdown-menu">
-                        {dropdown.links.map(link => (
-                          <Link 
-                            key={link.path} 
-                            to={link.path}
-                            onClick={() => {
-                              setMobileMenuOpen(false);
-                              setOpenDropdowns({});
-                            }}
-                          >
-                            {link.icon && <span style={{ marginRight: "8px" }}>{link.icon}</span>}
-                            {link.label}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                  {/* Notifications Link */}
-                  <Link 
-                    to={organizerNavLinks.notifications.path} 
-                    className="notifications-link"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    🔔 {organizerNavLinks.notifications.label}
-                    {unreadCount > 0 && <span className="notif-link-badge">{unreadCount}</span>}
-                  </Link>
                 </>
               ) : (
                 <>
-                  {/* Player Main Links */}
-                  {playerNavLinks.main.map(link => (
-                    <Link 
-                      key={link.path} 
-                      to={link.path} 
-                      className={isActive(link.path) ? "active" : ""}
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {link.icon} {link.label}
-                    </Link>
-                  ))}
-                  {/* Player Dropdowns */}
-                  {Object.entries(playerNavLinks.dropdowns).map(([key, dropdown]) => (
-                    <div key={key} className={`nav-dropdown ${openDropdowns[key] ? 'open' : ''}`}>
-                      <button 
-                        className="nav-link" 
-                        onClick={() => toggleDropdown(key)}
-                      >
-                        {dropdown.icon} {dropdown.label} <span>{openDropdowns[key] ? '▲' : '▼'}</span>
-                      </button>
-                      <div className="dropdown-menu">
-                        {dropdown.links.map(link => (
-                          <Link 
-                            key={link.path} 
-                            to={link.path}
-                            onClick={() => {
-                              setMobileMenuOpen(false);
-                              setOpenDropdowns({});
-                            }}
-                          >
-                            {link.icon && <span style={{ marginRight: "8px" }}>{link.icon}</span>}
-                            {link.label}
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                  {/* Notifications Link */}
-                  <Link 
-                    to={playerNavLinks.notifications.path} 
-                    className="notifications-link"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    🔔 {playerNavLinks.notifications.label}
-                    {unreadCount > 0 && <span className="notif-link-badge">{unreadCount}</span>}
-                  </Link>
+                  <Link to="/" className={isActive("/") ? "active" : ""} onClick={() => setMobileMenuOpen(false)}>🏠 Home</Link>
+                  <Link to="/tournaments" className={isActive("/tournaments") ? "active" : ""} onClick={() => setMobileMenuOpen(false)}>🏆 Tournaments</Link>
+                  <Link to="/teams" className={isActive("/teams") ? "active" : ""} onClick={() => setMobileMenuOpen(false)}>👥 Teams</Link>
+                  <Link to="/matches" className={isActive("/matches") ? "active" : ""} onClick={() => setMobileMenuOpen(false)}>⚽ Matches</Link>
+                  <Link to="/leaderboard" className={isActive("/leaderboard") ? "active" : ""} onClick={() => setMobileMenuOpen(false)}>🏅 Leaderboard</Link>
                 </>
               )}
             </nav>
 
-            {/* Right Actions */}
             <div className="nav-actions">
-              {/* Notification Icon */}
               {user && (
                 <div className="notification-icon" onClick={() => setOpenNotification(!openNotification)}>
                   🔔
@@ -480,43 +245,18 @@ export default function Header() {
                 </div>
               )}
 
-              {/* Profile Dropdown */}
               {user ? (
                 <div className="profile-wrapper" ref={profileRef}>
                   <div className="profile-icon" onClick={() => setOpenProfile(!openProfile)}>
-                    {user.profileImage ? (
-                      <img src={user.profileImage} alt="Profile" />
-                    ) : (
-                      user.name?.charAt(0)?.toUpperCase() || "U"
-                    )}
+                    {user.name?.charAt(0)?.toUpperCase() || "U"}
                   </div>
-
                   {openProfile && (
                     <div className="profile-dropdown">
                       <p><strong>{user.name}</strong></p>
                       <p className="profile-email">{user.email}</p>
                       <hr />
-                      {isAdmin ? (
-                        <button onClick={() => { navigate("/admin/profile"); setOpenProfile(false); }}>
-                          👤 Admin Profile
-                        </button>
-                      ) : isOrganizer ? (
-                        <>
-                          <button onClick={() => { navigate("/profile"); setOpenProfile(false); }}>
-                            👤 My Profile
-                          </button>
-                          <button onClick={() => { navigate("/my-sponsors"); setOpenProfile(false); }}>
-                            🤝 Manage Sponsors
-                          </button>
-                        </>
-                      ) : (
-                        <button onClick={() => { navigate("/profile"); setOpenProfile(false); }}>
-                          👤 My Profile
-                        </button>
-                      )}
-                      <button onClick={handleLogout} className="logout-btn">
-                        🚪 Logout
-                      </button>
+                      <button onClick={() => { navigate("/profile"); setOpenProfile(false); }}>👤 My Profile</button>
+                      <button onClick={handleLogout} className="logout-btn">🚪 Logout</button>
                     </div>
                   )}
                 </div>
@@ -528,34 +268,17 @@ export default function Header() {
         )}
       </header>
 
-      {/* Admin Breadcrumb */}
-      {isAdmin && !loading && (
-        <div className="admin-breadcrumb">
-          Admin / {breadcrumb.charAt(0).toUpperCase() + breadcrumb.slice(1)}
-        </div>
-      )}
-
-      {/* Notification Popup */}
       {openNotification && (
         <div className="notif-overlay" onClick={() => setOpenNotification(false)}>
           <div className="notif-popup" onClick={(e) => e.stopPropagation()} ref={notificationRef}>
             <div className="notif-header">
               <h3>🔔 Notifications</h3>
-              <div>
-                {notifications.some(n => !n.isRead) && (
-                  <button onClick={markAllAsRead} className="mark-all-btn">Mark all read</button>
-                )}
-                <button onClick={() => setOpenNotification(false)} className="close-btn">×</button>
-              </div>
+              <button onClick={() => setOpenNotification(false)} className="close-btn">×</button>
             </div>
             <div style={{ flex: 1, overflowY: "auto" }}>
               {notifications.length > 0 ? (
                 notifications.map(n => (
-                  <div 
-                    key={n._id} 
-                    className={`notif-item ${!n.isRead ? "unread" : ""}`} 
-                    onClick={() => markAsRead(n)}
-                  >
+                  <div key={n._id} className={`notif-item ${!n.isRead ? "unread" : ""}`} onClick={() => markAsRead(n)}>
                     <p>{n.message}</p>
                     <small>{n.createdAt ? new Date(n.createdAt).toLocaleString() : "Just now"}</small>
                   </div>
